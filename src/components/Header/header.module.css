@@ -1,0 +1,44 @@
+.header {
+  background-image: url("./assests/header background.png");
+  background-repeat: no-repeat no-repeat;
+  background-size: cover;
+  background-position: center;
+  margin: 0;
+  padding: 0rem 5rem 6rem;
+}
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5rem;
+  margin-top: 2rem;
+}
+.heroText {
+  width: 50%;
+}
+.heroH1 {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 52px;
+  line-height: 70px;
+  letter-spacing: -1px;
+  text-transform: capitalize;
+  color: #ffffff;
+}
+.heroImg {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* border: 1px solid red; */
+}
+.filterHero {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  padding: 1rem;
+  display: flex;
+  gap: 2rem;
+  width: 70%;
+}

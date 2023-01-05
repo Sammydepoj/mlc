@@ -1,0 +1,30 @@
+.navlogo {
+  background-color: transparent;
+  display: flex;
+  /* justify-content: space-between; */
+  gap: 5rem;
+  align-items: flex-end;
+  align-content: flex-end;
+  border-bottom: 0.5px solid #ffffff;
+  padding:1rem  0.2rem;
+  /* border: 1px solid red; */
+}
+.ul {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.li {
+  margin: 0rem 3rem;
+}
+.li a {
+  font-family: "DM Sans";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 70.19%;
+  color: #ffffff;
+}
+.li a:focus {
+  border-bottom: 1px solid #ffffff;
+}

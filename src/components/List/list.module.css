@@ -1,0 +1,25 @@
+.list {
+  padding: 0rem 4rem;
+}
+.listHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.listH2 {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 800;
+  font-size: 36px;
+  line-height: 64px;
+  text-transform: capitalize;
+  font-feature-settings: "salt" on, "liga" off;
+  color: #18191f;
+}
+.cardContainer {
+  display: flex;
+  /* justify-content: space-between; */
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin: 1rem auto 2rem;
+}

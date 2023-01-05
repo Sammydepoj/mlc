@@ -1,0 +1,57 @@
+.cards {
+  margin-top: 2rem;
+  background: #ffffff;
+  box-shadow: 0px 34.0693px 36.1986px rgba(0, 0, 0, 0.133714);
+  border-radius: 26.6166px;
+  /* width: 20%; */
+  flex: 1 0 25%;
+}
+.homeImage {
+  width: 100%;
+  max-width: 100%;
+  object-fit: cover;
+}
+.cardTexts {
+  padding: 1rem;
+}
+.address {
+  font-family: "DM Sans";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 23px;
+  line-height: 30px;
+  letter-spacing: -0.642075px;
+  text-transform: capitalize;
+  color: #000000;
+  width: 80%;
+}
+.status {
+  font-family: "DM Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 23px;
+  letter-spacing: -0.642075px;
+  text-transform: capitalize;
+  color: #818181;
+  margin-top: 1rem;
+}
+.price {
+  font-family: "DM Sans";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 25.552px;
+  line-height: 33px;
+  letter-spacing: -0.642075px;
+  text-transform: capitalize;
+  color: #f4511e;
+  margin-bottom: 1rem;
+}
+.iconWrapper {
+  display: flex;
+  justify-content: space-between;
+}
+.iconsWithCount {
+  display: flex;
+  gap: 0.3rem;
+}
