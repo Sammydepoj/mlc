@@ -11,6 +11,7 @@ import bed from "./assets/Bed.svg";
 import shower from "./assets/Shower.svg";
 import size from "./assets/Path.svg";
 import Card from "./components/Card";
+import Pagination from "./Pagination/Pagination";
 // import mlc from "./data.js";
 
 const mlc = {
@@ -101,6 +102,7 @@ const List = () => {
           />
         ))}
       </div>
+      <Pagination />
     </div>
   );
 };
