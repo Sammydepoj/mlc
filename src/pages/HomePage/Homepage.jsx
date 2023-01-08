@@ -1,4 +1,5 @@
 import React from "react";
+import Flexible from "../../components/Flexible/Flexible";
 import Header from "../../components/Header/Header";
 import List from "../../components/List/List";
 import MinimumLivingCost from "../../components/MinimumLivingCost/MinimumLivingCost";
@@ -9,6 +10,7 @@ const Homepage = () => {
       <Header />
       <MinimumLivingCost />
       <List />
+      <Flexible />
     </div>
   );
 };

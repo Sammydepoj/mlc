@@ -1,10 +1,13 @@
 .cards {
   margin-top: 2rem;
   background: #ffffff;
-  box-shadow: 0px 34.0693px 36.1986px rgba(0, 0, 0, 0.133714);
   border-radius: 26.6166px;
+  border: 1px solid #979797;
   /* width: 20%; */
   flex: 1 0 25%;
+}
+.cards:hover {
+  box-shadow: 0px 34.0693px 36.1986px rgba(0, 0, 0, 0.133714);
 }
 .homeImage {
   width: 100%;

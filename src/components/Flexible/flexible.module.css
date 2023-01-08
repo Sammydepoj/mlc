@@ -1,0 +1,27 @@
+.flexible {
+  display: flex;
+  margin: 2rem;
+}
+.flexibleImages {
+  display: flex;
+}
+.imgContainer1,
+.imgContainer2,
+.imgContainer3,
+.imgContainer4 {
+  padding: 2rem;
+  background-size: cover;
+  background-repeat: no-repeat no-repeat;
+}
+.imgContainer1 {
+  background-image: url("./Assets/image1.png");
+}
+.imgContainer2 {
+  background-image: url("./Assets/image2.png");
+}
+.imgContainer3 {
+  background-image: url("./Assets/image3.png");
+}
+.imgContainer4 {
+  background-image: url("./Assets/image4.png");
+}

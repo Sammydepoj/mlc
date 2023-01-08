@@ -1,5 +1,5 @@
 import React from "react";
-import "./pagination.module.css";
+import styles from "./pagination.module.css";
 const Pagination = () => {
   // const pageNumbers = [];
 
@@ -9,34 +9,70 @@ const Pagination = () => {
 
   return (
     <nav>
-      <ul className="pagination">
-        <li className="page-item-inactive">
+      <ul className={styles.pagination}>
+        <li className={styles.pageItemInactive}>
           <a
             // onClick={() => paginate(number)}
             href="!#"
-            className="active-link"
+            className={`${styles.muted}`}
           >
             First
           </a>
         </li>
-        <li className="page-item-inactive">
+        <li className={styles.pageItemInactive}>
           <a
             // onClick={() => paginate(number)}
             href="!#"
-            className="active-link"
+            className={styles.inactiveLink}
+          >
+            1
+          </a>
+        </li>
+        <li className={`${styles.pageItemActive}`}>
+          <a
+            // onClick={() => paginate(number)}
+            href="!#"
+            className={`${styles.activeLink}`}
+          >
+            2
+          </a>
+        </li>
+        <li className={styles.pageItemInactive}>
+          <a
+            // onClick={() => paginate(number)}
+            href="!#"
+            className={styles.inactiveLink}
+          >
+            3
+          </a>
+        </li>
+        <li className={styles.pageItemInactive}>
+          <a
+            // onClick={() => paginate(number)}
+            href="!#"
+            className={styles.inactiveLink}
+          >
+            Next
+          </a>
+        </li>
+        {/* <li className={styles.pageItemInactive}>
+          <a
+            // onClick={() => paginate(number)}
+            href="!#"
+            className={styles.inactiveLink}
           >
             First
           </a>
         </li>
-        <li className="page-item-inactive">
+        <li className={styles.pageItemInactive}>
           <a
             // onClick={() => paginate(number)}
             href="!#"
-            className="active-link"
+            className={styles.inactiveLink}
           >
             First
           </a>
-        </li>
+        </li> */}
 
         {/* {pageNumbers.map((number) => (
           <li key={number} className="page-item">
