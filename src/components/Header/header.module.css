@@ -33,6 +33,9 @@
   align-items: center;
   /* border: 1px solid red; */
 }
+.heroMap {
+  height: 300px;
+}
 .filterHero {
   background: #ffffff;
   border: 1px solid rgba(0, 0, 0, 0.2);

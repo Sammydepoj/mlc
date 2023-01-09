@@ -2,6 +2,7 @@ import React from "react";
 import NavLogo from "../NavbarAndLogo/NavLogo";
 import heroMap from "./assests/heroMap.svg";
 import styles from "./header.module.css";
+import Leaflet from "./Map/Leaflet";
 
 const Header = () => {
   return (
@@ -14,9 +15,7 @@ const Header = () => {
           </h1>
         </div>
         <div className={styles.heroImg}>
-          <div className={heroMap}>
-            <img src={heroMap} alt="Houses map" />
-          </div>
+          <Leaflet />
           <div className={styles.filterHero}>
             <select name="All Type" id="Alltype">
               <option value="All Type">All Type</option>
