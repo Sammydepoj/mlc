@@ -1,27 +1,30 @@
 import { MapContainer, Marker, TileLayer, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
+import { useMapEvents } from "https://cdn.esm.sh/react-leaflet/hooks";
+import { useMap } from "https://cdn.esm.sh/react-leaflet/hooks";
 import { React, useEffect, useState } from "react";
 
 const Leaflet = () => {
-  const [lat, setLat] = useState(0.00);
-  const [lng, setlng] = useState(0.00);
+  const [lat, setLat] = useState(0.0);
+  const [lng, setlng] = useState(0.0);
   const [status, setStatus] = useState(null);
-  const getLocation = () => {
+  const GetLocation = () => {
     if (!navigator.geolocation) {
       setStatus("Geolocation is not supported by your browser");
     } else {
       setStatus("Locating....");
       navigator.geolocation.getCurrentPosition(
         (position) => {
-          setStatus(null);
+          //   setStatus(null);
           setLat(position.coords.latitude);
           setlng(position.coords.longitude);
-        //   console.log(position.coords.latitude);
-        //   console.log(position.coords.longitude);
-        //   console.log(status);
+          //   console.log(position.coords.latitude);
+          //   console.log(position.coords.longitude);
+          //   console.log(status);
           console.log(lng);
           console.log(lat);
-          return [lat, lng];
+          console.log(status);
+          //   return [lat, lng];
         },
         () => {
           setStatus("Unable to retrieve your location");
@@ -30,13 +33,32 @@ const Leaflet = () => {
     }
   };
   useEffect(() => {
-    getLocation();
+    GetLocation();
   }, []);
-  //   getLocation();
+//   GetLocation();
+  //   function LocationMarker() {
+  //     const [position, setPosition] = useState(null);
+  //     const map = useMapEvents({
+  //       click() {
+  //         map.locate();
+  //       },
+  //       locationfound(e) {
+  //         setPosition(e.latlng);
+  //         map.flyTo(e.latlng, map.getZoom());
+  //       },
+  //     });
+
+  //     return position === null ? null : (
+  //       <Marker position={position}>
+  //         <Popup>You are here</Popup>
+  //       </Marker>
+  //     );
+  //   }
   return (
     <MapContainer
       style={{ height: "250px", width: "100%", marginBottom: "2rem 0rem 2rem" }}
       center={[lat, lng]}
+      //   center={{ lat: 51.505, lng: -0.09 }}
       zoom={13}
       scrollWheelZoom={false}
     >
