@@ -36,24 +36,24 @@ const Leaflet = () => {
     GetLocation();
   }, []);
 //   GetLocation();
-    function LocationMarker() {
-      const [position, setPosition] = useState(null);
-      const map = useMapEvents({
-        click() {
-          map.locate();
-        },
-        locationfound(e) {
-          setPosition(e.latlng);
-          map.flyTo(e.latlng, map.getZoom());
-        },
-      });
+  //   function LocationMarker() {
+  //     const [position, setPosition] = useState(null);
+  //     const map = useMapEvents({
+  //       click() {
+  //         map.locate();
+  //       },
+  //       locationfound(e) {
+  //         setPosition(e.latlng);
+  //         map.flyTo(e.latlng, map.getZoom());
+  //       },
+  //     });
 
-      return position === null ? null : (
-        <Marker position={position}>
-          <Popup>You are here</Popup>
-        </Marker>
-      );
-    }
+  //     return position === null ? null : (
+  //       <Marker position={position}>
+  //         <Popup>You are here</Popup>
+  //       </Marker>
+  //     );
+  //   }
   return (
     <MapContainer
       style={{ height: "250px", width: "100%", marginBottom: "2rem 0rem 2rem" }}
