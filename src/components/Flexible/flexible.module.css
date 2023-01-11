@@ -1,27 +1,65 @@
 .flexible {
   display: flex;
   margin: 2rem;
+  gap: 4rem;
 }
 .flexibleImages {
   display: flex;
+  flex-direction: column;
+  /* border: 1px solid blue; */
+  position: relative;
+}
+.mainImgContainer {
+  display: flex;
+  gap: 0rem;
 }
 .imgContainer1,
 .imgContainer2,
 .imgContainer3,
 .imgContainer4 {
-  padding: 2rem;
-  background-size: cover;
-  background-repeat: no-repeat no-repeat;
+  padding: 1rem;
+  position: relative;
+  /* border: 1px solid red; */
 }
-.imgContainer1 {
-  background-image: url("./Assets/image1.png");
+.imgContainer2 img {
+  position: absolute;
+  bottom: 5%;
 }
-.imgContainer2 {
-  background-image: url("./Assets/image2.png");
+.imgContainer1 p,
+.imgContainer2 p,
+.imgContainer3 p,
+.imgContainer4 p {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 25px;
+  text-align: center;
+  color: #ffffff;
+  position: absolute;
+  margin: 2rem 1rem;
 }
-.imgContainer3 {
-  background-image: url("./Assets/image3.png");
+.flexibleText {
+  width: 37%;
+  align-self: center;
 }
-.imgContainer4 {
-  background-image: url("./Assets/image4.png");
+.flexibleTexth2 {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 800;
+  font-size: 40px;
+  line-height: 54px;
+  font-feature-settings: "salt" on, "liga" off;
+  color: #18191f;
+  margin-bottom: 2rem;
+}
+.flexibleTextP {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 32px;
+  font-feature-settings: "salt" on, "liga" off;
+  color: #18191f;
+  margin-bottom: 2rem;
 }

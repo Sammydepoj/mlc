@@ -6,11 +6,12 @@
   border-radius: 5px;
   font-family: "Manrope";
   font-style: normal;
-  font-weight: 500;
+  font-weight: 600;
   font-size: 17px;
   line-height: 23px;
   text-align: center;
   color: #ffffff;
-  padding: 1rem;
+  padding: 1rem 1.5rem;
   border: none;
+  cursor: pointer;
 }
