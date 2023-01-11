@@ -4,6 +4,7 @@ const Input = ({ type, value, className, placeholder, id }) => {
   return (
     <>
       <input
+        multiple
         type={type}
         value={value}
         className={className}

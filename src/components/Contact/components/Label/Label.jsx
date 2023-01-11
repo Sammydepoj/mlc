@@ -1,11 +1,11 @@
 import React from "react";
 import { Children } from "react";
 
-const Label = ({ htmlFor, value, className }) => {
+const Label = ({ htmlFor, className, children }) => {
   return (
     <>
-      <label className={className} htmlFor={htmlFor} value={value}>
-        
+      <label className={className} htmlFor={htmlFor}>
+        {children}
       </label>
     </>
   );
