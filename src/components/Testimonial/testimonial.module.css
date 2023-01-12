@@ -1,0 +1,52 @@
+.testimonial {
+  margin-top: 5rem;
+  background: rgba(244, 81, 30, 0.07);
+  display: flex;
+}
+.testimonialText {
+  padding: 6rem 2rem 0rem 4rem;
+}
+.testimonialTextParagraph {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 21px;
+  line-height: 36px;
+  font-feature-settings: "salt" on, "liga" off;
+  color: #18191f;
+  position: relative;
+}
+.testimonialTextParagraph::before {
+  content: "\201C";
+  position: absolute;
+  top: -2rem;
+  left: -2.5rem;
+  line-height: 1;
+  font-size: 8rem;
+  z-index: -1;
+  color: #f4511e;
+}
+.testifier {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+.testifierName {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 28px;
+  font-feature-settings: "salt" on, "liga" off;
+  color: #f4511e;
+}
+.testifierRole {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 26px;
+  font-feature-settings: "salt" on, "liga" off;
+  color: #18191f;
+}
