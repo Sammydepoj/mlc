@@ -1,88 +1,53 @@
 import React from "react";
 import styles from "./pagination.module.css";
-const Pagination = () => {
-  // const pageNumbers = [];
-
-  // for (let i = 1; i <= Math.ceil(totalPosts / postsPerPage); i++) {
-  //   pageNumbers.push(i);
-  // }
+const Pagination = ({ totalPosts, postPerPage, setCurrentPage }) => {
+  let pages = [];
+  
+  for (let i = 1; i <= Math.ceil(totalPosts / postPerPage)-1; i++) {
+    pages.push[i];
+  }
 
   return (
-    <nav>
-      <ul className={styles.pagination}>
-        <li className={styles.pageItemInactive}>
-          <a
-            // onClick={() => paginate(number)}
-            href="!#"
-            className={`${styles.muted}`}
+    <div className={styles.pagination}>
+      {pages.map((page, index) => {
+        return (
+          <button
+            style={{ border: "10px solid green" }}
+            key={index}
+            onClick={() => setCurrentPage(page)}
           >
+            {page}
+          </button>
+        );
+      })}
+      {/* <ul className={styles.pagination}>
+        <li className={styles.pageItemInactive}>
+          <a href="!#" className={`${styles.muted}`}>
             First
           </a>
         </li>
         <li className={styles.pageItemInactive}>
-          <a
-            // onClick={() => paginate(number)}
-            href="!#"
-            className={styles.inactiveLink}
-          >
+          <a href="!#" className={styles.inactiveLink}>
             1
           </a>
         </li>
         <li className={`${styles.pageItemActive}`}>
-          <a
-            // onClick={() => paginate(number)}
-            href="!#"
-            className={`${styles.activeLink}`}
-          >
+          <a href="!#" className={`${styles.activeLink}`}>
             2
           </a>
         </li>
         <li className={styles.pageItemInactive}>
-          <a
-            // onClick={() => paginate(number)}
-            href="!#"
-            className={styles.inactiveLink}
-          >
+          <a href="!#" className={styles.inactiveLink}>
             3
           </a>
         </li>
         <li className={styles.pageItemInactive}>
-          <a
-            // onClick={() => paginate(number)}
-            href="!#"
-            className={styles.inactiveLink}
-          >
+          <a href="!#" className={styles.inactiveLink}>
             Next
           </a>
         </li>
-        {/* <li className={styles.pageItemInactive}>
-          <a
-            // onClick={() => paginate(number)}
-            href="!#"
-            className={styles.inactiveLink}
-          >
-            First
-          </a>
-        </li>
-        <li className={styles.pageItemInactive}>
-          <a
-            // onClick={() => paginate(number)}
-            href="!#"
-            className={styles.inactiveLink}
-          >
-            First
-          </a>
-        </li> */}
-
-        {/* {pageNumbers.map((number) => (
-          <li key={number} className="page-item">
-            <a onClick={() => paginate(number)} href="!#" className="page-link">
-              {number}
-            </a>
-          </li>
-        ))} */}
-      </ul>
-    </nav>
+      </ul> */}
+    </div>
   );
 };
 

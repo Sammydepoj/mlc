@@ -94,4 +94,5 @@
   width: 100%;
   padding: 1rem;
   outline: none;
+  resize: none;
 }

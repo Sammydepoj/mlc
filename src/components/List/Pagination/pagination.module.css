@@ -8,8 +8,8 @@
   align-items: flex-start;
   margin: 2rem auto;
   padding:0.8rem 0.5rem;
-  width: max-content;
-  height: max-content;
+  /* width: max-content;
+  height: max-content; */
 }
 .pageItemInactive {
   list-style-type: none;
