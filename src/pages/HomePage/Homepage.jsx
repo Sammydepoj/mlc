@@ -1,6 +1,7 @@
 import React from "react";
 import Contact from "../../components/Contact/Contact";
 import Flexible from "../../components/Flexible/Flexible";
+import Footer from "../../components/Footer/Footer";
 import Header from "../../components/Header/Header";
 import List from "../../components/List/List";
 import MinimumLivingCost from "../../components/MinimumLivingCost/MinimumLivingCost";
@@ -15,6 +16,7 @@ const Homepage = () => {
       <Flexible />
       <Contact />
       <Testimonial />
+      <Footer />
     </div>
   );
 };

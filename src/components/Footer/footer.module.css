@@ -1,0 +1,99 @@
+.footer {
+  padding: 4rem;
+}
+.line {
+  background: #f4511e;
+  border: 1px solid #f4511e;
+  margin-bottom: 4rem;
+}
+.footerLogoAndSocials {
+  display: flex;
+  justify-content: space-between;
+  margin: 4rem;
+}
+.footerLogo h2 {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 52px;
+  line-height: 70px;
+  letter-spacing: -1px;
+  text-transform: capitalize;
+  color: #000000;
+}
+.footerSocials {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 3rem;
+}
+.location {
+  display: flex;
+  justify-content: space-between;
+}
+.location p {
+  font-family: "Assistant";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  color: #0a142f;
+}
+.faxAndTelephone {
+  display: flex;
+  justify-content: space-between;
+}
+.faxAndTelephone span {
+    font-family: "Assistant";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    color: #0a142f;
+}
+.faxAndTelephone span img{
+    margin-right: 1rem;
+}
+.socials {
+  display: flex;
+  gap: 1rem;
+}
+.socials span {
+  font-family: "Assistant";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  color: #0a142f;
+  mix-blend-mode: normal;
+  opacity: 0.5;
+}
+.footerNavAndCopyright {
+  display: flex;
+  justify-content: space-between;
+}
+.footerNav {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+}
+.footerNav span {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  text-transform: uppercase;
+  color: #0a142f;
+}
+.copyright p {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: right;
+  color: #0a142f;
+  mix-blend-mode: normal;
+  opacity: 0.5;
+}
