@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./testimonial.module.css";
 import testimg from "./assets/Ellipse 4.png";
 import yt from "./assets/yt.png";
+import YoutubeEmbed from "./YoutubeEmbed/YoutubeEmbed";
 
 const Testimonial = () => {
   return (
@@ -24,7 +25,8 @@ const Testimonial = () => {
         </div>
       </div>
       <div className={styles.testimonialVideo}>
-        <img src={yt} alt="youtube player" />
+        {/* <img src={yt} alt="youtube player" /> */}
+        <YoutubeEmbed embedId="JU6sl_yyZqs" />
       </div>
     </div>
   );
