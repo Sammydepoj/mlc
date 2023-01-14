@@ -1,6 +1,6 @@
 import React from "react";
 import NavLogo from "../NavbarAndLogo/NavLogo";
-import heroMap from "./assests/heroMap.svg";
+import searchIcon from "./assests/searchIcon.png";
 import styles from "./header.module.css";
 import Leaflet from "./Map/Leaflet";
 
@@ -24,13 +24,16 @@ const Header = () => {
               <option value="3">3</option>
               <option value="4">4</option>
             </select>
-            <select name="Neighborhood" id="Neighborhood">
-              <option value="Neighborhood">Neighborhood</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-            </select>
+            <div className={styles.searchBox}>
+              <select name="Neighborhood" id="Neighborhood">
+                <option value="Neighborhood">Neighborhood</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+              </select>
+              <img src={searchIcon} alt="search based on your location" />
+            </div>
           </div>
         </div>
       </div>

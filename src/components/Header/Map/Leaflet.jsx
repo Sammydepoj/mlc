@@ -1,7 +1,7 @@
 import { MapContainer, Marker, TileLayer, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
-import { useMapEvents } from "https://cdn.esm.sh/react-leaflet/hooks";
-import { useMap } from "https://cdn.esm.sh/react-leaflet/hooks";
+// import { useMapEvents } from "https://cdn.esm.sh/react-leaflet/hooks";
+// import { useMap } from "https://cdn.esm.sh/react-leaflet/hooks";
 import { React, useEffect, useState } from "react";
 
 const Leaflet = () => {
@@ -35,29 +35,11 @@ const Leaflet = () => {
   useEffect(() => {
     GetLocation();
   }, []);
-//   GetLocation();
-  //   function LocationMarker() {
-  //     const [position, setPosition] = useState(null);
-  //     const map = useMapEvents({
-  //       click() {
-  //         map.locate();
-  //       },
-  //       locationfound(e) {
-  //         setPosition(e.latlng);
-  //         map.flyTo(e.latlng, map.getZoom());
-  //       },
-  //     });
-
-  //     return position === null ? null : (
-  //       <Marker position={position}>
-  //         <Popup>You are here</Popup>
-  //       </Marker>
-  //     );
-  //   }
+  //   GetLocation();
   return (
     <MapContainer
-      style={{ height: "250px", width: "100%", marginBottom: "2rem 0rem 2rem" }}
-      center={[lat, lng]}
+      style={{ height: "250px", width: "83%" }}
+      center={{ lat: lat, lng: lng }}
       //   center={{ lat: 51.505, lng: -0.09 }}
       zoom={13}
       scrollWheelZoom={false}
