@@ -39,7 +39,7 @@ const Drag = (props) => {
       dispatch({ type: "SET_IN_DROP_ZONE", inDropZone: false });
     }
   };
-  props.inputBtn = document.getElementById("fileInput");
+  // props.inputBtn = document.getElementById("fileInput");
 
   return (
     <div className={styles.drag}>
