@@ -156,11 +156,11 @@ const Contact = () => {
           ></textarea>
         </div>
         <Drag data={data} dispatch={dispatch} />
-        <ol className="dropped-files">
+        {/* <ol className="dropped-files">
           {data.fileList.map((f) => {
             return <li key={f.name}>{f.name}</li>;
           })}
-        </ol>
+        </ol> */}
         <div style={{ display: "flex", justifyContent: "center" }}>
           <Button value={"Add New Property"} />
         </div>
