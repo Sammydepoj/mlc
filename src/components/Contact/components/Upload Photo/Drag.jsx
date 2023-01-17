@@ -44,7 +44,7 @@ const Drag = (props) => {
   return (
     <div className={styles.drag}>
       <h3 className={styles.dragHeading}>Upload Photos</h3>
-      {/* <div
+      <div
         className={
           data.inDropZone ? `${styles.dragArea}` : `${styles.dragAreaActive}`
         }
@@ -70,7 +70,7 @@ const Drag = (props) => {
         <p id={"formatShow"} className={styles.format}>
           Supported: JPG, JPEG, PNG
         </p>
-      </div> */}
+      </div>
     </div>
   );
 };
