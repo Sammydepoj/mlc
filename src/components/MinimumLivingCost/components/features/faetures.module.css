@@ -5,7 +5,8 @@
 }
 .featureItem {
   /* border: 1px solid blue; */
-  padding: 2rem;
+  padding: 1rem;
+  /* margin: 0.5rem; */
   width: calc(100% / 3);
 }
 .imgContainer {
@@ -29,4 +30,17 @@
   /* font-feature-settings: "salt" on, "liga" off; */
   color: #18191f;
   margin-top: 1.5rem;
+}
+
+@media screen and (max-width: 1200) {
+  .featureItem {
+    padding: 0rem;
+    width: fit-content;
+  }
+  .imgContainer {
+    width: 100%;
+  }
+  .imgContainer img {
+    width: 100%;
+  }
 }
