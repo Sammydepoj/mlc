@@ -23,4 +23,7 @@
   .minimumlivingcost{
     padding: 2rem;
   }
+  .imageAndFeatures {
+    gap: 1rem;
+  }
 }
