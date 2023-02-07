@@ -4,7 +4,7 @@
   background-size: cover;
   background-position: center;
   margin: 0;
-  padding: 0rem 5rem 6rem;
+  padding: 0rem 5rem 10rem;
 }
 .hero {
   display: flex;
@@ -54,4 +54,26 @@
 }
 .searchBox {
   display: flex;
+}
+@media screen and (max-width:1113px) {
+  .header {
+  padding: 0rem 1rem 10rem;
+  }
+  .hero{
+    gap: 2rem;
+  }
+}
+
+@media screen and (max-width:950px) {
+  .hero{
+    flex-direction: column;
+  }
+  .heroText{
+    width: 100%;
+    text-align: center;
+    font-size: 45px;
+  }
+  .heroImg{
+    width: 70%;
+  }
 }

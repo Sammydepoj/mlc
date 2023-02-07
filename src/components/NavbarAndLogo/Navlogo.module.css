@@ -28,3 +28,20 @@
 .li a:focus {
   border-bottom: 1px solid #ffffff;
 }
+
+@media screen and (max-width: 1058px) {
+  .navlogo{
+    gap: 3rem;
+  }
+  .li{
+    margin: 0rem 2rem;
+  }
+}
+@media screen and (max-width: 898px) {
+.navlogo{
+    gap: 2rem;
+  }
+  .li{
+    margin: 0rem 1.5rem;
+  }
+}
