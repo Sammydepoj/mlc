@@ -238,7 +238,13 @@ const List = () => {
           />
         ))}
       </div>
-      <Pagination totalPosts={mlc.homes.length} postPerPage={postPerPage} setCurrentPage={setCurrentPage}/>
+      <Pagination
+        totalItems={mlc.homes.length}
+        itemsPerPage={6}
+        currentPage={1}
+        onPageChange={setCurrentPage}
+        // setCurrentPage={setCurrentPage}
+      />
     </div>
   );
 };

@@ -1,26 +1,56 @@
-import React from "react";
-import styles from "./pagination.module.css";
-const Pagination = ({ totalPosts, postPerPage, setCurrentPage }) => {
-  let pages = [];
-  
-  for (let i = 1; i <= Math.ceil(totalPosts / postPerPage)-1; i++) {
-    pages.push[i];
-  }
+import React, { useState } from "react";
+import styles from './pagination.module.css'
+
+const Pagination = ({
+  totalItems,
+  itemsPerPage,
+  currentPage,
+  onPageChange,
+}) => {
+  const [page, setPage] = useState(currentPage || 1);
+  const totalPages = Math.ceil(totalItems / itemsPerPage);
+
+  const handlePageChange = (newPage) => {
+    setPage(newPage);
+    onPageChange(newPage);
+  };
+
+  const handlePreviousClick = () => {
+    if (page > 1) {
+      handlePageChange(page - 1);
+    }
+  };
+
+  const handleNextClick = () => {
+    if (page < totalPages) {
+      handlePageChange(page + 1);
+    }
+  };
 
   return (
     <div className={styles.pagination}>
-      {pages.map((page, index) => {
-        return (
-          <button
-            style={{ border: "10px solid green" }}
-            key={index}
-            onClick={() => setCurrentPage(page)}
-          >
-            {page}
-          </button>
-        );
-      })}
-      {/* <ul className={styles.pagination}>
+      <button
+        className={`${
+          page === totalPages ? "pageItemAInactive" : "pageItemActive"
+        }`}
+        disabled={page === 1}
+        onClick={handlePreviousClick}
+      >
+        First
+      </button>
+      <span>
+        {page} of {totalPages}
+      </span>
+      <button disabled={page === totalPages} onClick={handleNextClick}>
+        Next
+      </button>
+    </div>
+  );
+};
+
+export default Pagination;
+{
+  /* <ul className={styles.pagination}>
         <li className={styles.pageItemInactive}>
           <a href="!#" className={`${styles.muted}`}>
             First
@@ -46,9 +76,5 @@ const Pagination = ({ totalPosts, postPerPage, setCurrentPage }) => {
             Next
           </a>
         </li>
-      </ul> */}
-    </div>
-  );
-};
-
-export default Pagination;
+      </ul> */
+}
