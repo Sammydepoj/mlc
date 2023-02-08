@@ -1,5 +1,5 @@
-.contact{
-    margin-bottom: 2rem;
+.contact {
+  margin-bottom: 2rem;
 }
 .contactHeader {
   font-family: "Inter";
@@ -54,19 +54,19 @@
   outline: none;
 }
 .select {
-    background: #f9f9f9;
-    border: 1px solid #e6e6e6;
-    border-radius: 5px;
-    font-family: "Inter";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 28px;
-    letter-spacing: 0.2px;
-    color: #737373;
-    padding: 1rem 5rem;
-    outline: none;
-  }
+  background: #f9f9f9;
+  border: 1px solid #e6e6e6;
+  border-radius: 5px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 28px;
+  letter-spacing: 0.2px;
+  color: #737373;
+  padding: 1rem 5rem;
+  outline: none;
+}
 .label {
   font-family: "Poppins";
   font-style: normal;
@@ -95,4 +95,10 @@
   padding: 1rem;
   outline: none;
   resize: none;
+}
+@media screen and (max-width: 1000px) {
+  .contactHeader {
+    font-size: 20px;
+    margin: 2rem;
+  }
 }
