@@ -6,7 +6,6 @@
 .flexibleImages {
   display: flex;
   flex-direction: column;
-  /* border: 1px solid blue; */
   position: relative;
 }
 .mainImgContainer {
@@ -19,7 +18,6 @@
 .imgContainer4 {
   padding: 1rem;
   position: relative;
-  /* border: 1px solid red; */
 }
 .imgContainer2 img {
   position: absolute;
@@ -62,4 +60,16 @@
   font-feature-settings: "salt" on, "liga" off;
   color: #18191f;
   margin-bottom: 2rem;
+}
+@media screen and (max-width: 1105px) {
+  .flexible {
+    flex-direction: column;
+  }
+  .flexibleImages{
+    margin: auto;
+  }
+  .flexibleText{
+    width: 70%;
+    margin: 0rem 5rem;
+  }
 }

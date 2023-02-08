@@ -2,7 +2,6 @@
   margin-top: 2rem;
   padding: 2rem 5rem;
 }
-
 .heading2 {
   font-family: "Inter";
   font-style: normal;
@@ -19,11 +18,17 @@
   justify-content: space-between;
   align-items: center;
 }
-@media screen and (max-width: 1200) {
+@media screen and (max-width: 1200px) {
   .minimumlivingcost{
     padding: 2rem;
   }
   .imageAndFeatures {
     gap: 1rem;
+  }
+}
+
+@media screen and (max-width: 950px) {
+  .imageAndFeatures {
+   flex-direction: column;
   }
 }

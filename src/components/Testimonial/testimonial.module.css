@@ -50,3 +50,9 @@
   font-feature-settings: "salt" on, "liga" off;
   color: #18191f;
 }
+@media screen and (max-width: 831px) {
+.testimonial{
+  flex-direction: column;
+  gap: 2rem;
+}
+}

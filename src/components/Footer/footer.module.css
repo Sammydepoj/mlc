@@ -97,3 +97,17 @@
   mix-blend-mode: normal;
   opacity: 0.5;
 }
+
+@media screen and (max-width: 1067px) {
+.footerNavAndCopyright {
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+}
+}
+@media screen and (max-width: 753px) {
+.footerLogoAndSocials {
+  flex-direction: column;
+  gap: 2rem;
+}
+}

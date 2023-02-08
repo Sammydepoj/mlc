@@ -2,12 +2,13 @@
   /* border: 1px solid red; */
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 .featureItem {
   /* border: 1px solid blue; */
   padding: 1rem;
   /* margin: 0.5rem; */
-  width: calc(100% / 3);
+  width: 33%;
 }
 .imgContainer {
   background: #ffffff;
@@ -32,15 +33,22 @@
   margin-top: 1.5rem;
 }
 
-@media screen and (max-width: 1200) {
+@media screen and (max-width: 1200px) {
   .featureItem {
-    padding: 0rem;
-    width: fit-content;
+    padding: 1rem;
   }
   .imgContainer {
-    width: 100%;
+    width: 50%;
   }
   .imgContainer img {
     width: 100%;
+  }
+}
+@media screen and (max-width: 950px) {
+  .featureItem {
+    padding: 2rem;
+  }
+  .imgContainer {
+    width: 35%;
   }
 }
