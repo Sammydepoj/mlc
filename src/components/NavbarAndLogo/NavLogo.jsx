@@ -12,6 +12,7 @@ const NavLogo = () => {
 
   const showMenu = () => {
     setMenuShow(true);
+    
     let nav = document.getElementById("nav");
     if (nav.style.display === "block") {
       nav.style.display = "none";
