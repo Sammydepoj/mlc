@@ -12,13 +12,15 @@ const NavLogo = () => {
 
   const showMenu = () => {
     setMenuShow(true);
-    
+
     let nav = document.getElementById("nav");
+    // MenuShow ? (nav.style.display = "none") : (nav.style.display = "block") ;
     if (nav.style.display === "block") {
       nav.style.display = "none";
     } else {
       nav.style.display = "block";
     }
+    setMenuShow(false);
   };
 
   return (

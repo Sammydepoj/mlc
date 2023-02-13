@@ -57,7 +57,8 @@
     flex-direction: column;
     text-align: center;
     gap: 1rem;
-    /* position: absolute; */
+    position: absolute;
+    top: 10%;
     background-color: #f4511e;
   }
   .li {
