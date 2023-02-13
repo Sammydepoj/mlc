@@ -6,7 +6,7 @@
   align-items: flex-end;
   align-content: flex-end;
   border-bottom: 0.5px solid #ffffff;
-  padding:1rem  0.2rem;
+  padding: 1rem 0.2rem;
   /* border: 1px solid red; */
 }
 .ul {
@@ -28,20 +28,39 @@
 .li a:focus {
   border-bottom: 1px solid #ffffff;
 }
+.harmburger {
+  display: none;
+}
 
 @media screen and (max-width: 1058px) {
-  .navlogo{
+  .navlogo {
     gap: 3rem;
   }
-  .li{
+  .li {
     margin: 0rem 2rem;
   }
 }
 @media screen and (max-width: 898px) {
-.navlogo{
+  .navlogo {
     gap: 2rem;
   }
-  .li{
+  .li {
     margin: 0rem 1.5rem;
+  }
+}
+@media screen and (max-width: 690px) {
+  .navlogo {
+    justify-content: space-between;
+  }
+  .ul {
+    display: none;
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+    /* position: absolute; */
+    background-color: #f4511e;
+  }
+  .harmburger {
+    display: block;
   }
 }
