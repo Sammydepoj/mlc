@@ -52,6 +52,12 @@
   .navlogo {
     justify-content: space-between;
   }
+  .hidden {
+    display: none;
+  }
+  .visible {
+    display: block;
+  }
   .ul {
     display: none;
     flex-direction: column;

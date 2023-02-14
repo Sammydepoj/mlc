@@ -8,10 +8,12 @@ import logo from "./assets/logo.svg";
 // };
 
 const NavLogo = () => {
-  const [MenuShow, setMenuShow] = useState(false);
+  const [isNavExpanded, setIsNavExpanded] = useState(false);
 
   const showMenu = () => {
-    setMenuShow(true);
+    () => {
+      setIsNavExpanded(!isNavExpanded);
+    };
 
     let nav = document.getElementById("nav");
     // MenuShow ? (nav.style.display = "none") : (nav.style.display = "block") ;
@@ -20,7 +22,6 @@ const NavLogo = () => {
     } else {
       nav.style.display = "block";
     }
-    setMenuShow(false);
   };
 
   return (
