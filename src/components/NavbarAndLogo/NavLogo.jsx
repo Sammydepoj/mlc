@@ -10,27 +10,18 @@ import logo from "./assets/logo.svg";
 const NavLogo = () => {
   const [isNavExpanded, setIsNavExpanded] = useState(false);
 
-  const showMenu = () => {
-    () => {
-      setIsNavExpanded(!isNavExpanded);
-    };
-
-    let nav = document.getElementById("nav");
-    // MenuShow ? (nav.style.display = "none") : (nav.style.display = "block") ;
-    if (nav.style.display === "block") {
-      nav.style.display = "none";
-    } else {
-      nav.style.display = "block";
-    }
-  };
-
   return (
     <div className={styles.navlogo}>
       <div className="logo">
         <img src={logo} alt="page logo" />
       </div>
       <div className="nav">
-        <ul className={styles.ul} id="nav">
+        <ul
+          className={
+            isNavExpanded ? `${styles.ul} ${styles.ulexpanded}` : styles.ul
+          }
+          id="nav"
+        >
           <li className={styles.li}>
             <a href="#">Home</a>
           </li>
@@ -44,7 +35,12 @@ const NavLogo = () => {
             <a href="#">Contact Us</a>
           </li>
         </ul>
-        <button className={styles.harmburger} onClick={showMenu}>
+        <button
+          className={styles.harmburger}
+          onClick={() => {
+            setIsNavExpanded(!isNavExpanded);
+          }}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-5 w-5"

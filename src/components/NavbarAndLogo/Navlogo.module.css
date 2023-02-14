@@ -30,6 +30,13 @@
 }
 .harmburger {
   display: none;
+  border: 0;
+  height: 40px;
+  width: 40px;
+  padding: 0.5rem;
+  border-radius: 50%;
+  background-color: #283b8b;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 1058px) {
@@ -68,22 +75,14 @@
     right: 02%;
     background-color: #f4511e;
   }
+  .ulexpanded {
+    display: block;
+  }
   .li {
+    text-align: center;
     margin: 2rem 0rem;
   }
   .harmburger {
     display: block;
-    border: 0;
-    height: 40px;
-    width: 40px;
-    padding: 0.5rem;
-    border-radius: 50%;
-    background-color: #283b8b;
-    cursor: pointer;
-    /* transition: background-color 0.2s ease-in-out; */
-    /* position: absolute;
-  top: 50%;
-  right: 25px;
-  transform: translateY(-50%); */
   }
 }
