@@ -9,10 +9,22 @@
   padding: 1rem 0.2rem;
   /* border: 1px solid red; */
 }
+.modalOverlay {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  display: none;
+  background-color: #555353;
+  top: 0;
+  left: 0;
+  z-index: 3000;
+  opacity: 0.6;
+}
 .ul {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  z-index: 4000;
 }
 .li {
   margin: 0rem 3rem;
@@ -72,15 +84,16 @@
     gap: 1rem;
     position: absolute;
     top: 10%;
-    right: 02%;
+    right: 0%;
     background-color: #f4511e;
+    width: 100%;
   }
   .ulexpanded {
     display: block;
   }
   .li {
     text-align: center;
-    margin: 2rem 0rem;
+    margin: 4rem 0rem;
   }
   .harmburger {
     display: block;

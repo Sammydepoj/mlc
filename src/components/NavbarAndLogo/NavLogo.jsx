@@ -2,11 +2,6 @@ import React, { useState } from "react";
 import styles from "./Navlogo.module.css";
 import logo from "./assets/logo.svg";
 
-// const closeMenu = () => {
-//   let nav = document.getElementById("nav");
-//   nav.style.display = "none";
-// };
-
 const NavLogo = () => {
   const [isNavExpanded, setIsNavExpanded] = useState(false);
 
@@ -15,6 +10,16 @@ const NavLogo = () => {
       <div className="logo">
         <img src={logo} alt="page logo" />
       </div>
+      <div
+        onClick={() => {
+          setIsNavExpanded(false);
+        }}
+        className={
+          isNavExpanded
+            ? `${styles.modalOverlay} ${styles.ulexpanded}`
+            : styles.modalOverlay
+        }
+      ></div>
       <div className="nav">
         <ul
           className={
