@@ -87,6 +87,20 @@
     right: 0%;
     background-color: #f4511e;
     width: 100%;
+    transition: top 1s linear;
+    left: 0;
+    animation-name: animatetop;
+    animation-duration: 1s;
+  }
+  @keyframes animatetop {
+    from {
+      top: -300px;
+      opacity: 0;
+    }
+    to {
+      top: 40px;
+      opacity: 1;
+    }
   }
   .ulexpanded {
     display: block;
