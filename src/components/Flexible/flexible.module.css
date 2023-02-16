@@ -85,3 +85,11 @@
     width: 100%;
   }
 }
+@media screen and (max-width: 768px) {
+  .flexibleText {
+    width: 100%;
+  }
+  .flexibleTexth2 {
+    font-size: 30px;
+  }
+}

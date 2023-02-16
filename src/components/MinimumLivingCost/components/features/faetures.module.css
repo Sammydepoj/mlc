@@ -52,15 +52,18 @@
     width: 35%;
   }
 }
-@media scree and (max-width:690px){
-  .featureItem{
-    width: 100%;
-    padding:0.5rem;
+@media screen and (max-width:690px){
+  .features{
+    gap: 3rem;
   }
-  .imgContainer{
+  .featureItem{
+    padding:0.5rem;
+    width: 40%;
+  }
+  /* .imgContainer{
     width: 80%;
   }
   .imgContainer img{
     width: 100%;
-  }
+  } */
 }

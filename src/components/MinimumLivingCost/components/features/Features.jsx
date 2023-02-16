@@ -25,7 +25,7 @@ class Features extends Component {
         {
           img: frame3,
           id: "img3",
-          text: "Let's somebody else take care of Landlord!",
+          text: "Let somebody else take care of Landlord!",
         },
         {
           img: frame4,

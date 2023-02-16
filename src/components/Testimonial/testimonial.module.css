@@ -56,3 +56,15 @@
   gap: 2rem;
 }
 }
+@media screen and (max-width: 831px) {
+.testimonial{
+  flex-direction: column;
+  gap: 2rem;
+}
+}
+@media screen and (max-width: 627px) {
+.testimonialTextParagraph {
+  font-size: 18px;
+  line-height: 36px;
+}
+}

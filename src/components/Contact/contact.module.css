@@ -102,3 +102,19 @@
     margin: 2rem;
   }
 }
+@media screen and (max-width: 768px) {
+  .contactHeader {
+    font-size: 16px;
+    margin: 1rem;
+  }
+  .input,
+  .select {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 455px) {
+.formHeading {
+  font-size: 20px;
+  line-height: 32px;
+}
+}

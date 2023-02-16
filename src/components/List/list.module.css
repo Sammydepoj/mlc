@@ -27,7 +27,7 @@
     font-size: 30px;
   }
 }
-@media screen and (max-width: 690px) {
+@media screen and (max-width: 768px) {
   .list{
     padding: 0rem 2rem;
   }

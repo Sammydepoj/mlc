@@ -44,15 +44,15 @@
   justify-content: space-between;
 }
 .faxAndTelephone span {
-    font-family: "Assistant";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 18px;
-    color: #0a142f;
+  font-family: "Assistant";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  color: #0a142f;
 }
-.faxAndTelephone span img{
-    margin-right: 1rem;
+.faxAndTelephone span img {
+  margin-right: 1rem;
 }
 .socials {
   display: flex;
@@ -99,15 +99,21 @@
 }
 
 @media screen and (max-width: 1067px) {
-.footerNavAndCopyright {
-  flex-direction: column;
-  justify-content: center;
-  gap: 1rem;
-}
+  .footerNavAndCopyright {
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+  }
 }
 @media screen and (max-width: 753px) {
-.footerLogoAndSocials {
-  flex-direction: column;
-  gap: 2rem;
-}
+  .footer {
+    padding: 2rem;
+  }
+  .footerLogoAndSocials {
+    flex-direction: column;
+    gap: 2rem;
+  }
+  .line {
+    margin-bottom: 1rem;
+  }
 }

@@ -32,6 +32,10 @@
   margin-top: 1rem;
   padding: 2rem 1rem;
 }
+.heading2{
+  font-size: 30px;
+  line-height: 38px;
+ } 
   .imageAndFeatures {
    flex-direction: column;
   }
