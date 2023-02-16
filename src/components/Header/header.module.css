@@ -42,7 +42,6 @@
   padding: 1rem;
   display: flex;
   justify-content: stretch;
-  /* width: 100%; */
   margin-top: 1rem;
 }
 .filterHero select {
@@ -75,5 +74,18 @@
   }
   .heroImg{
     width: 70%;
+  }
+}
+@media screen and (max-width:690px) {
+  .heroH1{
+    font-size: 40px;
+  }
+  .heroImg{
+    width: 100%;
+  }
+  .filterHero {
+    padding:0.5rem;
+    justify-content: center;
+    /* width: 100%; */
   }
 }

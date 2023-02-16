@@ -28,7 +28,17 @@
 }
 
 @media screen and (max-width: 950px) {
+  .minimumlivingcost {
+  margin-top: 1rem;
+  padding: 2rem 1rem;
+}
   .imageAndFeatures {
    flex-direction: column;
   }
+}
+@media screen and (max-width: 690px) {
+ .heading2{
+  font-size: 26px;
+  line-height: 36px;
+ } 
 }
