@@ -52,3 +52,15 @@
     width: 35%;
   }
 }
+@media scree and (max-width:690px){
+  .featureItem{
+    width: 100%;
+    padding:0.5rem;
+  }
+  .imgContainer{
+    width: 80%;
+  }
+  .imgContainer img{
+    width: 100%;
+  }
+}

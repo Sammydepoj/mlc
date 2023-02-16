@@ -11,6 +11,7 @@
 .mainImgContainer {
   display: flex;
   gap: 0rem;
+  width: 100%;
 }
 .imgContainer1,
 .imgContainer2,
@@ -18,11 +19,19 @@
 .imgContainer4 {
   padding: 1rem;
   position: relative;
+  width: 100%;
+}
+.imgContainer1 img,
+.imgContainer2 img,
+.imgContainer3 img,
+.imgContainer4 img {
+  width: 100%;
 }
 .imgContainer2 img {
   position: absolute;
   bottom: 5%;
 }
+
 .imgContainer1 p,
 .imgContainer2 p,
 .imgContainer3 p,
@@ -65,14 +74,14 @@
   .flexible {
     flex-direction: column;
   }
-  .flexibleImages{
+  .flexibleImages {
     margin: auto;
   }
-  .flexibleText{
+  .flexibleText {
     width: 70%;
     margin: 0rem 5rem;
   }
-  .mainImgContainer{
+  .mainImgContainer {
     width: 100%;
   }
 }
