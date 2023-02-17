@@ -83,10 +83,10 @@
     text-align: center;
     gap: 1rem;
     position: absolute;
-    top: 10%;
+    top: 15%;
     right: 0%;
     background-color: #f4511e;
-    width: 100%;
+    width: 50%;
     transition: top 1s linear;
     left: 0;
     animation-name: animatetop;
@@ -94,12 +94,14 @@
   }
   @keyframes animatetop {
     from {
-      top: -300px;
+      left: -300px;
       opacity: 0;
+      background-color: #555353;
     }
     to {
-      top: 40px;
+      left: 0px;
       opacity: 1;
+      background-color: #f4511e;
     }
   }
   .ulexpanded {

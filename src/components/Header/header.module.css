@@ -41,8 +41,9 @@
   border-radius: 10px;
   padding: 1rem;
   display: flex;
-  justify-content: stretch;
+  /* justify-content: stretch; */
   margin-top: 1rem;
+  gap: 1rem;
 }
 .filterHero select {
   background: #f9f9f9;
@@ -50,42 +51,46 @@
   border-radius: 5px 0px 0px 5px;
   padding: 0.2rem 3rem;
   outline: none;
+  width: 50%;
 }
 .searchBox {
   display: flex;
+  gap: 0rem;
+  width: 50%;
+  justify-self: stretch;
 }
-@media screen and (max-width:1113px) {
+@media screen and (max-width: 1113px) {
   .header {
-  padding: 0rem 1rem 10rem;
+    padding: 0rem 1rem 10rem;
   }
-  .hero{
+  .hero {
     gap: 2rem;
   }
 }
 
-@media screen and (max-width:950px) {
-  .hero{
+@media screen and (max-width: 950px) {
+  .hero {
     flex-direction: column;
   }
-  .heroText{
+  .heroText {
     width: 100%;
     text-align: center;
     font-size: 45px;
   }
-  .heroImg{
+  .heroImg {
     width: 70%;
   }
 }
-@media screen and (max-width:690px) {
-  .heroH1{
+@media screen and (max-width: 690px) {
+  .heroH1 {
     font-size: 40px;
   }
-  .heroImg{
+  .heroImg {
     width: 100%;
   }
   .filterHero {
-    padding:0.5rem;
+    padding: 0.5rem;
     justify-content: center;
-    /* width: 100%; */
+    width: 100%;
   }
 }

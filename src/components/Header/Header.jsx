@@ -27,10 +27,10 @@ const Header = () => {
             <div className={styles.searchBox}>
               <select name="Neighborhood" id="Neighborhood">
                 <option value="Neighborhood">Neighborhood</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
+                <option value="Makoko">Makoko</option>
+                <option value="London">London</option>
+                <option value="Mushin">Mushin</option>
+                <option value="Lekki">Lekki</option>
               </select>
               <img src={searchIcon} alt="search based on your location" />
             </div>
