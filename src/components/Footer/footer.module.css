@@ -31,6 +31,9 @@
   display: flex;
   justify-content: space-between;
 }
+.location img {
+  align-self: flex-start;
+}
 .location p {
   font-family: "Assistant";
   font-style: normal;
@@ -67,6 +70,9 @@
   color: #0a142f;
   mix-blend-mode: normal;
   opacity: 0.5;
+}
+.socials img {
+  align-self: flex-start;
 }
 .footerNavAndCopyright {
   display: flex;
@@ -115,5 +121,22 @@
   }
   .line {
     margin-bottom: 1rem;
+  }
+}
+@media screen and (max-width: 620px) {
+  .footer {
+    padding: 1rem;
+  }
+  .footerLogoAndSocials {
+    margin: 1rem;
+  }
+  .location {
+    justify-content: left;
+    gap: 1rem;
+  }
+}
+@media screen and (max-width: 580px) {
+  .footerNav {
+    flex-direction: column;
   }
 }
