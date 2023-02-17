@@ -4,6 +4,9 @@
 /* padding: 2rem; */
 /* text-align: center; */
 /* } */
+:root {
+  font-size: 16px;
+}
 * {
   margin: 0;
   padding: 0;
