@@ -57,7 +57,10 @@
   display: flex;
   gap: 0rem;
   width: 50%;
-  justify-self: stretch;
+  /* justify-self: stretch; */
+}
+.searchBox select {
+  width: 100%;
 }
 @media screen and (max-width: 1113px) {
   .header {
@@ -93,4 +96,12 @@
     justify-content: center;
     width: 100%;
   }
+}
+@media screen and (max-width:510px){
+  .heroH1 {
+    font-size: 30px;
+  }
+  .searchBox select {
+  padding: 0.5rem;
+}
 }

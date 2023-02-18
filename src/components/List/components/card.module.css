@@ -76,4 +76,9 @@
   flex: 1 0 33%;
 }
 }
+@media screen and (max-width:600px){
+  .cards {
+  flex: 1 0 50%;
+}
+}
 

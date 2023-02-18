@@ -38,4 +38,12 @@
     margin: 1rem 2rem;
   }
 }
+@media screen and (max-width: 510px) {
+    .list{
+    padding: 0rem 1rem;
+  }
+  .listH2{
+    font-size: 20px;
+  }
+}
 

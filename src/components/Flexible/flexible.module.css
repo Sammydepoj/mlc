@@ -12,6 +12,7 @@
   display: flex;
   gap: 0rem;
   width: 100%;
+  position: relative;
 }
 .imgContainer1,
 .imgContainer2,
@@ -97,6 +98,17 @@
   .imgContainer3 p,
   .imgContainer4 p {
     font-size: 18px;
+  }
+}
+@media screen and (max-width: 510px) {
+  .flexibleTexth2 {
+    font-size: 20px;
+    line-height: 25px;
+    text-align: center;
+  }
+  .flexibleText div {
+    display: flex;
+    justify-content: center;
   }
 }
 @media screen and (max-width: 440px) {
