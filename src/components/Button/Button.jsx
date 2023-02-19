@@ -10,5 +10,4 @@ const Button = ({ type, name, value }) => {
     </div>
   );
 };
-
 export default Button;

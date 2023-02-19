@@ -161,7 +161,7 @@ const Contact = () => {
             return <li key={f.name}>{f.name}</li>;
           })}
         </ol>
-        <div style={{ display: "flex", justifyContent: "center" }}>
+        <div style={{ display: "flex", justifyContent: "center"}}>
           <Button value={"Add New Property"} />
         </div>
       </div>

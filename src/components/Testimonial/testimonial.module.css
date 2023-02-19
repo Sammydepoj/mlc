@@ -51,20 +51,28 @@
   color: #18191f;
 }
 @media screen and (max-width: 831px) {
-.testimonial{
-  flex-direction: column;
-  gap: 2rem;
-}
-}
-@media screen and (max-width: 831px) {
-.testimonial{
-  flex-direction: column;
-  gap: 2rem;
-}
+  .testimonial {
+    flex-direction: column;
+    gap: 2rem;
+  }
 }
 @media screen and (max-width: 627px) {
-.testimonialTextParagraph {
-  font-size: 18px;
-  line-height: 36px;
+  .testimonialTextParagraph {
+    font-size: 18px;
+    line-height: 30px;
+  }
+  .testimonialTextParagraph::before {
+    font-size: 5rem;
+    top: -1.2rem;
+    left: -1.7rem;
+  }
+  .testimonialText {
+    padding: 1.8rem;
+  }
 }
+@media screen and (max-width: 500px) {
+  .testimonialTextParagraph {
+    font-size: 16px;
+    line-height: 25px;
+  }
 }

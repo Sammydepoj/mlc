@@ -45,6 +45,8 @@
 .faxAndTelephone {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
 }
 .faxAndTelephone span {
   font-family: "Assistant";
@@ -60,6 +62,7 @@
 .socials {
   display: flex;
   gap: 1rem;
+  flex-wrap: wrap;
 }
 .socials span {
   font-family: "Assistant";

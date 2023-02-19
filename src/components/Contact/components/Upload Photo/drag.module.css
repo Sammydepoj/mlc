@@ -51,3 +51,18 @@
 .browseLabel {
   cursor: pointer;
 }
+@media screen and (max-width: 434px) {
+ .dragDescription {
+  font-size: 12px;
+  line-height: 18px;
+}
+.dragHeading {
+  font-size: 16px;
+  line-height: 20px;
+}
+.format {
+  font-size: 10px;
+  line-height: 15px;;
+}
+}
+

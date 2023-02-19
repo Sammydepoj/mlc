@@ -89,10 +89,10 @@
     width: 50%;
     transition: top 1s linear;
     left: 0;
-    animation-name: animatetop;
+    animation-name: animateleft;
     animation-duration: 1s;
   }
-  @keyframes animatetop {
+  @keyframes animateleft {
     from {
       left: -300px;
       opacity: 0;

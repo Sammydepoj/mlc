@@ -20,3 +20,10 @@
     padding: 0.6rem;
   }
 }
+@media screen and (max-width: 400px) {
+  .button {
+    padding: 0.4rem;
+    font-size: 14px;
+    line-height: 20px;
+  }
+}

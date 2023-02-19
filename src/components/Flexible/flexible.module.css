@@ -106,6 +106,10 @@
     line-height: 25px;
     text-align: center;
   }
+  .flexibleTextP{
+    font-size: 16px;
+    line-height: 24px;
+  }
   .flexibleText div {
     display: flex;
     justify-content: center;
@@ -115,6 +119,14 @@
   }
 }
 @media screen and (max-width: 440px) {
+  /* .flexibleText {
+    margin: 1rem;
+  } */
+   .flexibleTexth2 {
+    font-size: 18px;
+    line-height: 23px;
+    text-align: center;
+  }
   .imgContainer1 p,
   .imgContainer2 p,
   .imgContainer3 p,
