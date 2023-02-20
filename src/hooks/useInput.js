@@ -27,5 +27,4 @@ const useInput = (validateValue) => {
     reset,
   };
 };
-
 export default useInput;

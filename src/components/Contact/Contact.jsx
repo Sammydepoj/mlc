@@ -6,6 +6,8 @@ import Select from "./components/Select/Select";
 import Drag from "./components/Upload Photo/Drag";
 import styles from "./contact.module.css";
 
+import useInput from "../../hooks/useInput";
+
 const Contact = () => {
   const reducer = (state, action) => {
     switch (action.type) {
@@ -25,14 +27,45 @@ const Contact = () => {
     inDropZone: false,
     fileList: [],
   });
+  const {
+    value: nameInputValue,
+    isValid: enteredNameIsValid,
+    hasError: nameInputHasError,
+    inputValueChangeHandler: nameChangeHandler,
+    inputBlurHandler: nameBlurHandler,
+    reset: resetNameInput,
+  } = useInput((value) => value.trim() !== "");
+
+  let formIsValid = false;
+
+  if (enteredNameIsValid) {
+    formIsValid = true;
+  }
+  const formSubmitHandler = (event) => {
+    event.preventDefault();
+
+    if (!nameInputValue) {
+      console.log("error");
+      return;
+    }
+    if (!formIsValid) {
+      return;
+    }
+    console.log(nameInputValue);
+
+    resetNameInput();
+    console.log("submitted");
+  };
+  // Not working yet
+  const nameInputClasses = nameInputHasError ? "invalidInput" : "input";
 
   return (
     <div className={styles.contact}>
       <h3 className={styles.contactHeader}>
-        Your property with us and be Confident that Your Room will be Filled
-        Out!
+        Your property with us and be Confident that Your Room will be Filled Out
+        !
       </h3>
-      <div className={styles.contactForm}>
+      <form className={styles.contactForm} onSubmit={formSubmitHandler}>
         <h2 className={styles.formHeading}>Add A New Property</h2>
         <div className={styles.inputsAndLabel}>
           <div className={styles.name}>
@@ -41,11 +74,19 @@ const Contact = () => {
             </Label>
             <br />
             <Input
+              name={"fullname"}
               type={"text"}
-              className={styles.input}
+              // original style name is "input"
+              className={styles.nameInputClasses}
               placeholder={"Enter Name"}
               id={"fullname"}
+              // value={nameInputValue}
+              onChange={nameChangeHandler}
+              onBlur={nameBlurHandler}
             />
+            {nameInputHasError && (
+              <p className="error-text">Name must not be empty!</p>
+            )}
           </div>
           <div className={styles.address}>
             <Label htmlFor={"address"} className={styles.label}>
@@ -161,10 +202,10 @@ const Contact = () => {
             return <li key={f.name}>{f.name}</li>;
           })}
         </ol>
-        <div style={{ display: "flex", justifyContent: "center"}}>
-          <Button value={"Add New Property"} />
+        <div style={{ display: "flex", justifyContent: "center" }}>
+          <Button type={"submit"} value={"Add New Property"} />
         </div>
-      </div>
+      </form>
     </div>
   );
 };
