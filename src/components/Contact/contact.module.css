@@ -97,16 +97,25 @@
   resize: none;
 }
 .invalidInput {
-  border: 1px solid #b40e0e;
+  border: 1px solid #f4511e;
   background-color: #fddddd;
+  border-radius: 5px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 28px;
+  letter-spacing: 0.2px;
+  padding: 0.7rem 3rem;
+  outline: none;
 }
 
 .invalidInput:focus {
-  border-color: #ff8800;
+  border-color: #f4511e;
   background-color: #fbe8d2;
 }
 
-.error-text {
+.errorText {
   color: #b40e0e;
 }
 @media screen and (max-width: 1000px) {

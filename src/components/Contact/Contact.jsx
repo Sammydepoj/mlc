@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "../Button/Button";
 import Input from "./components/Input/Input";
 import Label from "./components/Label/Label";
@@ -27,37 +27,48 @@ const Contact = () => {
     inDropZone: false,
     fileList: [],
   });
-  const {
-    value: nameInputValue,
-    isValid: enteredNameIsValid,
-    hasError: nameInputHasError,
-    inputValueChangeHandler: nameChangeHandler,
-    inputBlurHandler: nameBlurHandler,
-    reset: resetNameInput,
-  } = useInput((value) => value.trim() !== "");
+  // const {
+  //   value: nameInputValue,
+  //   isValid: enteredNameIsValid,
+  //   hasError: nameInputHasError,
+  //   inputValueChangeHandler: nameChangeHandler,
+  //   inputBlurHandler: nameBlurHandler,
+  //   reset: resetNameInput,
+  // } = useInput((value) => value.trim() !== "");
+
+  const [nameInputValue, setNameInputValue] = useState("");
+  const [nameValueTouched, setNameValueTouched] = useState(false);
+
+  const enteredNameIsValid = nameInputValue.trim() !== "";
+  const nameInputIsValid = !enteredNameIsValid && nameValueTouched;
 
   let formIsValid = false;
 
-  if (enteredNameIsValid) {
+  if (nameInputValue) {
     formIsValid = true;
   }
+  const nameChangeHandler = (event) => {
+    setNameInputValue(event.target.value);
+  };
+  const nameBlurHandler = () => {
+    setNameValueTouched(true);
+  };
   const formSubmitHandler = (event) => {
     event.preventDefault();
 
+    setNameValueTouched(true);
     if (!nameInputValue) {
-      console.log("error");
       return;
     }
     if (!formIsValid) {
       return;
     }
     console.log(nameInputValue);
+    setNameInputValue("");
+    setNameValueTouched(false);
 
-    resetNameInput();
     console.log("submitted");
   };
-  // Not working yet
-  const nameInputClasses = nameInputHasError ? "invalidInput" : "input";
 
   return (
     <div className={styles.contact}>
@@ -74,18 +85,17 @@ const Contact = () => {
             </Label>
             <br />
             <Input
-              name={"fullname"}
+              // name={"fullname"}
               type={"text"}
-              // original style name is "input"
-              className={styles.nameInputClasses}
+              className={nameInputIsValid ? styles.invalidInput : styles.input}
               placeholder={"Enter Name"}
               id={"fullname"}
-              // value={nameInputValue}
+              value={nameInputValue}
               onChange={nameChangeHandler}
               onBlur={nameBlurHandler}
             />
-            {nameInputHasError && (
-              <p className="error-text">Name must not be empty!</p>
+            {nameInputIsValid && (
+              <p className={styles.errorText}>Name must not be empty!</p>
             )}
           </div>
           <div className={styles.address}>
