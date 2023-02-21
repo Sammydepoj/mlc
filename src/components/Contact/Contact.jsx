@@ -54,7 +54,6 @@ const Contact = () => {
     console.log(nameInputValue);
     resetNameInput();
   };
-
   return (
     <div className={styles.contact}>
       <h3 className={styles.contactHeader}>
@@ -197,7 +196,11 @@ const Contact = () => {
           })}
         </ol>
         <div style={{ display: "flex", justifyContent: "center" }}>
-          <Button type={"submit"} value={"Add New Property"}></Button>
+          <Button
+            disabled={!formIsValid}
+            type={"submit"}
+            value={"Add New Property"}
+          ></Button>
         </div>
       </form>
     </div>
