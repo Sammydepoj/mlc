@@ -60,13 +60,14 @@ const Contact = () => {
     if (!nameInputValue) {
       return;
     }
+    console.log(nameInputValue);
     if (!formIsValid) {
       return;
     }
-    console.log(nameInputValue);
     setNameInputValue("");
     setNameValueTouched(false);
 
+    resetNameInput();
     console.log("submitted");
   };
 
@@ -85,9 +86,9 @@ const Contact = () => {
             </Label>
             <br />
             <Input
-              // name={"fullname"}
               type={"text"}
               className={nameInputIsValid ? styles.invalidInput : styles.input}
+              // className={nameInputHasError ? styles.invalidInput : styles.input}
               placeholder={"Enter Name"}
               id={"fullname"}
               value={nameInputValue}
@@ -97,6 +98,9 @@ const Contact = () => {
             {nameInputIsValid && (
               <p className={styles.errorText}>Name must not be empty!</p>
             )}
+            {/* {enteredNameIsValid && (
+              <p className={styles.errorText}>Name must not be empty!</p>
+            )} */}
           </div>
           <div className={styles.address}>
             <Label htmlFor={"address"} className={styles.label}>
