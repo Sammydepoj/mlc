@@ -54,7 +54,7 @@ const Drag = (props) => {
         onDragLeave={(e) => handleDragLeave(e)}
       >
         <p className={styles.dragDescription}>
-          Drag your images here, or
+          Drag your images here, or &nbsp;
           <span>
             <Label htmlFor={"fileInput"} className={styles.browseLabel}>
               browse

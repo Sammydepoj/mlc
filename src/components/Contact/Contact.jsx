@@ -27,48 +27,32 @@ const Contact = () => {
     inDropZone: false,
     fileList: [],
   });
-  // const {
-  //   value: nameInputValue,
-  //   isValid: enteredNameIsValid,
-  //   hasError: nameInputHasError,
-  //   inputValueChangeHandler: nameChangeHandler,
-  //   inputBlurHandler: nameBlurHandler,
-  //   reset: resetNameInput,
-  // } = useInput((value) => value.trim() !== "");
-
-  const [nameInputValue, setNameInputValue] = useState("");
-  const [nameValueTouched, setNameValueTouched] = useState(false);
-
-  const enteredNameIsValid = nameInputValue.trim() !== "";
-  const nameInputIsValid = !enteredNameIsValid && nameValueTouched;
+  const {
+    value: nameInputValue,
+    isValid: enteredNameIsValid,
+    hasError: nameInputHasError,
+    valueChangeHandler: nameChangeHandler,
+    inputBlurHandler: nameBlurHandler,
+    reset: resetNameInput,
+  } = useInput((value) => value.trim() !== "");
 
   let formIsValid = false;
 
   if (nameInputValue) {
     formIsValid = true;
   }
-  const nameChangeHandler = (event) => {
-    setNameInputValue(event.target.value);
-  };
-  const nameBlurHandler = () => {
-    setNameValueTouched(true);
-  };
+
   const formSubmitHandler = (event) => {
     event.preventDefault();
 
-    setNameValueTouched(true);
     if (!nameInputValue) {
       return;
     }
-    console.log(nameInputValue);
     if (!formIsValid) {
       return;
     }
-    setNameInputValue("");
-    setNameValueTouched(false);
-
+    console.log(nameInputValue);
     resetNameInput();
-    console.log("submitted");
   };
 
   return (
@@ -87,20 +71,16 @@ const Contact = () => {
             <br />
             <Input
               type={"text"}
-              className={nameInputIsValid ? styles.invalidInput : styles.input}
-              // className={nameInputHasError ? styles.invalidInput : styles.input}
+              className={nameInputHasError ? styles.invalidInput : styles.input}
               placeholder={"Enter Name"}
               id={"fullname"}
               value={nameInputValue}
               onChange={nameChangeHandler}
               onBlur={nameBlurHandler}
             />
-            {nameInputIsValid && (
+            {nameInputHasError && !formIsValid && (
               <p className={styles.errorText}>Name must not be empty!</p>
             )}
-            {/* {enteredNameIsValid && (
-              <p className={styles.errorText}>Name must not be empty!</p>
-            )} */}
           </div>
           <div className={styles.address}>
             <Label htmlFor={"address"} className={styles.label}>
@@ -217,7 +197,7 @@ const Contact = () => {
           })}
         </ol>
         <div style={{ display: "flex", justifyContent: "center" }}>
-          <Button type={"submit"} value={"Add New Property"} />
+          <Button type={"submit"} value={"Add New Property"}></Button>
         </div>
       </form>
     </div>
