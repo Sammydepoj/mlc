@@ -116,42 +116,69 @@ const Contact = () => {
     formIsValid = true;
   }
 
-  const formSubmitHandler = (event) => {
-    event.preventDefault();
+  const formSubmitHandler = async (event) => {
+    try {
+      event.preventDefault();
 
-    if (!formIsValid) {
-      return;
+      if (!formIsValid) {
+        return;
+      }
+      if (
+        !nameInputValue &&
+        !addressInputValue &&
+        !unitNumberInputValue &&
+        !cityInputValue &&
+        !stateInputValue &&
+        !roomTypeInputValue &&
+        !priceInputValue &&
+        !descriptionInputValue
+      ) {
+        return;
+      }
+      const saveData = await fetch(
+        "https://react-http-dff7f-default-rtdb.firebaseio.com/homes.json",
+        {
+          method: "POST",
+          body: JSON.stringify({
+            name: nameInputValue,
+            address: addressInputValue,
+            unit_number: unitNumberInputValue,
+            city: cityInputValue,
+            state: stateInputValue,
+            room_type: roomTypeInputValue,
+            price: priceInputValue,
+            description: descriptionInputValue,
+          }),
+        }
+      );
+      console.log(saveData);
+      if (!saveData) {
+        throw new Error("Something went wrong !");
+      }
+      if (!saveData.ok) {
+        throw new Error("Failed to Save !");
+      }
+      // console.log(
+      //   nameInputValue,
+      //   addressInputValue,
+      //   unitNumberInputValue,
+      //   cityInputValue,
+      //   stateInputValue,
+      //   roomTypeInputValue,
+      //   priceInputValue,
+      //   descriptionInputValue
+      // );
+      resetNameInput();
+      resetAddressInput();
+      resetUnitNumberInput();
+      resetCityInput();
+      resetStateInput();
+      resetRoomTypeInput();
+      resetPriceInput();
+      resetDescriptionInput();
+    } catch (error) {
+      console.log(error);
     }
-    if (
-      !nameInputValue &&
-      !addressInputValue &&
-      !unitNumberInputValue &&
-      !cityInputValue &&
-      !stateInputValue &&
-      !roomTypeInputValue &&
-      !priceInputValue &&
-      !descriptionInputValue
-    ) {
-      return;
-    }
-    console.log(
-      nameInputValue,
-      addressInputValue,
-      unitNumberInputValue,
-      cityInputValue,
-      stateInputValue,
-      roomTypeInputValue,
-      priceInputValue,
-      descriptionInputValue
-    );
-    resetNameInput();
-    resetAddressInput();
-    resetUnitNumberInput();
-    resetCityInput();
-    resetStateInput();
-    resetRoomTypeInput();
-    resetPriceInput();
-    resetDescriptionInput();
   };
   return (
     <div className={styles.contact}>
