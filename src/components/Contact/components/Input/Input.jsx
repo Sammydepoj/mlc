@@ -9,14 +9,16 @@ const Input = ({
   onChange,
   onBlur,
   step,
-  min
+  min,
+  max,
 }) => {
   return (
     <>
       <input
-      min={min}
+        max={max}
+        min={min}
         step={step}
-        multiple
+        multiple={true}
         type={type}
         value={value}
         className={className}

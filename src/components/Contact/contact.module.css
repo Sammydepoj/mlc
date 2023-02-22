@@ -96,6 +96,13 @@
   outline: none;
   resize: none;
 }
+.invalidTextArea {
+  border: 1px solid #f4511e;
+  background-color: #fddddd;
+  outline: none;
+  border-radius: 5px;
+  resize: none;
+}
 .invalidInput {
   border: 1px solid #f4511e;
   background-color: #fddddd;

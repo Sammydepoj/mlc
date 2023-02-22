@@ -1,9 +1,16 @@
 import React from "react";
 
-const Select = ({ children, name, id, className }) => {
+const Select = ({ children, name, id, className, value, onChange, onBlur }) => {
   return (
     <>
-      <select name={name} id={id} className={className}>
+      <select
+        name={name}
+        id={id}
+        className={className}
+        value={value}
+        onChange={onChange}
+        onBlur={onBlur}
+      >
         {children}
       </select>
     </>

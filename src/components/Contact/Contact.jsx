@@ -44,9 +44,75 @@ const Contact = () => {
     reset: resetAddressInput,
   } = useInput((value) => value.trim() !== "");
 
+  const {
+    value: unitNumberInputValue,
+    isValid: enteredUnitNumberIsValid,
+    hasError: unitNumberInputHasError,
+    valueChangeHandler: unitNumberChangeHandler,
+    inputBlurHandler: unitNumberBlurHandler,
+    reset: resetUnitNumberInput,
+  } = useInput(
+    (value) => value.trim() !== "" && value.trim() >= 1 && value.trim() <= 10
+  );
+  const {
+    value: cityInputValue,
+    isValid: enteredCityIsValid,
+    hasError: cityInputHasError,
+    valueChangeHandler: cityChangeHandler,
+    inputBlurHandler: cityBlurHandler,
+    reset: resetCityInput,
+  } = useInput((value) => value.trim() !== "");
+
+  const {
+    value: stateInputValue,
+    isValid: enteredStateIsValid,
+    hasError: stateInputHasError,
+    valueChangeHandler: stateChangeHandler,
+    inputBlurHandler: stateBlurHandler,
+    reset: resetStateInput,
+  } = useInput((value) => value.trim() !== "");
+
+  const {
+    value: roomTypeInputValue,
+    isValid: enteredRoomTypeIsValid,
+    hasError: roomTypeInputHasError,
+    valueChangeHandler: roomTypeChangeHandler,
+    inputBlurHandler: roomTypeBlurHandler,
+    reset: resetRoomTypeInput,
+  } = useInput((value) => value.trim() !== "");
+
+  const {
+    value: priceInputValue,
+    isValid: enteredPriceIsValid,
+    hasError: priceInputHasError,
+    valueChangeHandler: priceChangeHandler,
+    inputBlurHandler: priceBlurHandler,
+    reset: resetPriceInput,
+  } = useInput(
+    (value) => value.trim() !== "" && value.trim() >= 1 && value.trim() <= 100
+  );
+
+  const {
+    value: descriptionInputValue,
+    isValid: enteredDescriptionIsValid,
+    hasError: descriptionInputHasError,
+    valueChangeHandler: descriptionChangeHandler,
+    inputBlurHandler: descriptionBlurHandler,
+    reset: resetDescriptionInput,
+  } = useInput((value) => value.trim() !== "");
+
   let formIsValid = false;
 
-  if (nameInputValue) {
+  if (
+    nameInputValue &&
+    addressInputValue &&
+    unitNumberInputValue &&
+    cityInputValue &&
+    stateInputValue &&
+    roomTypeInputValue &&
+    priceInputValue &&
+    descriptionInputValue
+  ) {
     formIsValid = true;
   }
 
@@ -56,12 +122,36 @@ const Contact = () => {
     if (!formIsValid) {
       return;
     }
-    if (!nameInputValue && !addressInputValue) {
+    if (
+      !nameInputValue &&
+      !addressInputValue &&
+      !unitNumberInputValue &&
+      !cityInputValue &&
+      !stateInputValue &&
+      !roomTypeInputValue &&
+      !priceInputValue &&
+      !descriptionInputValue
+    ) {
       return;
     }
-    console.log(nameInputValue);
+    console.log(
+      nameInputValue,
+      addressInputValue,
+      unitNumberInputValue,
+      cityInputValue,
+      stateInputValue,
+      roomTypeInputValue,
+      priceInputValue,
+      descriptionInputValue
+    );
     resetNameInput();
     resetAddressInput();
+    resetUnitNumberInput();
+    resetCityInput();
+    resetStateInput();
+    resetRoomTypeInput();
+    resetPriceInput();
+    resetDescriptionInput();
   };
   return (
     <div className={styles.contact}>
@@ -118,53 +208,100 @@ const Contact = () => {
             <Input
               step={1}
               min={1}
+              max={10}
               type={"number"}
-              className={styles.input}
+              className={
+                unitNumberInputHasError ? styles.invalidInput : styles.input
+              }
               placeholder={"Enter Unit"}
               id={"unitNumber"}
+              value={unitNumberInputValue}
+              onChange={unitNumberChangeHandler}
+              onBlur={unitNumberBlurHandler}
             />
+            {unitNumberInputHasError && !formIsValid && (
+              <p className={styles.errorText}>
+                Please input a unit (Numbers between 1 - 10 only)!
+              </p>
+            )}
           </div>
           <div className={styles.unitNumber}>
             <Label htmlFor={"unitNumber"} className={styles.label}>
               City <span>*</span>
             </Label>
             <br />
-            <Select name={"city"} id={"city"} className={styles.select}>
-              <option value="select">Select City </option>
+            <Select
+              name={"city"}
+              id={"city"}
+              className={
+                cityInputHasError ? styles.invalidInput : styles.select
+              }
+              value={cityInputValue}
+              onChange={cityChangeHandler}
+              onBlur={cityBlurHandler}
+            >
+              <option value="">Select City </option>
               <option value="lagos">lagos</option>
               <option value="lagos">lagos</option>
               <option value="lagos">lagos</option>
               <option value="lagos">lagos</option>
               <option value="lagos">lagos</option>
             </Select>
+            {cityInputHasError && !formIsValid && (
+              <p className={styles.errorText}>Please select a city!</p>
+            )}
           </div>
           <div className={styles.state}>
             <Label htmlFor={"state"} className={styles.label}>
               State <span>*</span>
             </Label>
             <br />
-            <Select name={"state"} id={"state"} className={styles.select}>
-              <option value="select">Select State</option>
+            <Select
+              name={"state"}
+              id={"state"}
+              className={
+                stateInputHasError ? styles.invalidInput : styles.select
+              }
+              value={stateInputValue}
+              onChange={stateChangeHandler}
+              onBlur={stateBlurHandler}
+            >
+              <option value="">Select State</option>
               <option value="lagos">lagos</option>
               <option value="lagos">lagos</option>
               <option value="lagos">lagos</option>
               <option value="lagos">lagos</option>
               <option value="lagos">lagos</option>
             </Select>
+            {stateInputHasError && !formIsValid && (
+              <p className={styles.errorText}>Please select a state!</p>
+            )}
           </div>
           <div className={styles.roomType}>
             <Label htmlFor={"roomType"} className={styles.label}>
               Room Type <span>*</span>
             </Label>
             <br />
-            <Select name={"roomType"} id={"roomType"} className={styles.select}>
-              <option value="select">Select Room Type</option>
+            <Select
+              name={"roomType"}
+              id={"roomType"}
+              className={
+                roomTypeInputHasError ? styles.invalidInput : styles.select
+              }
+              value={roomTypeInputValue}
+              onChange={roomTypeChangeHandler}
+              onBlur={roomTypeBlurHandler}
+            >
+              <option value="">Select Room Type</option>
               <option value="lagos">lagos</option>
               <option value="lagos">lagos</option>
               <option value="lagos">lagos</option>
               <option value="lagos">lagos</option>
               <option value="lagos">lagos</option>
             </Select>
+            {roomTypeInputHasError && !formIsValid && (
+              <p className={styles.errorText}>Please select a room type!</p>
+            )}
           </div>
           <div className={styles.price}>
             <Label htmlFor={"price"} className={styles.label}>
@@ -172,25 +309,46 @@ const Contact = () => {
             </Label>
             <br />
             <Input
-              type={"text"}
-              className={styles.input}
+              type={"number"}
+              min={1}
+              className={
+                priceInputHasError ? styles.invalidInput : styles.input
+              }
               placeholder={"Enter Price"}
               id={"price"}
+              value={priceInputValue}
+              onChange={priceChangeHandler}
+              onBlur={priceBlurHandler}
             />
+            {priceInputHasError && !formIsValid && (
+              <p className={styles.errorText}>Please input a valid price!</p>
+            )}
           </div>
           <div className={styles.roomType}>
             <Label htmlFor={"roomType"} className={styles.label}>
               Room Type <span>*</span>
             </Label>
             <br />
-            <Select name={"roomType"} id={"roomType"} className={styles.select}>
-              <option value="select">Select Room Type</option>
+            <Select
+              name={"roomType"}
+              id={"roomType"}
+              className={
+                roomTypeInputHasError ? styles.invalidInput : styles.select
+              }
+              value={roomTypeInputValue}
+              onChange={roomTypeChangeHandler}
+              onBlur={roomTypeBlurHandler}
+            >
+              <option value="">Select Room Type</option>
               <option value="lagos">lagos</option>
               <option value="lagos">lagos</option>
               <option value="lagos">lagos</option>
               <option value="lagos">lagos</option>
               <option value="lagos">lagos</option>
             </Select>
+            {roomTypeInputHasError && !formIsValid && (
+              <p className={styles.errorText}>Please select a room type!</p>
+            )}
           </div>
         </div>
         <br />
@@ -205,8 +363,18 @@ const Contact = () => {
             cols="30"
             rows="10"
             placeholder="Enter Description"
-            className={styles.textarea}
+            className={
+              descriptionInputHasError
+                ? styles.invalidTextArea
+                : styles.textarea
+            }
+            value={descriptionInputValue}
+            onChange={descriptionChangeHandler}
+            onBlur={descriptionBlurHandler}
           ></textarea>
+          {descriptionInputHasError && !formIsValid && (
+            <p className={styles.errorText}>Please input a description !</p>
+          )}
         </div>
         <Drag data={data} dispatch={dispatch} />
         <ol className="dropped-files">
