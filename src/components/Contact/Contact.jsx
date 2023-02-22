@@ -9,6 +9,7 @@ import styles from "./contact.module.css";
 import useInput from "../../hooks/useInput";
 
 const Contact = () => {
+  const [httpError, sethttpError] = useState("");
   const reducer = (state, action) => {
     switch (action.type) {
       case "SET_DROP_DEPTH":
@@ -151,23 +152,21 @@ const Contact = () => {
           }),
         }
       );
-      console.log(saveData);
+      // sethttpError("Data Successfully Saved !");
+
       if (!saveData) {
-        throw new Error("Something went wrong !");
+        throw new Error(Error.message);
       }
       if (!saveData.ok) {
-        throw new Error("Failed to Save !");
+        throw new Error(Error.message);
       }
-      // console.log(
-      //   nameInputValue,
-      //   addressInputValue,
-      //   unitNumberInputValue,
-      //   cityInputValue,
-      //   stateInputValue,
-      //   roomTypeInputValue,
-      //   priceInputValue,
-      //   descriptionInputValue
-      // );
+      if (saveData.ok) {
+        sethttpError("Data Successfully Saved !");
+        setTimeout(() => {
+          sethttpError("");
+        }, 3000);
+      }
+      console.log(saveData);
       resetNameInput();
       resetAddressInput();
       resetUnitNumberInput();
@@ -177,7 +176,10 @@ const Contact = () => {
       resetPriceInput();
       resetDescriptionInput();
     } catch (error) {
-      console.log(error);
+      sethttpError("Something went wrong!");
+      setTimeout(() => {
+        sethttpError("");
+      }, 3000);
     }
   };
   return (
@@ -320,11 +322,11 @@ const Contact = () => {
               onBlur={roomTypeBlurHandler}
             >
               <option value="">Select Room Type</option>
-              <option value="lagos">lagos</option>
-              <option value="lagos">lagos</option>
-              <option value="lagos">lagos</option>
-              <option value="lagos">lagos</option>
-              <option value="lagos">lagos</option>
+              <option value="1_bedrooms">1 bedroom</option>
+              <option value="2_bedrooms">2 bedrooms</option>
+              <option value="3_bedrooms">3 bedrooms</option>
+              <option value="4_bedrooms">4 bedrooms</option>
+              <option value="5_bedrooms">5 bedrooms</option>
             </Select>
             {roomTypeInputHasError && !formIsValid && (
               <p className={styles.errorText}>Please select a room type!</p>
@@ -367,11 +369,11 @@ const Contact = () => {
               onBlur={roomTypeBlurHandler}
             >
               <option value="">Select Room Type</option>
-              <option value="lagos">lagos</option>
-              <option value="lagos">lagos</option>
-              <option value="lagos">lagos</option>
-              <option value="lagos">lagos</option>
-              <option value="lagos">lagos</option>
+              <option value="1_bedrooms">1 bedroom</option>
+              <option value="2_bedrooms">2 bedrooms</option>
+              <option value="3_bedrooms">3 bedrooms</option>
+              <option value="4_bedrooms">4 bedrooms</option>
+              <option value="5_bedrooms">5 bedrooms</option>
             </Select>
             {roomTypeInputHasError && !formIsValid && (
               <p className={styles.errorText}>Please select a room type!</p>
@@ -416,9 +418,9 @@ const Contact = () => {
             value={"Add New Property"}
           ></Button>
         </div>
+        <p>{httpError}</p>
       </form>
     </div>
   );
 };
-
 export default Contact;
