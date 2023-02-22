@@ -35,6 +35,14 @@ const Contact = () => {
     inputBlurHandler: nameBlurHandler,
     reset: resetNameInput,
   } = useInput((value) => value.trim() !== "");
+  const {
+    value: addressInputValue,
+    isValid: enteredAddressIsValid,
+    hasError: addressInputHasError,
+    valueChangeHandler: addressChangeHandler,
+    inputBlurHandler: addressBlurHandler,
+    reset: resetAddressInput,
+  } = useInput((value) => value.trim() !== "");
 
   let formIsValid = false;
 
@@ -45,14 +53,15 @@ const Contact = () => {
   const formSubmitHandler = (event) => {
     event.preventDefault();
 
-    if (!nameInputValue) {
+    if (!formIsValid) {
       return;
     }
-    if (!formIsValid) {
+    if (!nameInputValue && !addressInputValue) {
       return;
     }
     console.log(nameInputValue);
     resetNameInput();
+    resetAddressInput();
   };
   return (
     <div className={styles.contact}>
@@ -88,10 +97,18 @@ const Contact = () => {
             <br />
             <Input
               type={"text"}
-              className={styles.input}
+              className={
+                addressInputHasError ? styles.invalidInput : styles.input
+              }
               placeholder={"Enter Address"}
               id={"Address"}
+              value={addressInputValue}
+              onChange={addressChangeHandler}
+              onBlur={addressBlurHandler}
             />
+            {addressInputHasError && !formIsValid && (
+              <p className={styles.errorText}>Address must not be empty!</p>
+            )}
           </div>
           <div className={styles.unitNumber}>
             <Label htmlFor={"unitNumber"} className={styles.label}>
@@ -99,7 +116,9 @@ const Contact = () => {
             </Label>
             <br />
             <Input
-              type={"text"}
+              step={1}
+              min={1}
+              type={"number"}
               className={styles.input}
               placeholder={"Enter Unit"}
               id={"unitNumber"}

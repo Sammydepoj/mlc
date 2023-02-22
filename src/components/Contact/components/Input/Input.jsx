@@ -8,10 +8,14 @@ const Input = ({
   id,
   onChange,
   onBlur,
+  step,
+  min
 }) => {
   return (
     <>
       <input
+      min={min}
+        step={step}
         multiple
         type={type}
         value={value}
