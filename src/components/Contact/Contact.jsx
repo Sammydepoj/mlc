@@ -4,6 +4,9 @@ import Input from "./components/Input/Input";
 import Label from "./components/Label/Label";
 import Select from "./components/Select/Select";
 import Drag from "./components/Upload Photo/Drag";
+import Failure from "./components/Failure/Failure";
+import Success from "./components/Success/Success";
+
 import styles from "./contact.module.css";
 
 import useInput from "../../hooks/useInput";
@@ -89,9 +92,7 @@ const Contact = () => {
     valueChangeHandler: priceChangeHandler,
     inputBlurHandler: priceBlurHandler,
     reset: resetPriceInput,
-  } = useInput(
-    (value) => value.trim() !== "" && value.trim() >= 1 && value.trim() <= 100
-  );
+  } = useInput((value) => value.trim() !== "" && value.trim() >= 1);
 
   const {
     value: descriptionInputValue,
@@ -155,16 +156,16 @@ const Contact = () => {
       // sethttpError("Data Successfully Saved !");
 
       if (!saveData) {
-        throw new Error(Error.message);
+        throw new Error();
       }
       if (!saveData.ok) {
-        throw new Error(Error.message);
+        throw new Error();
       }
       if (saveData.ok) {
         sethttpError("Data Successfully Saved !");
         setTimeout(() => {
           sethttpError("");
-        }, 3000);
+        }, 5000);
       }
       console.log(saveData);
       resetNameInput();
@@ -179,7 +180,7 @@ const Contact = () => {
       sethttpError("Something went wrong!");
       setTimeout(() => {
         sethttpError("");
-      }, 3000);
+      }, 5000);
     }
   };
   return (
@@ -237,7 +238,7 @@ const Contact = () => {
             <Input
               step={1}
               min={1}
-              max={10}
+              max={50}
               type={"number"}
               className={
                 unitNumberInputHasError ? styles.invalidInput : styles.input
@@ -418,7 +419,11 @@ const Contact = () => {
             value={"Add New Property"}
           ></Button>
         </div>
-        <p>{httpError}</p>
+        {httpError ? (
+          <Success children={httpError} />
+        ) : (
+          <Failure children={httpError} />
+        )}
       </form>
     </div>
   );
