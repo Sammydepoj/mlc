@@ -1,0 +1,28 @@
+.overlay {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* display: none; */
+  background-color: #554f4f;
+  top: 0;
+  left: 0;
+  z-index: 3009;
+  opacity: 0.6;
+}
+.display {
+  display: block;
+}
+.hidden {
+  display: none;
+}
+.container {
+  background-color: #fff;
+  text-align: center;
+  width: 80%;
+}
+/* .content {
+  color: #fff;
+} */

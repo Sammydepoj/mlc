@@ -12,7 +12,10 @@ import styles from "./contact.module.css";
 import useInput from "../../hooks/useInput";
 
 const Contact = () => {
+  const [userData, setUserData] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
   const [httpError, sethttpError] = useState("");
+
   const reducer = (state, action) => {
     switch (action.type) {
       case "SET_DROP_DEPTH":
@@ -31,6 +34,7 @@ const Contact = () => {
     inDropZone: false,
     fileList: [],
   });
+
   const {
     value: nameInputValue,
     isValid: enteredNameIsValid,
@@ -137,37 +141,52 @@ const Contact = () => {
       ) {
         return;
       }
+      setUserData({
+        name: nameInputValue,
+        address: addressInputValue,
+        unit_number: unitNumberInputValue,
+        city: cityInputValue,
+        state: stateInputValue,
+        room_type: roomTypeInputValue,
+        price: priceInputValue,
+        description: descriptionInputValue,
+      });
+      setIsLoading(true);
+
       const saveData = await fetch(
-        "https://react-http-dff7f-default-rtdb.firebaseio.com/homes.json",
+        "https://minimumleavingcost-default-rtdb.firebaseio.com/homes.json",
         {
           method: "POST",
-          body: JSON.stringify({
-            name: nameInputValue,
-            address: addressInputValue,
-            unit_number: unitNumberInputValue,
-            city: cityInputValue,
-            state: stateInputValue,
-            room_type: roomTypeInputValue,
-            price: priceInputValue,
-            description: descriptionInputValue,
-          }),
+          body: JSON.stringify(userData),
+          // headers: {
+          //   "Content-Type": "application/json",
+          // },
         }
       );
+      console.log(saveData);
+
+      const data = await saveData.json();
+      console.log(data);
+
       // sethttpError("Data Successfully Saved !");
 
       if (!saveData) {
+        setIsLoading(false);
         throw new Error();
       }
+
       if (!saveData.ok) {
+        setIsLoading(false);
         throw new Error();
       }
+
       if (saveData.ok) {
+        setIsLoading(false);
         sethttpError("Data Successfully Saved !");
-        setTimeout(() => {
-          sethttpError("");
-        }, 5000);
+        // setTimeout(() => {
+        //   sethttpError("");
+        // }, 5000);
       }
-      console.log(saveData);
       resetNameInput();
       resetAddressInput();
       resetUnitNumberInput();
@@ -178,9 +197,9 @@ const Contact = () => {
       resetDescriptionInput();
     } catch (error) {
       sethttpError("Something went wrong!");
-      setTimeout(() => {
-        sethttpError("");
-      }, 5000);
+      // setTimeout(() => {
+      //   sethttpError("");
+      // }, 5000);
     }
   };
   return (
@@ -271,11 +290,11 @@ const Contact = () => {
               onBlur={cityBlurHandler}
             >
               <option value="">Select City </option>
-              <option value="lagos">lagos</option>
-              <option value="lagos">lagos</option>
-              <option value="lagos">lagos</option>
-              <option value="lagos">lagos</option>
-              <option value="lagos">lagos</option>
+              <option value="ikeja">ikeja</option>
+              <option value="somolu">somolu</option>
+              <option value="ikorodu">ikorodu</option>
+              <option value="lekki">lekki</option>
+              <option value="epe">epe</option>
             </Select>
             {cityInputHasError && !formIsValid && (
               <p className={styles.errorText}>Please select a city!</p>
@@ -416,7 +435,7 @@ const Contact = () => {
           <Button
             disabled={!formIsValid}
             type={"submit"}
-            value={"Add New Property"}
+            value={isLoading ? "Loading..." : "Add New Property"}
           ></Button>
         </div>
         {httpError ? (

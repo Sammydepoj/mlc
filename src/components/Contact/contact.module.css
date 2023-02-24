@@ -20,6 +20,7 @@
   padding: 2rem 3rem;
   width: 85%;
   margin: 0rem auto;
+  position: relative;
 }
 .formHeading {
   font-family: "Poppins";
