@@ -183,9 +183,9 @@ const Contact = () => {
       if (saveData.ok) {
         setIsLoading(false);
         sethttpError("Data Successfully Saved !");
-        // setTimeout(() => {
-        //   sethttpError("");
-        // }, 5000);
+        setTimeout(() => {
+          sethttpError("");
+        }, 5000);
       }
       resetNameInput();
       resetAddressInput();
@@ -197,9 +197,9 @@ const Contact = () => {
       resetDescriptionInput();
     } catch (error) {
       sethttpError("Something went wrong!");
-      // setTimeout(() => {
-      //   sethttpError("");
-      // }, 5000);
+      setTimeout(() => {
+        sethttpError("");
+      }, 5000);
     }
   };
   return (
