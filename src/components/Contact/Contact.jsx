@@ -15,6 +15,7 @@ const Contact = () => {
   const [userData, setUserData] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [httpError, sethttpError] = useState("");
+  const [dataSentConfirmation, setDataSetConfirmation] = useState(null);
 
   const reducer = (state, action) => {
     switch (action.type) {
@@ -169,23 +170,27 @@ const Contact = () => {
       const data = await saveData.json();
       console.log(data);
 
-      // sethttpError("Data Successfully Saved !");
-
       if (!saveData) {
         setIsLoading(false);
+        setDataSetConfirmation(false);
+
         throw new Error();
       }
 
       if (!saveData.ok) {
         setIsLoading(false);
+        setDataSetConfirmation(false);
+
         throw new Error();
       }
 
       if (saveData.ok) {
+        setDataSetConfirmation(true);
         setIsLoading(false);
         sethttpError("Data Successfully Saved !");
         setTimeout(() => {
           sethttpError("");
+          setDataSetConfirmation(false);
         }, 5000);
       }
       resetNameInput();
@@ -198,8 +203,11 @@ const Contact = () => {
       resetDescriptionInput();
     } catch (error) {
       sethttpError("Something went wrong!");
+      // setDataSetConfirmation(false);
+
       setTimeout(() => {
         sethttpError("");
+        // setDataSetConfirmation(null);
       }, 5000);
     }
   };

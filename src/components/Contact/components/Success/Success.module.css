@@ -5,7 +5,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  /* display: none; */
   background-color: #554f4f;
   top: 0;
   left: 0;
@@ -21,7 +20,10 @@
 .container {
   background-color: #fff;
   text-align: center;
-  width: 80%;
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 0%;
 }
 /* .content {
   color: #fff;

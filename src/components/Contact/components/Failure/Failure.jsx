@@ -1,30 +1,35 @@
 import React, { useState } from "react";
 import styles from "./Failure.module.css";
+import successLogo from "../../../MinimumLivingCost/components/features/assets/logo3.svg";
 
-const Failure = ({ closeModal, children }) => {
-  const [isNavExpanded, setIsNavExpanded] = useState(false);
+const Failure = ({ children }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
     <>
       <div
         onClick={() => {
-          setIsNavExpanded(false);
+          setIsModalOpen(false);
         }}
         className={
-          isNavExpanded
-            ? `${styles.overlay} ${styles.ulexpanded}`
-            : styles.overlay
-        }
-      ></div>
-      <div
-        className={
-          isNavExpanded
-            ? `${styles.container} ${styles.ulexpanded}`
-            : styles.container
+          isModalOpen
+            ? `${styles.overlay} ${styles.display}`
+            : `${styles.overlay} ${styles.hidden}`
         }
       >
-        <p>{children}</p>
-        {(closeModal = !isNavExpanded)}
+        <div className={`${styles.container} ${styles.display}`}>
+          <div className={styles.content}>
+            <p>{children}</p>
+            <img src={successLogo} alt="form submission confirmed !" />
+          </div>
+          <button
+            onClick={() => {
+              setIsModalOpen(!isModalOpen);
+            }}
+          >
+            Okay Error !
+          </button>
+        </div>
       </div>
     </>
   );

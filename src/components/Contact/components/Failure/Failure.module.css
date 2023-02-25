@@ -2,17 +2,26 @@
   position: fixed;
   width: 100vw;
   height: 100vh;
-  display: none;
-  background-color: #555353;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #554f4f;
   top: 0;
   left: 0;
   z-index: 3009;
   opacity: 0.6;
 }
-.ulexpanded {
+.display {
   display: block;
 }
+.hidden {
+  display: none;
+}
 .container {
-  background-color: yellow;
+  background-color: #fff;
   text-align: center;
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 0%;
 }
