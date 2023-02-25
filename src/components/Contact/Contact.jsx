@@ -163,6 +163,7 @@ const Contact = () => {
           // },
         }
       );
+      setIsLoading(false);
       console.log(saveData);
 
       const data = await saveData.json();
@@ -436,6 +437,7 @@ const Contact = () => {
             disabled={!formIsValid}
             type={"submit"}
             value={isLoading ? "Loading..." : "Add New Property"}
+            // value={saveData.ok ? "" : ""}
           ></Button>
         </div>
         {httpError ? (

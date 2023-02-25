@@ -6,7 +6,7 @@ import Button from "../../../Button/Button";
 const Success = ({ children }) => {
   const [isNavExpanded, setIsNavExpanded] = useState(false);
 
-  useEffect(() => {}, []);
+  // useEffect(() => {}, []);
   const closeModalHandler = () => {
     setIsNavExpanded(!isNavExpanded);
   };
