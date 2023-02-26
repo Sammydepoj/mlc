@@ -15,7 +15,7 @@ const Contact = () => {
   const [userData, setUserData] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [httpError, sethttpError] = useState("");
-  const [dataSentConfirmation, setDataSetConfirmation] = useState(null);
+  const [dataSentConfirmation, setDataSetConfirmation] = useState("");
 
   const reducer = (state, action) => {
     switch (action.type) {
@@ -190,7 +190,7 @@ const Contact = () => {
         sethttpError("Data Successfully Saved !");
         setTimeout(() => {
           sethttpError("");
-          setDataSetConfirmation(false);
+          setDataSetConfirmation(null);
         }, 5000);
       }
       resetNameInput();
@@ -203,14 +203,31 @@ const Contact = () => {
       resetDescriptionInput();
     } catch (error) {
       sethttpError("Something went wrong!");
-      // setDataSetConfirmation(false);
+      setDataSetConfirmation(false);
 
       setTimeout(() => {
         sethttpError("");
-        // setDataSetConfirmation(null);
+        setDataSetConfirmation(null);
       }, 5000);
     }
   };
+  const isDataSent = (confirmedData) => {
+    if (confirmedData === null) {
+      return;
+    }
+    if (confirmedData === false) {
+      return <Failure children={httpError} />;
+    }
+    if (confirmedData === true) {
+      return <Success children={httpError} />;
+    }
+  };
+  // const confirmation =
+  //   dataSentConfirmation !== "" ? (
+  //     <Success children={httpError} />
+  //   ) : (
+  //     <Failure children={httpError} />
+  //   );
   return (
     <div className={styles.contact}>
       <h3 className={styles.contactHeader}>
@@ -448,11 +465,7 @@ const Contact = () => {
             // value={saveData.ok ? "" : ""}
           ></Button>
         </div>
-        {httpError ? (
-          <Success children={httpError} />
-        ) : (
-          <Failure children={httpError} />
-        )}
+        {isDataSent(dataSentConfirmation)}
       </form>
     </div>
   );
