@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./Success.module.css";
 import successLogo from "../../../MinimumLivingCost/components/features/assets/logo5.svg";
 
-const Success = ({ children }) => {
+const Success = ({ props, children }) => {
   return (
     <>
       <div className={styles.overlay}>

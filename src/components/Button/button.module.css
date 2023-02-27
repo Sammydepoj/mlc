@@ -13,6 +13,7 @@
   color: #ffffff;
   padding: 1rem 1.5rem;
   border: none;
+  margin: 0rem 1rem;
   cursor: pointer;
 }
 .button:hover,

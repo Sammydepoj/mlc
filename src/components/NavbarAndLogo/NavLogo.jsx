@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styles from "./Navlogo.module.css";
 import logo from "./assets/logo.svg";
+import Button from "../Button/Button";
 
 const NavLogo = () => {
   const [isNavExpanded, setIsNavExpanded] = useState(false);
@@ -39,6 +40,8 @@ const NavLogo = () => {
           <li className={styles.li}>
             <a href="#">Contact Us</a>
           </li>
+          <Button className={styles.btn} value={"Login"}></Button>
+          <Button className={styles.btn} value={"Sign Up"}></Button>
         </ul>
         <button
           className={styles.harmburger}
