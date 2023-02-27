@@ -14,16 +14,15 @@
 .display {
   display: block;
 }
-.hidden {
-  display: none;
-}
 .container {
   background-color: #fff;
   text-align: center;
-  width: 100%;
+  width: 80%;
+  border-radius: 5rem;
+  padding: 2rem;
   position: absolute;
   top: 50%;
-  left: 0%;
+   left: 10%;
 }
 /* .content {
   color: #fff;

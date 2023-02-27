@@ -222,12 +222,6 @@ const Contact = () => {
       return <Success children={httpError} />;
     }
   };
-  // const confirmation =
-  //   dataSentConfirmation !== "" ? (
-  //     <Success children={httpError} />
-  //   ) : (
-  //     <Failure children={httpError} />
-  //   );
   return (
     <div className={styles.contact}>
       <h3 className={styles.contactHeader}>
