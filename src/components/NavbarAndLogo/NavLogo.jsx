@@ -21,7 +21,7 @@ const NavLogo = () => {
             : styles.modalOverlay
         }
       ></div>
-      <div className="nav">
+      <div className={styles.nav}>
         <ul
           className={
             isNavExpanded ? `${styles.ul} ${styles.ulexpanded}` : styles.ul
@@ -40,8 +40,10 @@ const NavLogo = () => {
           <li className={styles.li}>
             <a href="#">Contact Us</a>
           </li>
+        <div className={styles.menuCta}>
           <Button className={styles.btn} value={"Login"}></Button>
           <Button className={styles.btn} value={"Sign Up"}></Button>
+        </div>
         </ul>
         <button
           className={styles.harmburger}
