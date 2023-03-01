@@ -2,10 +2,27 @@ import React, { useState } from "react";
 import styles from "./Navlogo.module.css";
 import logo from "./assets/logo.svg";
 import Button from "../Button/Button";
+import Login from "../Login/Login";
 
 const NavLogo = () => {
   const [isNavExpanded, setIsNavExpanded] = useState(false);
+  const [loginIsClicked, setLoginIsclicked] = useState(false);
 
+  const loginClickHandler = () => {
+    setLoginIsclicked(!loginIsClicked);
+  };
+  if (loginIsClicked) {
+    return (
+      <div
+        className={styles.LoginModalOverlay}
+        onClick={() => {
+          setLoginIsclicked(false);
+        }}
+      >
+        <Login />;
+      </div>
+    );
+  }
   return (
     <div className={styles.navlogo}>
       <div className="logo">
@@ -40,10 +57,14 @@ const NavLogo = () => {
           <li className={styles.li}>
             <a href="#">Contact Us</a>
           </li>
-        <div className={styles.menuCta}>
-          <Button className={styles.btn} value={"Login"}></Button>
-          <Button className={styles.btn} value={"Sign Up"}></Button>
-        </div>
+          <div className={styles.menuCta}>
+            <Button
+              className={styles.btn}
+              onClick={loginClickHandler}
+              value={"Login"}
+            ></Button>
+            <Button className={styles.btn} value={"Sign Up"}></Button>
+          </div>
         </ul>
         <button
           className={styles.harmburger}

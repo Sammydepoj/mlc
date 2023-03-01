@@ -20,6 +20,19 @@
   z-index: 3000;
   opacity: 0.6;
 }
+.LoginModalOverlay {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: #555353;
+  top: 0;
+  left: 0;
+  z-index: 3000;
+  opacity: 0.6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .nav {
   display: flex;
   justify-content: space-between;

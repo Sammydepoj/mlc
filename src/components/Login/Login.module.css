@@ -1,0 +1,31 @@
+.loginWrapper {
+  background-color: #ffffff;
+  padding: 3rem;
+  z-index: 7000;
+  width: 60%;
+  position: relative;
+}
+.label {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 17px;
+  line-height: 24px;
+  letter-spacing: 0.2px;
+  color: #252b42;
+  /* margin-bottom: 5rem; */
+}
+.input {
+  background: #f9f9f9;
+  border: 1px solid #e6e6e6;
+  border-radius: 5px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 28px;
+  letter-spacing: 0.2px;
+  color: #737373;
+  padding: 0.7rem 3rem;
+  outline: none;
+}

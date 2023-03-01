@@ -352,8 +352,9 @@ const Contact = () => {
             </Label>
             <br />
             <Select
+            key={"room-type-1"}
               name={"roomType"}
-              id={"roomType"}
+              id={"roomType1"}
               className={
                 roomTypeInputHasError ? styles.invalidInput : styles.select
               }
@@ -456,7 +457,6 @@ const Contact = () => {
             disabled={!formIsValid}
             type={"submit"}
             value={isLoading ? "Loading..." : "Add New Property"}
-            // value={saveData.ok ? "" : ""}
           ></Button>
         </div>
         {isDataSent(dataSentConfirmation)}
