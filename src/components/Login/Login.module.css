@@ -1,9 +1,9 @@
 .loginWrapper {
-  background-color: #ffffff;
+  background-color: #fffdfd;
   padding: 3rem;
-  z-index: 7000;
+  z-index: 20000001;
   width: 60%;
-  position: relative;
+  position: absolute;
 }
 .label {
   font-family: "Poppins";

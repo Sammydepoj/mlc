@@ -1,13 +1,13 @@
 .navlogo {
   background-color: transparent;
   display: flex;
-  /* justify-content: space-between; */
   gap: 5rem;
   align-items: flex-end;
   align-content: flex-end;
   border-bottom: 0.5px solid #ffffff;
   padding: 1rem 0.2rem;
-  /* border: 1px solid red; */
+  position: relative;
+  top: 0;
 }
 .modalOverlay {
   position: fixed;
@@ -21,13 +21,13 @@
   opacity: 0.6;
 }
 .LoginModalOverlay {
-  position: fixed;
+  position: absolute;
   width: 100vw;
   height: 100vh;
   background-color: #555353;
-  top: 0;
+  top: 0px;
   left: 0;
-  z-index: 3000;
+  z-index: 000;
   opacity: 0.6;
   display: flex;
   justify-content: center;
@@ -41,7 +41,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  z-index: 4000;
+  z-index: 8000;
 }
 .li {
   margin: 0rem 2rem;
@@ -101,7 +101,7 @@
     margin: 0rem 0.5rem;
   }
 }
-@media screen and (max-width: 690px) {
+@media screen and (max-width: 773px) {
   .navlogo {
     justify-content: space-between;
   }

@@ -2,7 +2,72 @@ import React, { useState } from "react";
 import styles from "./Navlogo.module.css";
 import logo from "./assets/logo.svg";
 import Button from "../Button/Button";
-import Login from "../Login/Login";
+// import Login from "../Login/Login";
+
+import stylesLogin from "../Login/Login.module.css";
+import Input from "../Contact/components/Input/Input";
+import Label from "../Contact/components/Label/Label";
+// import NavLogo from "../NavbarAndLogo/NavLogo";
+
+const Login = (props) => {
+  return (
+    <div>
+      <NavLogo />
+      <div className={stylesLogin.loginWrapper}>
+        <div className={stylesLogin.wrapper}>
+          <div className={stylesLogin.email}>
+            <Label htmlFor={"email"} className={stylesLogin.label}>
+              Email:
+            </Label>
+            <Input
+              aria-label={"email for login"}
+              type={"email"}
+              className={stylesLogin.input}
+            ></Input>
+          </div>
+          <div className={stylesLogin.password}>
+            <Label htmlFor={"password"} className={stylesLogin.label}>
+              Password:
+            </Label>
+            <Input
+              aria-label={"password for login"}
+              type={"password"}
+              className={stylesLogin.input}
+            ></Input>
+          </div>
+          <div className={stylesLogin.loginBtn}>
+            <Button type={"submit"} value={"Login"}></Button>
+          </div>
+        </div>
+        <div className={stylesLogin.wrapper}>
+          <div className={stylesLogin.email}>
+            <Label htmlFor={"email"} className={stylesLogin.label}>
+              Email:
+            </Label>
+            <Input
+              aria-label={"email for login"}
+              type={"email"}
+              className={stylesLogin.input}
+            ></Input>
+          </div>
+          <div className={stylesLogin.password}>
+            <Label htmlFor={"password"} className={stylesLogin.label}>
+              Password:
+            </Label>
+            <Input
+              aria-label={"password for login"}
+              type={"password"}
+              className={stylesLogin.input}
+            ></Input>
+          </div>
+          <div className={stylesLogin.loginBtn}>
+            <Button type={"submit"} value={"Sign Up"}></Button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 const NavLogo = () => {
   const [isNavExpanded, setIsNavExpanded] = useState(false);
@@ -14,12 +79,11 @@ const NavLogo = () => {
   if (loginIsClicked) {
     return (
       <div
-        className={styles.LoginModalOverlay}
         onClick={() => {
           setLoginIsclicked(false);
         }}
       >
-        <Login />;
+        <Login />
       </div>
     );
   }
