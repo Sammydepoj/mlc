@@ -2,89 +2,132 @@ import React, { useState } from "react";
 import styles from "./Navlogo.module.css";
 import logo from "./assets/logo.svg";
 import Button from "../Button/Button";
-// import Login from "../Login/Login";
-
-import stylesLogin from "../Login/Login.module.css";
 import Input from "../Contact/components/Input/Input";
 import Label from "../Contact/components/Label/Label";
-// import NavLogo from "../NavbarAndLogo/NavLogo";
 
-const Login = (props) => {
+const Login = () => {
   return (
-    <div>
+    <>
       <NavLogo />
-      <div className={stylesLogin.loginWrapper}>
-        <div className={stylesLogin.wrapper}>
-          <div className={stylesLogin.email}>
-            <Label htmlFor={"email"} className={stylesLogin.label}>
+      <div className={styles.loginWrapper}>
+        <div className={styles.wrapper}>
+          <div className={styles.email}>
+            <Label htmlFor={"email"} className={styles.label}>
               Email:
             </Label>
             <Input
               aria-label={"email for login"}
               type={"email"}
-              className={stylesLogin.input}
+              className={styles.input}
             ></Input>
           </div>
-          <div className={stylesLogin.password}>
-            <Label htmlFor={"password"} className={stylesLogin.label}>
+          <div className={styles.password}>
+            <Label htmlFor={"password"} className={styles.label}>
               Password:
             </Label>
             <Input
               aria-label={"password for login"}
               type={"password"}
-              className={stylesLogin.input}
+              className={styles.input}
             ></Input>
           </div>
-          <div className={stylesLogin.loginBtn}>
+          <div className={styles.loginBtn}>
             <Button type={"submit"} value={"Login"}></Button>
           </div>
         </div>
-        <div className={stylesLogin.wrapper}>
-          <div className={stylesLogin.email}>
-            <Label htmlFor={"email"} className={stylesLogin.label}>
+      </div>
+    </>
+  );
+};
+
+const Signup = () => {
+  return (
+    <>
+      <NavLogo />
+      <div className={styles.loginWrapper}>
+        <div className={styles.wrapper}>
+          <div className={styles.username}>
+            <Label htmlFor={"username"} className={styles.label}>
+              Username:
+            </Label>
+            <Input
+              aria-label={"username"}
+              type={"text"}
+              className={styles.input}
+            ></Input>
+          </div>
+          <div className={styles.email}>
+            <Label htmlFor={"email"} className={styles.label}>
               Email:
             </Label>
             <Input
               aria-label={"email for login"}
               type={"email"}
-              className={stylesLogin.input}
+              className={styles.input}
             ></Input>
           </div>
-          <div className={stylesLogin.password}>
-            <Label htmlFor={"password"} className={stylesLogin.label}>
+          <div className={styles.password}>
+            <Label htmlFor={"password"} className={styles.label}>
               Password:
             </Label>
             <Input
               aria-label={"password for login"}
               type={"password"}
-              className={stylesLogin.input}
+              className={styles.input}
             ></Input>
           </div>
-          <div className={stylesLogin.loginBtn}>
+          <div className={styles.loginBtn}>
             <Button type={"submit"} value={"Sign Up"}></Button>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
 const NavLogo = () => {
   const [isNavExpanded, setIsNavExpanded] = useState(false);
   const [loginIsClicked, setLoginIsclicked] = useState(false);
+  const [signUpIsClicked, setSignUpIsClicked] = useState(false);
 
   const loginClickHandler = () => {
     setLoginIsclicked(!loginIsClicked);
+    setSignUpIsClicked(false);
+    setIsNavExpanded(false);
+  };
+  const signUpClickHandler = () => {
+    if (signUpIsClicked) {
+      setSignUpIsClicked(false);
+    } else {
+      setSignUpIsClicked(true);
+    }
+    setLoginIsclicked(false);
+    setIsNavExpanded(false);
   };
   if (loginIsClicked) {
     return (
-      <div
-        onClick={() => {
-          setLoginIsclicked(false);
-        }}
-      >
+      <>
+        <div
+          onClick={() => {
+            setLoginIsclicked(!loginIsClicked);
+          }}
+          className={styles.LoginModalOverlay}
+        ></div>
         <Login />
-      </div>
+      </>
+    );
+  }
+  if (signUpIsClicked) {
+    return (
+      <>
+        <div
+          onClick={() => {
+            setSignUpIsClicked(false);
+          }}
+          className={styles.LoginModalOverlay}
+        ></div>
+        <Signup />
+      </>
     );
   }
   return (
@@ -127,7 +170,11 @@ const NavLogo = () => {
               onClick={loginClickHandler}
               value={"Login"}
             ></Button>
-            <Button className={styles.btn} value={"Sign Up"}></Button>
+            <Button
+              className={styles.btn}
+              value={"Sign Up"}
+              onClick={signUpClickHandler}
+            ></Button>
           </div>
         </ul>
         <button

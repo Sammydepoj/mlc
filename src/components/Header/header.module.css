@@ -5,6 +5,7 @@
   background-position: center;
   margin: 0;
   padding: 0rem 5rem 10rem;
+  height: 100vh;
 }
 .hero {
   display: flex;
