@@ -194,3 +194,15 @@
     display: block;
   }
 }
+@media screen and (max-width: 500px) {
+.ul{
+  width: 75%;
+}
+.loginWrapper{
+  width: 90%;
+}
+.input {
+  font-size: 10px;
+  padding: 0.7rem 2rem;
+}
+}
