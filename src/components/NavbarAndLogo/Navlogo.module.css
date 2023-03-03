@@ -37,7 +37,7 @@
 .ul {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-end;
   z-index: 8000;
 }
 .li {
@@ -51,7 +51,7 @@
   line-height: 70.19%;
   color: #ffffff;
 }
-.li a:focus {
+.li a:focus,.li a:active {
   border-bottom: 1px solid #ffffff;
 }
 
@@ -121,6 +121,28 @@
   padding: 0.7rem 3rem;
   outline: none;
 }
+.invalidInput {
+  border: 1px solid #f4511e;
+  background-color: #fddddd;
+  border-radius: 5px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 28px;
+  letter-spacing: 0.2px;
+  padding: 0.5rem 2.5rem;
+  outline: none;
+}
+
+.invalidInput:focus {
+  border-color: #f4511e;
+  background-color: #fbe8d2;
+}
+
+.errorText {
+  color: #b40e0e;
+}
 /*   lOGIN AND SIGNUP MODAL STYLES*/
 @keyframes animateleft {
   from {
@@ -134,6 +156,7 @@
     transform: scale(100%);
   }
 }
+
 @media screen and (max-width: 1058px) {
   .navlogo {
     gap: 3rem;
@@ -195,14 +218,14 @@
   }
 }
 @media screen and (max-width: 500px) {
-.ul{
-  width: 75%;
-}
-.loginWrapper{
-  width: 90%;
-}
-.input {
-  font-size: 10px;
-  padding: 0.7rem 2rem;
-}
+  .ul {
+    width: 75%;
+  }
+  .loginWrapper {
+    width: 90%;
+  }
+  .input {
+    font-size: 10px;
+    padding: 0.7rem 2rem;
+  }
 }

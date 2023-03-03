@@ -201,9 +201,11 @@ const Contact = () => {
       resetRoomTypeInput();
       resetPriceInput();
       resetDescriptionInput();
+      
     } catch (error) {
       sethttpError("Something went wrong!");
       setDataSetConfirmation(false);
+      setIsLoading(false);
 
       setTimeout(() => {
         sethttpError("");
@@ -352,7 +354,7 @@ const Contact = () => {
             </Label>
             <br />
             <Select
-            key={"room-type-1"}
+              key={"room-type-1"}
               name={"roomType"}
               id={"roomType1"}
               className={
@@ -456,7 +458,7 @@ const Contact = () => {
           <Button
             disabled={!formIsValid}
             type={"submit"}
-            value={isLoading ? "Loading..." : "Add New Property"}
+            value={isLoading ? "Loading..." : `Add New Property${httpError}`}
           ></Button>
         </div>
         {isDataSent(dataSentConfirmation)}
