@@ -79,3 +79,8 @@
       transform: scale(100%);
     }
   }
+  @media screen and (max-width:500px){
+    .loginWrapper{
+        width: 100%;
+    }
+  }
