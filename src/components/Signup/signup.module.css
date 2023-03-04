@@ -83,8 +83,10 @@
     .loginWrapper{
         width: 90%;
         margin:2rem auto;
+        padding: 1.5rem ;
     }
-    .input{
+    .input, .invalidInput{
         width: 100%;
+        line-height: 10px;
     }
   }
