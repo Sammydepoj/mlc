@@ -65,7 +65,7 @@
   }
   
   .errorText {
-    color: #b40e0e;
+    color: #f4511e;
   }
   @keyframes animateleft {
     from {
@@ -81,6 +81,10 @@
   }
   @media screen and (max-width:500px){
     .loginWrapper{
+        width: 90%;
+        margin:2rem auto;
+    }
+    .input{
         width: 100%;
     }
   }
