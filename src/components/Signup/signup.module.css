@@ -1,0 +1,81 @@
+.loginWrapper {
+    background-color: #fffdfd;
+    padding: 3rem;
+    z-index: 3001;
+    position: fixed;
+    top: 50%;
+    transform: translate(0, -50%);
+    border-radius: 2rem;
+    transition: top 1s linear;
+    animation-name: animateleft;
+    animation-duration: 1s;
+  }
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+  }
+  .wrapper div {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+  }
+  .label {
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 17px;
+    line-height: 24px;
+    letter-spacing: 0.2px;
+    color: #252b42;
+  }
+  .input {
+    background: #f9f9f9;
+    border: 1px solid #e6e6e6;
+    border-radius: 5px;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 28px;
+    letter-spacing: 0.2px;
+    color: #737373;
+    padding: 0.7rem 3rem;
+    outline: none;
+  }
+  .invalidInput {
+    border: 1px solid #f4511e;
+    background-color: #fddddd;
+    border-radius: 5px;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 28px;
+    letter-spacing: 0.2px;
+    padding: 0.5rem 2.5rem;
+    outline: none;
+  }
+  
+  .invalidInput:focus {
+    border-color: #f4511e;
+    background-color: #fbe8d2;
+  }
+  
+  .errorText {
+    color: #b40e0e;
+  }
+  @keyframes animateleft {
+    from {
+      top: -50%;
+      opacity: 0;
+      transform: scale(0%);
+    }
+    to {
+      top: 0%;
+      opacity: 1;
+      transform: scale(100%);
+    }
+  }

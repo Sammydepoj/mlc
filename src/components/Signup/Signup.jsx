@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styles from "../NavbarAndLogo/Navlogo.module.css";
+import styles from "./signup.module.css";
 import Button from "../Button/Button";
 import Input from "../Contact/components/Input/Input";
 import Label from "../Contact/components/Label/Label";
