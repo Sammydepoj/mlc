@@ -32,8 +32,10 @@ const Login = () => {
               className={styles.input}
             ></Input>
           </div>
-          <div className={styles.loginBtn}>
+          <div className={styles.loginBtns}>
             <Button type={"submit"} value={"Login"}></Button>
+            <p>or</p>
+            <Button type={"submit"} value={"Login with Google"}></Button>
           </div>
         </form>
       </div>

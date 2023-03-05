@@ -234,12 +234,15 @@ const Signup = () => {
               <p className={styles.errorText}>Address must not be empty !</p>
             )}
           </div>
-          <div className={styles.loginBtn}>
+          <div className={styles.loginBtns}>
             <Button
               type={"submit"}
               disabled={!formIsValid}
               value={isLoading ? "Loading..." : `Sign Up${httpError}`}
             ></Button>
+            <p>or</p>
+            <Button type={"submit"} value={"Sign in with Google"}></Button>
+
           </div>
           {isDataSent(dataSentConfirmation)}
         </form>
