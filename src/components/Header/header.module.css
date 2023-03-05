@@ -13,6 +13,22 @@
   align-items: center;
   gap: 5rem;
   margin-top: 2rem;
+  position: relative;
+  transition: top 1s ease-in-out;
+  animation-name: animateleft;
+  animation-duration: 1s;
+}
+@keyframes animateleft {
+  from {
+    top: -50%;
+    opacity: 0;
+    transform: scale(0%);
+  }
+  to {
+    top: 0%;
+    opacity: 1;
+    transform: scale(100%);
+  }
 }
 .heroText {
   width: 50%;
@@ -98,12 +114,12 @@
     width: 100%;
   }
 }
-@media screen and (max-width:510px){
+@media screen and (max-width: 510px) {
   .heroH1 {
     font-size: 30px;
     line-height: 55px;
   }
   .searchBox select {
-  padding: 0.5rem;
-}
+    padding: 0.5rem;
+  }
 }
