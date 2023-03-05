@@ -72,6 +72,9 @@
   white-space: nowrap;
   margin: 0rem 2rem;
 }
+.link{
+  color: #ffffff;
+}
 @keyframes animateleft {
   from {
     top: -50%;

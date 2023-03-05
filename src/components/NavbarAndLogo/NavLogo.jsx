@@ -1,56 +1,57 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import styles from "./Navlogo.module.css";
 import logo from "./assets/logo.svg";
 import Button from "../Button/Button";
 
-import Signup from "../Signup/Signup";
-import Login from "../Login/Login";
+// import Signup from "../Signup/Signup";
+// import Login from "../Login/Login";
 
 const NavLogo = () => {
   const [isNavExpanded, setIsNavExpanded] = useState(false);
-  const [loginIsClicked, setLoginIsclicked] = useState(false);
-  const [signUpIsClicked, setSignUpIsClicked] = useState(false);
+  // const [loginIsClicked, setLoginIsclicked] = useState(false);
+  // const [signUpIsClicked, setSignUpIsClicked] = useState(false);
 
-  const loginClickHandler = () => {
-    setLoginIsclicked(!loginIsClicked);
-    setSignUpIsClicked(false);
-    setIsNavExpanded(false);
-  };
-  const signUpClickHandler = () => {
-    if (signUpIsClicked) {
-      setSignUpIsClicked(false);
-    } else {
-      setSignUpIsClicked(true);
-    }
-    setLoginIsclicked(false);
-    setIsNavExpanded(false);
-  };
-  if (signUpIsClicked) {
-    return (
-      <>
-        <div
-          onClick={() => {
-            setSignUpIsClicked(false);
-          }}
-          className={styles.LoginModalOverlay}
-        ></div>
-        <Signup />
-      </>
-    );
-  }
-  if (loginIsClicked) {
-    return (
-      <>
-        <div
-          onClick={() => {
-            setLoginIsclicked(!loginIsClicked);
-          }}
-          className={styles.LoginModalOverlay}
-        ></div>
-        <Login />
-      </>
-    );
-  }
+  // const loginClickHandler = () => {
+  //   setLoginIsclicked(!loginIsClicked);
+  //   setSignUpIsClicked(false);
+  //   setIsNavExpanded(false);
+  // };
+  // const signUpClickHandler = () => {
+  //   if (signUpIsClicked) {
+  //     setSignUpIsClicked(false);
+  //   } else {
+  //     setSignUpIsClicked(true);
+  //   }
+  //   setLoginIsclicked(false);
+  //   setIsNavExpanded(false);
+  // };
+  // if (signUpIsClicked) {
+  //   return (
+  //     <>
+  //       <div
+  //         onClick={() => {
+  //           setSignUpIsClicked(false);
+  //         }}
+  //         className={styles.LoginModalOverlay}
+  //       ></div>
+  //       <Signup />
+  //     </>
+  //   );
+  // }
+  // if (loginIsClicked) {
+  //   return (
+  //     <>
+  //       <div
+  //         onClick={() => {
+  //           setLoginIsclicked(!loginIsClicked);
+  //         }}
+  //         className={styles.LoginModalOverlay}
+  //       ></div>
+  //       <Login />
+  //     </>
+  //   );
+  // }
 
   return (
     <div className={styles.navlogo}>
@@ -75,7 +76,7 @@ const NavLogo = () => {
           id="nav"
         >
           <li className={styles.li}>
-            <a href="#">Home</a>
+            <Link to="/">Home</Link>
           </li>
           <li className={styles.li}>
             <a href="#">Landlord</a>
@@ -87,16 +88,35 @@ const NavLogo = () => {
             <a href="#">Contact Us</a>
           </li>
           <div className={styles.menuCta}>
-            <Button
+            {/* <Button
               className={styles.btn}
-              onClick={loginClickHandler}
-              value={"Login"}
-            ></Button>
-            <Button
+              // onClick={loginClickHandler}
+              value={<a href="/login" className={styles.link}>Login</a>}
+            >         
+              </Button>  */}
+            <Link to="/login">
+              <Button
+                className={styles.btn}
+                // onClick={loginClickHandler}
+                value={"Login"}
+              ></Button>
+            </Link>
+            {/* <Button
               className={styles.btn}
-              value={"Sign Up"}
-              onClick={signUpClickHandler}
-            ></Button>
+              value={
+                <a href="/signup" className={styles.link}>
+                  Sign Up
+                </a>
+              }
+              // onClick={signUpClickHandler}
+            ></Button> */}
+            <Link to="/signup">
+              <Button
+                className={styles.btn}
+                // onClick={loginClickHandler}
+                value={"Sign Up"}
+              ></Button>
+            </Link>
           </div>
         </ul>
         <button

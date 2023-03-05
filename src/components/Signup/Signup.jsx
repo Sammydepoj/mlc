@@ -8,6 +8,7 @@ import useInput from "../../hooks/useInput";
 import Success from "../Contact/components/Success/Success";
 import Failure from "../Contact/components/Failure/Failure";
 import NavLogo from "../NavbarAndLogo/NavLogo";
+import Background from "../Background/Background";
 
 const Signup = () => {
   const [userData, setUserData] = useState({});
@@ -156,8 +157,9 @@ const Signup = () => {
     }
   };
   return (
-    <>
-      <NavLogo />
+     <Background children ={
+       <>
+       <NavLogo />
       <div className={styles.loginWrapper}>
         <form onSubmit={signUpSubmitHandler} className={styles.wrapper}>
           <div className={styles.username}>
@@ -247,7 +249,8 @@ const Signup = () => {
           {isDataSent(dataSentConfirmation)}
         </form>
       </div>
-    </>
+      </>
+     }></Background>
   );
 };
 

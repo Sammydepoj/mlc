@@ -5,11 +5,13 @@ import Input from "../Contact/components/Input/Input";
 import Label from "../Contact/components/Label/Label";
 
 import NavLogo from "../NavbarAndLogo/NavLogo";
+import Background from '../Background/Background';
 
 const Login = () => {
   return (
-    <>
-      <NavLogo />
+    <Background   children={
+      <>
+        <NavLogo />
       <div className={styles.loginWrapper}>
         <form className={styles.wrapper}>
           <div className={styles.email}>
@@ -39,7 +41,9 @@ const Login = () => {
           </div>
         </form>
       </div>
-    </>
+      </>
+      }>
+    </Background>
   );
 };
 
