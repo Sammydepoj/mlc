@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./signup.module.css";
 import Button from "../Button/Button";
 import Input from "../Contact/components/Input/Input";
@@ -10,21 +10,15 @@ import Failure from "../Contact/components/Failure/Failure";
 import NavLogo from "../NavbarAndLogo/NavLogo";
 import Background from "../Background/Background";
 
-// import { useAuthState } from "react-firebase-hooks/auth";
-// import { Link, useHistory } from "react-router-dom";
-// import {
-//   auth,
-//   registerWithEmailAndPassword,
-//   signInWithGoogle,
-// } from "../../firebase/firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { Link, useNavigate } from "react-router-dom";
+import {
+  auth,
+  registerWithEmailAndPassword,
+  signInWithGoogle,
+} from "../../firebase/firebase";
 
 const Signup = () => {
-  // const [email, setEmail] = useState("");
-  // const [password, setPassword] = useState("");
-  // const [name, setName] = useState("");
-  // const [user, loading, error] = useAuthState(auth);
-  // const history = useHistory();
-
   const [userData, setUserData] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [httpError, sethttpError] = useState("");
@@ -66,117 +60,134 @@ const Signup = () => {
     reset: resetPasswordInput,
   } = useInput((value) => value.length >= 6 && value.trim() !== "");
 
-  let formIsValid = false;
+  let formIsValid = true;
 
-  if (
-    userNameInputValue &&
-    emailInputvalue &&
-    addressInputValue &&
-    passwordInputValue
-  ) {
-    formIsValid = true;
-  }
+  // if (
+  //   userNameInputValue &&
+  //   emailInputvalue &&
+  //   addressInputValue &&
+  //   passwordInputValue
+  // ) {
+  //   formIsValid = true;
+  // }
 
-  const signUpSubmitHandler = async (e) => {
-    try {
-      e.preventDefault();
+  // const signUpSubmitHandler = async (e) => {
+  //   try {
+  //     e.preventDefault();
 
-      if (!formIsValid) {
-        return;
-      }
+  //     if (!formIsValid) {
+  //       return;
+  //     }
 
-      if (
-        !userNameInputValue &&
-        !emailInputvalue &&
-        !addressInputValue &&
-        !passwordInputValue
-      ) {
-        return;
-      }
+  //     if (
+  //       !userNameInputValue &&
+  //       !emailInputvalue &&
+  //       !addressInputValue &&
+  //       !passwordInputValue
+  //     ) {
+  //       return;
+  //     }
 
-      setUserData({
-        userName: userNameInputValue,
-        address: addressInputValue,
-        password: passwordInputValue,
-        email: emailInputvalue,
-      });
-      setIsLoading(true);
+  //     setUserData({
+  //       userName: userNameInputValue,
+  //       address: addressInputValue,
+  //       password: passwordInputValue,
+  //       email: emailInputvalue,
+  //     });
+  //     setIsLoading(true);
 
-      const saveUserData = await fetch(
-        "https://minimumleavingcost-default-rtdb.firebaseio.com/users.json",
-        {
-          method: "POST",
-          body: JSON.stringify(userData),
-          // headers: {
-          //   "Content-Type": "application/json",
-          // },
-        }
-      );
+  //     const saveUserData = await fetch(
+  //       "https://minimumleavingcost-default-rtdb.firebaseio.com/users.json",
+  //       {
+  //         method: "POST",
+  //         body: JSON.stringify(userData),
+  //         // headers: {
+  //         //   "Content-Type": "application/json",
+  //         // },
+  //       }
+  //     );
 
-      setIsLoading(false);
-      console.log(saveUserData);
+  //     setIsLoading(false);
+  //     console.log(saveUserData);
 
-      const data = await saveUserData.json();
-      console.log(data);
+  //     const data = await saveUserData.json();
+  //     console.log(data);
 
-      if (!saveUserData) {
-        setIsLoading(false);
-        setDataSetConfirmation(false);
+  //     if (!saveUserData) {
+  //       setIsLoading(false);
+  //       setDataSetConfirmation(false);
 
-        throw new Error();
-      }
+  //       throw new Error();
+  //     }
 
-      if (saveUserData.ok) {
-        setDataSetConfirmation(true);
-        setIsLoading(false);
-        sethttpError("Data Successfully Saved !");
-        setTimeout(() => {
-          sethttpError("");
-          setDataSetConfirmation(null);
-        }, 5000);
-      }
+  //     if (saveUserData.ok) {
+  //       setDataSetConfirmation(true);
+  //       setIsLoading(false);
+  //       sethttpError("Data Successfully Saved !");
+  //       setTimeout(() => {
+  //         sethttpError("");
+  //         setDataSetConfirmation(null);
+  //       }, 5000);
+  //     }
 
-      if (!saveUserData.ok) {
-        setIsLoading(false);
-        setDataSetConfirmation(false);
+  //     if (!saveUserData.ok) {
+  //       setIsLoading(false);
+  //       setDataSetConfirmation(false);
 
-        throw new Error();
-      }
+  //       throw new Error();
+  //     }
 
-      resetUserNameInput();
-      resetEmailInput();
-      resetAddressInput();
-      resetPasswordInput();
-    } catch (error) {
-      console.log(error);
-      sethttpError("Something went wrong!");
-      setDataSetConfirmation(false);
-      setIsLoading(false);
+  //     resetUserNameInput();
+  //     resetEmailInput();
+  //     resetAddressInput();
+  //     resetPasswordInput();
+  //   } catch (error) {
+  //     console.log(error);
+  //     sethttpError("Something went wrong!");
+  //     setDataSetConfirmation(false);
+  //     setIsLoading(false);
 
-      setTimeout(() => {
-        sethttpError("");
-        setDataSetConfirmation(null);
-      }, 5000);
-    }
+  //     setTimeout(() => {
+  //       sethttpError("");
+  //       setDataSetConfirmation(null);
+  //     }, 5000);
+  //   }
+  // };
+  // const isDataSent = (confirmedData) => {
+  //   if (confirmedData === null) {
+  //     return;
+  //   }
+  //   if (confirmedData === false) {
+  //     return <Failure children={httpError} />;
+  //   }
+  //   if (confirmedData === true) {
+  //     return <Success children={httpError} />;
+  //   }
+  // };
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
+  const [user, loading, error] = useAuthState(auth);
+  const history = useNavigate();
+
+  const register = () => {
+    if (!name) alert("Please enter name");
+    registerWithEmailAndPassword(name, email, password);
   };
-  const isDataSent = (confirmedData) => {
-    if (confirmedData === null) {
-      return;
-    }
-    if (confirmedData === false) {
-      return <Failure children={httpError} />;
-    }
-    if (confirmedData === true) {
-      return <Success children={httpError} />;
-    }
-  };
+  useEffect(() => {
+    if (loading) return;
+    if (user) history.replace("/dashboard");
+  }, [user, loading]);
+
   return (
     <Background
       children={
         <>
           <NavLogo />
           <div className={styles.loginWrapper}>
-            <form onSubmit={signUpSubmitHandler} className={styles.wrapper}>
+            {/* <form onSubmit={signUpSubmitHandler} className={styles.wrapper}> */}
+            <form className={styles.wrapper}>
               <div className={styles.username}>
                 <Label htmlFor={"username"} className={styles.label}>
                   Username:
@@ -187,8 +198,10 @@ const Signup = () => {
                   className={
                     userNameInputHasError ? styles.invalidInput : styles.input
                   }
-                  value={userNameInputValue}
-                  onChange={userNameChangeHandler}
+                  // value={userNameInputValue}
+                  // onChange={userNameChangeHandler}
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
                   onBlur={userNameBlurHandler}
                 ></Input>
                 {userNameInputHasError && !formIsValid && (
@@ -207,8 +220,10 @@ const Signup = () => {
                   className={
                     emailInputHasError ? styles.invalidInput : styles.input
                   }
-                  value={emailInputvalue}
-                  onChange={emailChangeHandler}
+                  // value={emailInputvalue}
+                  // onChange={emailChangeHandler}
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   onBlur={emailBlurHandler}
                 ></Input>
                 {emailInputHasError && !formIsValid && (
@@ -227,9 +242,11 @@ const Signup = () => {
                   className={
                     passwordInputHasError ? styles.invalidInput : styles.input
                   }
-                  value={passwordInputValue}
-                  onChange={passwordChangeHandler}
+                  // value={passwordInputValue}
+                  // onChange={passwordChangeHandler}
                   onBlur={passwordBlurHandler}
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                 ></Input>
                 {passwordInputHasError && !formIsValid && (
                   <p className={styles.errorText}>
@@ -261,17 +278,19 @@ const Signup = () => {
               <div className={styles.loginBtns}>
                 <Button
                   type={"submit"}
-                  disabled={!formIsValid}
-                  value={isLoading ? "Loading..." : `Sign Up${httpError}`}
+                  // disabled={!formIsValid}
+                  // value={isLoading ? "Loading..." : `Sign Up${httpError}`}
+                  value={"Sign Up"}
+                  onClick={register}
                 ></Button>
                 <p>or</p>
                 <Button
                   type={"submit"}
                   value={"Sign in with Google"}
-                  // onClick={signInWithGoogle}
+                  onClick={signInWithGoogle}
                 ></Button>
               </div>
-              {isDataSent(dataSentConfirmation)}
+              {/* {isDataSent(dataSentConfirmation)} */}
             </form>
           </div>
         </>

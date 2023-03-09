@@ -6,7 +6,7 @@ import {
   collection,
   where,
   addDoc,
-} from "firebase/app";
+} from "firebase/firestore";
 
 import {
   GoogleAuthProvider,
@@ -36,6 +36,7 @@ const auth = getAuth(app);
 const db = getFirestore(app);
 
 const googleProvider = new GoogleAuthProvider();
+
 const signInWithGoogle = async () => {
   try {
     const res = await signInWithPopup(auth, googleProvider);

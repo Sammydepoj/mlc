@@ -9,6 +9,7 @@ const Button = ({ type, name, value, disabled, onClick }) => {
       className={styles.button}
       disabled={disabled}
       onClick={onClick}
+      value={value}
     >
       {value}
     </button>
