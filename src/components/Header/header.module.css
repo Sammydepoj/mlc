@@ -5,7 +5,7 @@
   background-position: center;
   margin: 0;
   padding: 0rem 5rem 10rem;
-  height: 100vh;
+  height: max-content;
 }
 .hero {
   display: flex;
@@ -121,5 +121,19 @@
   }
   .searchBox select {
     padding: 0.5rem;
+  }
+}
+@media screen and (max-width: 440px) {
+  .filterHero {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .filterHero select {
+    width: 100%;
+    padding: 1.5rem;
+  }
+  .filterHero .searchBox {
+    width: 100%;
   }
 }

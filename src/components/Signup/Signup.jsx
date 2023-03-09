@@ -10,7 +10,21 @@ import Failure from "../Contact/components/Failure/Failure";
 import NavLogo from "../NavbarAndLogo/NavLogo";
 import Background from "../Background/Background";
 
+// import { useAuthState } from "react-firebase-hooks/auth";
+// import { Link, useHistory } from "react-router-dom";
+// import {
+//   auth,
+//   registerWithEmailAndPassword,
+//   signInWithGoogle,
+// } from "../../firebase/firebase";
+
 const Signup = () => {
+  // const [email, setEmail] = useState("");
+  // const [password, setPassword] = useState("");
+  // const [name, setName] = useState("");
+  // const [user, loading, error] = useAuthState(auth);
+  // const history = useHistory();
+
   const [userData, setUserData] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [httpError, sethttpError] = useState("");
@@ -157,100 +171,112 @@ const Signup = () => {
     }
   };
   return (
-     <Background children ={
-       <>
-       <NavLogo />
-      <div className={styles.loginWrapper}>
-        <form onSubmit={signUpSubmitHandler} className={styles.wrapper}>
-          <div className={styles.username}>
-            <Label htmlFor={"username"} className={styles.label}>
-              Username:
-            </Label>
-            <Input
-              aria-label={"username"}
-              type={"text"}
-              className={
-                userNameInputHasError ? styles.invalidInput : styles.input
-              }
-              value={userNameInputValue}
-              onChange={userNameChangeHandler}
-              onBlur={userNameBlurHandler}
-            ></Input>
-            {userNameInputHasError && !formIsValid && (
-              <p className={styles.errorText}>Username must not be empty!</p>
-            )}
+    <Background
+      children={
+        <>
+          <NavLogo />
+          <div className={styles.loginWrapper}>
+            <form onSubmit={signUpSubmitHandler} className={styles.wrapper}>
+              <div className={styles.username}>
+                <Label htmlFor={"username"} className={styles.label}>
+                  Username:
+                </Label>
+                <Input
+                  aria-label={"username"}
+                  type={"text"}
+                  className={
+                    userNameInputHasError ? styles.invalidInput : styles.input
+                  }
+                  value={userNameInputValue}
+                  onChange={userNameChangeHandler}
+                  onBlur={userNameBlurHandler}
+                ></Input>
+                {userNameInputHasError && !formIsValid && (
+                  <p className={styles.errorText}>
+                    Username must not be empty!
+                  </p>
+                )}
+              </div>
+              <div className={styles.email}>
+                <Label htmlFor={"email"} className={styles.label}>
+                  Email:
+                </Label>
+                <Input
+                  aria-label={"email for login"}
+                  type={"email"}
+                  className={
+                    emailInputHasError ? styles.invalidInput : styles.input
+                  }
+                  value={emailInputvalue}
+                  onChange={emailChangeHandler}
+                  onBlur={emailBlurHandler}
+                ></Input>
+                {emailInputHasError && !formIsValid && (
+                  <p className={styles.errorText}>
+                    Please enter a valid email !
+                  </p>
+                )}
+              </div>
+              <div className={styles.password}>
+                <Label htmlFor={"password"} className={styles.label}>
+                  Password:
+                </Label>
+                <Input
+                  aria-label={"password for login"}
+                  type={"password"}
+                  className={
+                    passwordInputHasError ? styles.invalidInput : styles.input
+                  }
+                  value={passwordInputValue}
+                  onChange={passwordChangeHandler}
+                  onBlur={passwordBlurHandler}
+                ></Input>
+                {passwordInputHasError && !formIsValid && (
+                  <p className={styles.errorText}>
+                    Password must be greater than 6 characters
+                  </p>
+                )}
+              </div>
+              <div className={styles.address}>
+                <Label htmlFor={"address"} className={styles.label}>
+                  Address:
+                </Label>
+                <Input
+                  aria-label={"user address"}
+                  type={"text"}
+                  className={
+                    addressInputHasError ? styles.invalidInput : styles.input
+                  }
+                  value={addressInputValue}
+                  onChange={addressChangeHandler}
+                  onBlur={addressBlurHandler}
+                ></Input>
+                {addressInputHasError && !formIsValid && (
+                  <p className={styles.errorText}>
+                    Address must not be empty !
+                  </p>
+                )}
+              </div>
+              <p></p>
+              <div className={styles.loginBtns}>
+                <Button
+                  type={"submit"}
+                  disabled={!formIsValid}
+                  value={isLoading ? "Loading..." : `Sign Up${httpError}`}
+                ></Button>
+                <p>or</p>
+                <Button
+                  type={"submit"}
+                  value={"Sign in with Google"}
+                  // onClick={signInWithGoogle}
+                ></Button>
+              </div>
+              {isDataSent(dataSentConfirmation)}
+            </form>
           </div>
-          <div className={styles.email}>
-            <Label htmlFor={"email"} className={styles.label}>
-              Email:
-            </Label>
-            <Input
-              aria-label={"email for login"}
-              type={"email"}
-              className={
-                emailInputHasError ? styles.invalidInput : styles.input
-              }
-              value={emailInputvalue}
-              onChange={emailChangeHandler}
-              onBlur={emailBlurHandler}
-            ></Input>
-            {emailInputHasError && !formIsValid && (
-              <p className={styles.errorText}>Please enter a valid email !</p>
-            )}
-          </div>
-          <div className={styles.password}>
-            <Label htmlFor={"password"} className={styles.label}>
-              Password:
-            </Label>
-            <Input
-              aria-label={"password for login"}
-              type={"password"}
-              className={
-                passwordInputHasError ? styles.invalidInput : styles.input
-              }
-              value={passwordInputValue}
-              onChange={passwordChangeHandler}
-              onBlur={passwordBlurHandler}
-            ></Input>
-            {passwordInputHasError && !formIsValid && (
-              <p className={styles.errorText}>
-                Password must be greater than 6 characters
-              </p>
-            )}
-          </div>
-          <div className={styles.address}>
-            <Label htmlFor={"address"} className={styles.label}>
-              Address:
-            </Label>
-            <Input
-              aria-label={"user address"}
-              type={"text"}
-              className={
-                addressInputHasError ? styles.invalidInput : styles.input
-              }
-              value={addressInputValue}
-              onChange={addressChangeHandler}
-              onBlur={addressBlurHandler}
-            ></Input>
-            {addressInputHasError && !formIsValid && (
-              <p className={styles.errorText}>Address must not be empty !</p>
-            )}
-          </div>
-          <div className={styles.loginBtns}>
-            <Button
-              type={"submit"}
-              disabled={!formIsValid}
-              value={isLoading ? "Loading..." : `Sign Up${httpError}`}
-            ></Button>
-            <p>or</p>
-            <Button type={"submit"} value={"Sign in with Google"}></Button>
-
-          </div>
-          {isDataSent(dataSentConfirmation)}
-        </form>
-      </div>
-      </>
-     }></Background>
+        </>
+      }
+    ></Background>
   );
 };
 
