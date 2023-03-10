@@ -1,9 +1,34 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./card.module.css";
 
+import { motion, useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+
+const boxVariant = {
+  visible: { opacity: 1, scale: 1, transition: { duration: 0.5 } },
+  hidden: { opacity: 0, scale: 0 },
+};
+
 const Card = ({ image, address, status, price, bed, shower, size }) => {
+  const control = useAnimation();
+  const [ref, inView] = useInView();
+
+  useEffect(() => {
+    if (inView) {
+      control.start("visible");
+    } else {
+      control.start("hidden");
+    }
+  }, [control, inView]);
+
   return (
-    <div className={styles.cards}>
+    <motion.div
+      ref={ref}
+      variants={boxVariant}
+      initial="visible"
+      animate={control}
+      className={styles.cards}
+    >
       <img
         src={image}
         className={styles.homeImage}
@@ -29,7 +54,7 @@ const Card = ({ image, address, status, price, bed, shower, size }) => {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
