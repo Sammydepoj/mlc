@@ -12,7 +12,6 @@ import styles from "./contact.module.css";
 import useInput from "../../hooks/useInput";
 
 const Contact = () => {
-  const [userData, setUserData] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [httpError, sethttpError] = useState("");
   const [dataSentConfirmation, setDataSetConfirmation] = useState("");
@@ -142,23 +141,23 @@ const Contact = () => {
       ) {
         return;
       }
-      setUserData({
-        name: nameInputValue,
-        address: addressInputValue,
-        unit_number: unitNumberInputValue,
-        city: cityInputValue,
-        state: stateInputValue,
-        room_type: roomTypeInputValue,
-        price: priceInputValue,
-        description: descriptionInputValue,
-      });
+
       setIsLoading(true);
 
       const saveData = await fetch(
         "https://minimumleavingcost-default-rtdb.firebaseio.com/homes.json",
         {
           method: "POST",
-          body: JSON.stringify(userData),
+          body: JSON.stringify({
+            name: nameInputValue,
+            address: addressInputValue,
+            unit_number: unitNumberInputValue,
+            city: cityInputValue,
+            state: stateInputValue,
+            room_type: roomTypeInputValue,
+            price: priceInputValue,
+            description: descriptionInputValue,
+          }),
           // headers: {
           //   "Content-Type": "application/json",
           // },
@@ -201,7 +200,6 @@ const Contact = () => {
       resetRoomTypeInput();
       resetPriceInput();
       resetDescriptionInput();
-      
     } catch (error) {
       sethttpError("Something went wrong!");
       setDataSetConfirmation(false);

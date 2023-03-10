@@ -7,30 +7,15 @@ import Label from "../Contact/components/Label/Label";
 import NavLogo from "../NavbarAndLogo/NavLogo";
 import Background from "../Background/Background";
 
-import { GoogleAuthProvider, signInWithRedirect } from "firebase/auth";
-
-import { Link, useNavigate } from "react-router-dom";
-import { useAuthState } from "react-firebase-hooks/auth";
-import {
-  auth,
-  logInWithEmailAndPassword,
-  signInWithGoogle,
-} from "../../firebase/firebase";
+// import { signInWithEmailAndPassword } from "firebase/auth";
+// import { useNavigate } from "react-router-dom";
+// import { auth } from "../../firebase/firebase";
 
 const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [user, loading, error] = useAuthState(auth);
+  // const [email, setEmail] = useState("");
+  // const [password, setPassword] = useState("");
+  // const navigate = useNavigate();
 
-  useEffect(() => {
-    if (loading) {
-      // maybe trigger a loading screen
-      return;
-    }
-    if (user) navigate("/dashboard");
-  }, [user, loading]);
-
-  const navigate = useNavigate();
   return (
     <Background
       children={
@@ -46,8 +31,8 @@ const Login = () => {
                   aria-label={"email for login"}
                   type={"email"}
                   className={styles.input}
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  // value={email}
+                  // onChange={(e) => setEmail(e.target.value)}
                 ></Input>
               </div>
               <div className={styles.password}>
@@ -58,21 +43,21 @@ const Login = () => {
                   aria-label={"password for login"}
                   type={"password"}
                   className={styles.input}
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
+                  // value={password}
+                  // onChange={(e) => setPassword(e.target.value)}
                 ></Input>
               </div>
               <div className={styles.loginBtns}>
                 <Button
                   type={"submit"}
                   value={"Login"}
-                  onClick={() => logInWithEmailAndPassword(email, password)}
+                  // onClick={() => logInWithEmailAndPassword(email, password)}
                 ></Button>
                 <p>or</p>
                 <Button
                   type={"submit"}
                   value={"Login with Google"}
-                  onClick={signInWithGoogle}
+                  // onClick={signInWithGoogle}
                 ></Button>
               </div>
             </form>
