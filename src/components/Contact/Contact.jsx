@@ -310,11 +310,11 @@ const Contact = () => {
               onBlur={cityBlurHandler}
             >
               <option value="">Select City </option>
-              <option value="ikeja">ikeja</option>
-              <option value="somolu">somolu</option>
-              <option value="ikorodu">ikorodu</option>
-              <option value="lekki">lekki</option>
-              <option value="epe">epe</option>
+              <option value="ikeja">Ikeja</option>
+              <option value="somolu">Somolu</option>
+              <option value="ikorodu">Ikorodu</option>
+              <option value="lekki">Lekki</option>
+              <option value="epe">Epe</option>
             </Select>
             {cityInputHasError && !formIsValid && (
               <p className={styles.errorText}>Please select a city!</p>
@@ -336,11 +336,11 @@ const Contact = () => {
               onBlur={stateBlurHandler}
             >
               <option value="">Select State</option>
-              <option value="lagos">lagos</option>
-              <option value="lagos">lagos</option>
-              <option value="lagos">lagos</option>
-              <option value="lagos">lagos</option>
-              <option value="lagos">lagos</option>
+              <option value="lagos">Lagos</option>
+              <option value="oyo">Oyo</option>
+              <option value="osun">Osun</option>
+              <option value="ogun">Ogun</option>
+              <option value="ekiti">Ekiti</option>
             </Select>
             {stateInputHasError && !formIsValid && (
               <p className={styles.errorText}>Please select a state!</p>

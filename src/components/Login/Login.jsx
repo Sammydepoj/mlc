@@ -23,6 +23,7 @@ const Login = () => {
           <NavLogo />
           <div className={styles.loginWrapper}>
             <form className={styles.wrapper}>
+              <h2>Sign In</h2>
               <div className={styles.email}>
                 <Label htmlFor={"email"} className={styles.label}>
                   Email:

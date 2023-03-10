@@ -15,18 +15,19 @@ const Header = () => {
           </h1>
         </div>
         <div className={styles.heroImg}>
+          <p>Click on the map to view your current Location</p>
           <Leaflet />
           <div className={styles.filterHero}>
             <select name="All Type" id="Alltype">
               <option value="All Type">All Type</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
+              <option value="1_bedroom">1 Bedroom</option>
+              <option value="2_bedrooms">2 Bedrooms</option>
+              <option value="3_bedrooms">3 Bedrooms</option>
+              <option value="4_bedrooms">4 Bedrooms</option>
             </select>
             <div className={styles.searchBox}>
               <select name="Neighborhood" id="Neighborhood">
-                <option value="Neighborhood">Neighborhood</option>
+                <option value="">Neighborhood</option>
                 <option value="Makoko">Makoko</option>
                 <option value="London">London</option>
                 <option value="Mushin">Mushin</option>

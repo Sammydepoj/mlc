@@ -1,30 +1,39 @@
-import { MapContainer, Marker, TileLayer, Popup } from "react-leaflet";
+import {
+  MapContainer,
+  Marker,
+  TileLayer,
+  Popup,
+  useMapEvents,
+} from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 
-import { React, useEffect, useState } from "react";
+import { React, useState } from "react";
 
 const Leaflet = () => {
-  const [location, setLocation] = useState({ lat: 6.5982, lng: 3.490249 });
-
-  useEffect(() => {
-    navigator.geolocation.getCurrentPosition(
-      (position) => {
-        const { latitude, longitude } = position.coords;
-
-        setLocation({ lat: latitude, lng: longitude });
+  function LocationMarker() {
+    const [position, setPosition] = useState(null);
+    const map = useMapEvents({
+      click() {
+        map.locate();
       },
-      () => {
-        console.log("error occured");
-      }
+      locationfound(e) {
+        setPosition(e.latlng);
+        map.flyTo(e.latlng, map.getZoom());
+      },
+    });
+
+    return position === null ? null : (
+      <Marker position={position}>
+        <Popup>You are here</Popup>
+      </Marker>
     );
-    console.log(location);
-  }, []);
+  }
 
   return (
     <MapContainer
-      style={{ height: "250px", width: "83%" }}
-      center={location}
-      // center={{ lat: 51.505, lng: -0.09 }}
+      style={{ height: "300px", width: "90%" }}
+      // center={location}
+      center={{ lat: 51.505, lng: -0.09 }}
       zoom={13}
       scrollWheelZoom={true}
     >
@@ -32,16 +41,14 @@ const Leaflet = () => {
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-      {/* <LocationMarker /> */}
+      <LocationMarker />
       {/* <Marker position={{ lat: 51.505, lng: -0.09 }}> */}
 
-      {location && (
+      {/* {location && (
         <Marker position={location}>
-          <Popup>
-            A pretty CSS3 popup. <br /> Easily customizable.
-          </Popup>
+          <Popup>This is your Current Location</Popup>
         </Marker>
-      )}
+      )} */}
     </MapContainer>
   );
 };

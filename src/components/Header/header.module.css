@@ -49,6 +49,9 @@
   flex-direction: column;
   align-items: center;
 }
+.heroImg p {
+  color: #f4511e;
+}
 .heroMap {
   height: 300px;
 }
@@ -136,4 +139,9 @@
   .filterHero .searchBox {
     width: 100%;
   }
+}
+@media screen and (max-width: 440px) {
+.heroImg p {
+  font-size: 0.8rem;
+}
 }

@@ -185,6 +185,7 @@ const Signup = () => {
           <NavLogo />
           <div className={styles.loginWrapper}>
             <form onSubmit={signUpSubmitHandler} className={styles.wrapper}>
+              <h2>Sign Up</h2>
               {/* <form className={styles.wrapper}> */}
               <div className={styles.username}>
                 <Label htmlFor={"username"} className={styles.label}>
