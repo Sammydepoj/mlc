@@ -19,6 +19,9 @@
   align-items: center;
   width: 100%;
 }
+.imageAndFeaturesImage{
+  width: 100%;
+}
 .imageAndFeatures img{
   width: 100%;
 }
