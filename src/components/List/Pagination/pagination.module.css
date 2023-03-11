@@ -4,22 +4,21 @@
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
   border-radius: 6.72761px;
   display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  margin: 2rem auto;
-  padding:0.8rem 0.5rem;
-  /* width: max-content;
-  height: max-content; */
+  justify-content: space-between;
+  align-items: center;
+  margin: 4rem auto 0rem;
+  padding: 0.8rem 0.5rem;
+  width: max-content;
 }
 .pageItemInactive {
   list-style-type: none;
-  margin: 0rem 1rem;
   background: #ffffff;
+  cursor: pointer;
 }
 .pageItemActive {
   list-style-type: none;
-  margin: 0rem 1rem;
   background: #f4511e;
+  cursor: pointer;
 }
 .activeLink {
   font-family: "Montserrat";
@@ -30,8 +29,9 @@
   text-align: center;
   color: #ffffff;
   background: #f4511e;
-  padding: 1rem;
+  padding: 0.7rem;
   border: none;
+  cursor: pointer;
 }
 .inactiveLink {
   font-family: "Montserrat";
@@ -43,8 +43,9 @@
   letter-spacing: 0.1px;
   color: #f4511e;
   background: #ffffff;
-  padding: 1rem;
+  padding: 0.7rem;
   border: none;
+  cursor: pointer;
 }
 .muted {
   color: #bdbdbd;
@@ -56,5 +57,6 @@
   text-align: center;
   letter-spacing: 0.1px;
   background: #ffffff;
-  padding: 1rem 0.5rem;
+  padding: 0.7rem 0.5rem;
+  cursor: pointer;
 }

@@ -211,14 +211,14 @@ const mlc = {
 };
 
 const List = () => {
-  const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 3;
 
-  const indexOfLastItem = currentPage * itemsPerPage;
-  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = mlc.homes.slice(indexOfFirstItem, indexOfLastItem);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [currentItems, setCurrentItems] = useState(mlc.homes.slice(0, 6));
 
   const handlePageChange = (pageNumber) => {
+    const startIndex = (pageNumber - 1) * 6;
+    const endIndex = startIndex + 6;
+    setCurrentItems(mlc.homes.slice(startIndex, endIndex));
     setCurrentPage(pageNumber);
   };
 
@@ -229,6 +229,7 @@ const List = () => {
         <Button value={"View All Properties"}></Button>
       </div>
       <div className={styles.cardContainer}>
+        {/* {console.log(mlc.homes.id)} */}
 
         {currentItems.map((home) => (
           <Card
@@ -244,10 +245,10 @@ const List = () => {
         ))}
       </div>
       <Pagination
-        itemsPerPage={itemsPerPage}
         totalItems={mlc.homes.length}
+        itemsPerPage={6}
         currentPage={currentPage}
-        onPageChange={handlePageChange}
+        handlePageChange={handlePageChange}
       />
     </div>
   );
