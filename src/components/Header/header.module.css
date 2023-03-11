@@ -40,10 +40,11 @@
   font-style: normal;
   font-weight: 700;
   font-size: 52px;
-  line-height: 70px;
+  line-height: 80px;
   letter-spacing: -1px;
   text-transform: capitalize;
   color: #ffffff;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5);
 }
 .heroImg {
   width: 50%;

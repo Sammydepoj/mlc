@@ -42,13 +42,6 @@ const Leaflet = () => {
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
       <LocationMarker />
-      {/* <Marker position={{ lat: 51.505, lng: -0.09 }}> */}
-
-      {/* {location && (
-        <Marker position={location}>
-          <Popup>This is your Current Location</Popup>
-        </Marker>
-      )} */}
     </MapContainer>
   );
 };
