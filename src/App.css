@@ -1,5 +1,4 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+.App {
+  max-width: 1440px;
+  margin: 0rem auto;
 }
