@@ -7,6 +7,8 @@ import frame4 from "./assets/logo4.svg";
 import frame5 from "./assets/logo5.svg";
 import frame6 from "./assets/logo6.svg";
 
+import { motion, useAnimation } from "framer-motion";
+
 class Features extends Component {
   constructor() {
     super();
@@ -43,18 +45,36 @@ class Features extends Component {
           text: "Pay for what you use !",
         },
       ],
+      isMounted: false,
     };
   }
+  componentDidMount() {
+    try {
+      this.setState({ isMounted: true });
+    } catch (error) {
+      console.error("Error mounting component:", error);
+    }
+  }
   render() {
+    const { isMounted } = this.state;
+    const boxVariant = {
+      visible: { opacity: 1, scale: 1, transition: { duration: 0.5 } },
+      hidden: { opacity: 0, scale: 0 },
+    };
     return (
       <div className={styles.features}>
         {this.state.featureComponent.map((component) => (
-          <div className={styles.featureItem} key={component.id}>
+          <motion.div
+            variants={boxVariant}
+            animate={isMounted ? "visible" : "hidden"}
+            className={styles.featureItem}
+            key={component.id}
+          >
             <div className={styles.imgContainer}>
               <img src={component.img} alt="features of mlc" />
             </div>
             <p className={styles.featuresText}>{component.text}</p>
-          </div>
+          </motion.div>
         ))}
       </div>
     );
