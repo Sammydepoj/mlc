@@ -6,6 +6,7 @@ import Label from "../Contact/components/Label/Label";
 
 import NavLogo from "../NavbarAndLogo/NavLogo";
 import Background from "../Background/Background";
+import { Link } from "react-router-dom";
 
 // import { signInWithEmailAndPassword } from "firebase/auth";
 // import { useNavigate } from "react-router-dom";
@@ -23,42 +24,51 @@ const Login = () => {
           <NavLogo />
           <div className={styles.loginWrapper}>
             <form className={styles.wrapper}>
-              <h2>Sign In</h2>
-              <div className={styles.email}>
-                <Input
-                  aria-label={"email for login"}
-                  type={"email"}
-                  className={styles.input}
-                  placeholder={"Email"}
+              <h2>LOGIN</h2>
+              <Input
+                aria-label={"email for login"}
+                type={"email"}
+                className={styles.input}
+                placeholder={"Email"}
 
-                  // value={email}
-                  // onChange={(e) => setEmail(e.target.value)}
-                ></Input>
-              </div>
-              <div className={styles.password}>
-                <Input
-                  aria-label={"password for login"}
-                  type={"password"}
-                  className={styles.input}
-                  placeholder={"Password"}
+                // value={email}
+                // onChange={(e) => setEmail(e.target.value)}
+              ></Input>
 
-                  // value={password}
-                  // onChange={(e) => setPassword(e.target.value)}
-                ></Input>
+              <Input
+                aria-label={"password for login"}
+                type={"password"}
+                className={styles.input}
+                placeholder={"Password"}
+
+                // value={password}
+                // onChange={(e) => setPassword(e.target.value)}
+              ></Input>
+              <div className={styles.ctaRememberMe}>
+                <span className="">
+                  <input
+                    type="checkbox"
+                    name="remeber me"
+                    id="remember"
+                    required
+                  />
+                  <label htmlFor="remember">Remember Me</label>
+                </span>
+                <Link>Forgot Password ?</Link>
               </div>
-              <div className={styles.loginBtns}>
-                <Button
-                  type={"submit"}
-                  value={"Login"}
-                  // onClick={() => logInWithEmailAndPassword(email, password)}
-                ></Button>
-                <p>or</p>
-                <Button
-                  type={"submit"}
-                  value={"Login with Google"}
-                  // onClick={signInWithGoogle}
-                ></Button>
-              </div>
+              <Button
+                type={"submit"}
+                value={"Login"}
+                // onClick={() => logInWithEmailAndPassword(email, password)}
+              ></Button>
+              <Button
+                type={"submit"}
+                value={"Login with Google"}
+                // onClick={signInWithGoogle}
+              ></Button>
+              <p className={styles.already}>
+                Don’t have an account ? <Link to="/signup">Register</Link>
+              </p>
             </form>
           </div>
         </>

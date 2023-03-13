@@ -2,13 +2,14 @@ import React, { useState, useEffect } from "react";
 import styles from "./signup.module.css";
 import Button from "../Button/Button";
 import Input from "../Contact/components/Input/Input";
-import Label from "../Contact/components/Label/Label";
 
 import useInput from "../../hooks/useInput";
 import Success from "../Contact/components/Success/Success";
 import Failure from "../Contact/components/Failure/Failure";
 import NavLogo from "../NavbarAndLogo/NavLogo";
 import Background from "../Background/Background";
+
+import { Link } from "react-router-dom";
 
 // import { useAuthState } from "react-firebase-hooks/auth";
 // import { Link, useNavigate } from "react-router-dom";
@@ -187,100 +188,88 @@ const Signup = () => {
             <form onSubmit={signUpSubmitHandler} className={styles.wrapper}>
               <h2>Register</h2>
               {/* <form className={styles.wrapper}> */}
-              <div className={styles.username}>
-                <Input
-                  aria-label={"username"}
-                  type={"text"}
-                  className={
-                    userNameInputHasError ? styles.invalidInput : styles.input
-                  }
-                  placeholder={"Username"}
-                  value={userNameInputValue}
-                  onChange={userNameChangeHandler}
-                  // value={name}
-                  // onChange={(e) => setName(e.target.value)}
-                  onBlur={userNameBlurHandler}
-                ></Input>
-                {userNameInputHasError && !formIsValid && (
-                  <p className={styles.errorText}>
-                    Username must not be empty!
-                  </p>
-                )}
-              </div>
-              <div className={styles.email}>
-                <Input
-                  aria-label={"email for login"}
-                  type={"email"}
-                  className={
-                    emailInputHasError ? styles.invalidInput : styles.input
-                  }
-                  placeholder={"Email"}
-                  value={emailInputvalue}
-                  onChange={emailChangeHandler}
-                  // value={email}
-                  // onChange={(e) => setEmail(e.target.value)}
-                  onBlur={emailBlurHandler}
-                ></Input>
-                {emailInputHasError && !formIsValid && (
-                  <p className={styles.errorText}>
-                    Please enter a valid email !
-                  </p>
-                )}
-              </div>
-              <div className={styles.password}>
-                <Input
-                  aria-label={"password for login"}
-                  type={"password"}
-                  className={
-                    passwordInputHasError ? styles.invalidInput : styles.input
-                  }
-                  placeholder={"Password"}
-                  value={passwordInputValue}
-                  onChange={passwordChangeHandler}
-                  onBlur={passwordBlurHandler}
-                  // value={password}
-                  // onChange={(e) => setPassword(e.target.value)}
-                ></Input>
-                {passwordInputHasError && !formIsValid && (
-                  <p className={styles.errorText}>
-                    Password must be greater than 6 characters
-                  </p>
-                )}
-              </div>
-              <div className={styles.address}>
-                <Input
-                  aria-label={"user address"}
-                  type={"text"}
-                  className={
-                    addressInputHasError ? styles.invalidInput : styles.input
-                  }
-                  value={addressInputValue}
-                  placeholder={"Address"}
-                  onChange={addressChangeHandler}
-                  onBlur={addressBlurHandler}
-                ></Input>
-                {addressInputHasError && !formIsValid && (
-                  <p className={styles.errorText}>
-                    Address must not be empty !
-                  </p>
-                )}
-              </div>
-              <p></p>
-              <div className={styles.loginBtns}>
+              <Input
+                aria-label={"username"}
+                type={"text"}
+                className={
+                  userNameInputHasError ? styles.invalidInput : styles.input
+                }
+                placeholder={"Username"}
+                value={userNameInputValue}
+                onChange={userNameChangeHandler}
+                // value={name}
+                // onChange={(e) => setName(e.target.value)}
+                onBlur={userNameBlurHandler}
+              ></Input>
+              {userNameInputHasError && !formIsValid && (
+                <p className={styles.errorText}>Username must not be empty!</p>
+              )}
+              <Input
+                aria-label={"email for login"}
+                type={"email"}
+                className={
+                  emailInputHasError ? styles.invalidInput : styles.input
+                }
+                placeholder={"Email"}
+                value={emailInputvalue}
+                onChange={emailChangeHandler}
+                // value={email}
+                // onChange={(e) => setEmail(e.target.value)}
+                onBlur={emailBlurHandler}
+              ></Input>
+              {emailInputHasError && !formIsValid && (
+                <p className={styles.errorText}>Please enter a valid email !</p>
+              )}
+              <Input
+                aria-label={"password for login"}
+                type={"password"}
+                className={
+                  passwordInputHasError ? styles.invalidInput : styles.input
+                }
+                placeholder={"Password"}
+                value={passwordInputValue}
+                onChange={passwordChangeHandler}
+                onBlur={passwordBlurHandler}
+                // value={password}
+                // onChange={(e) => setPassword(e.target.value)}
+              ></Input>
+              {passwordInputHasError && !formIsValid && (
+                <p className={styles.errorText}>
+                  Password must be greater than 6 characters
+                </p>
+              )}
+              <Input
+                aria-label={"user address"}
+                type={"text"}
+                className={
+                  addressInputHasError ? styles.invalidInput : styles.input
+                }
+                value={addressInputValue}
+                placeholder={"Address"}
+                onChange={addressChangeHandler}
+                onBlur={addressBlurHandler}
+              ></Input>
+              {addressInputHasError && !formIsValid && (
+                <p className={styles.errorText}>Address must not be empty !</p>
+              )}
                 <Button
                   type={"submit"}
                   disabled={!formIsValid}
-                  value={isLoading ? "Loading..." : `Sign Up${httpError}`}
+                  value={
+                    isLoading ? "Loading..." : `Create Account${httpError}`
+                  }
+                  className={styles.createAccount}
                   // value={"Sign Up"}
                   // onClick={register}
                 ></Button>
-                <p>or</p>
                 <Button
                   type={"submit"}
                   value={"Sign in with Google"}
                   // onClick={signInWithGoogle}
                 ></Button>
-              </div>
+              <p className={styles.already}>
+                Already have an account ? <Link to="/login">Login</Link>
+              </p>
               {isDataSent(dataSentConfirmation)}
             </form>
           </div>
