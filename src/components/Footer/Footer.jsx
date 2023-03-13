@@ -11,6 +11,7 @@ import Pinterest from "./assets/Pinterest.png";
 import Twitter from "./assets/Twitter.png";
 import Youtube from "./assets/Youtube.png";
 import RSS from "./assets/RSS.png";
+import logo from "../NavbarAndLogo/assets/logo.svg";
 
 const Footer = () => {
   return (
@@ -18,7 +19,7 @@ const Footer = () => {
       <hr className={styles.line} />
       <div className={styles.footerLogoAndSocials}>
         <div className={styles.footerLogo}>
-          <h2>Logo</h2>
+          <img src={logo} alt="minimum living cost logo" />
         </div>
         <div className={styles.footerSocials}>
           <div className={styles.location}>

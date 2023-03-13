@@ -1,15 +1,13 @@
 .loginWrapper {
-  background-color: #fffdfd;
   padding: 2.5rem;
   /* z-index: 3001; */
-
-  border-radius: 2rem;
+  background: rgba(0, 0, 0, 0.7);
+  box-shadow: 0px 4px 63px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
   transition: top 1s ease-in-out;
   animation-name: animateleft;
   animation-duration: 1s;
-  /* width: 40vw; */
   max-width: 500px;
-  /* border: 1px solid red; */
   margin: 2rem auto 5rem;
   display: flex;
   justify-content: center;
@@ -23,19 +21,23 @@
   justify-content: center;
   align-items: center;
   gap: 1.5rem;
+  padding: 0rem 5rem;
 }
 .wrapper div {
   display: flex;
   justify-content: space-evenly;
   flex-direction: column;
+  margin:0rem 3rem;
 }
-.loginWrapper form h2{
-   font-family: "Poppins";
+.loginWrapper form h2 {
+  font-family: "Inter";
   font-style: normal;
   font-weight: 800;
-  font-size: 1.5rem;
-  line-height: 24px;
-  letter-spacing: 0.2px;
+  font-size: 2.2rem;
+  line-height: 44px;
+  text-align: center;
+  letter-spacing: 0.1px;
+
   color: #f4511e;
 }
 .label {
@@ -48,30 +50,30 @@
   color: #252b42;
 }
 .input {
-  background: #f9f9f9;
-  border: 1px solid #e6e6e6;
-  border-radius: 5px;
   font-family: "Inter";
   font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 28px;
-  letter-spacing: 0.2px;
-  color: #737373;
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 44px;
+  text-align: center;
+  letter-spacing: 0.1px;
+  color: #ffffff;
   padding: 0.7rem 3rem;
   outline: none;
+  background: rgba(217, 217, 217, 0.75);
+  border-radius: 12px;
 }
 .invalidInput {
   border: 1px solid #f4511e;
-  background-color: #fddddd;
   border-radius: 5px;
   font-family: "Inter";
   font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 28px;
-  letter-spacing: 0.2px;
-  padding: 0.5rem 2.5rem;
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 44px;
+  text-align: center;
+  letter-spacing: 0.1px;
+  padding: 0.7rem 3rem;
   outline: none;
 }
 
@@ -105,7 +107,6 @@
   .loginWrapper {
     width: 60%;
     /* flex-direction: column; */
-    
   }
 }
 @media screen and (max-width: 500px) {

@@ -185,18 +185,16 @@ const Signup = () => {
           <NavLogo />
           <div className={styles.loginWrapper}>
             <form onSubmit={signUpSubmitHandler} className={styles.wrapper}>
-              <h2>Sign Up</h2>
+              <h2>Register</h2>
               {/* <form className={styles.wrapper}> */}
               <div className={styles.username}>
-                <Label htmlFor={"username"} className={styles.label}>
-                  Username:
-                </Label>
                 <Input
                   aria-label={"username"}
                   type={"text"}
                   className={
                     userNameInputHasError ? styles.invalidInput : styles.input
                   }
+                  placeholder={"Username"}
                   value={userNameInputValue}
                   onChange={userNameChangeHandler}
                   // value={name}
@@ -210,15 +208,13 @@ const Signup = () => {
                 )}
               </div>
               <div className={styles.email}>
-                <Label htmlFor={"email"} className={styles.label}>
-                  Email:
-                </Label>
                 <Input
                   aria-label={"email for login"}
                   type={"email"}
                   className={
                     emailInputHasError ? styles.invalidInput : styles.input
                   }
+                  placeholder={"Email"}
                   value={emailInputvalue}
                   onChange={emailChangeHandler}
                   // value={email}
@@ -232,15 +228,13 @@ const Signup = () => {
                 )}
               </div>
               <div className={styles.password}>
-                <Label htmlFor={"password"} className={styles.label}>
-                  Password:
-                </Label>
                 <Input
                   aria-label={"password for login"}
                   type={"password"}
                   className={
                     passwordInputHasError ? styles.invalidInput : styles.input
                   }
+                  placeholder={"Password"}
                   value={passwordInputValue}
                   onChange={passwordChangeHandler}
                   onBlur={passwordBlurHandler}
@@ -254,9 +248,6 @@ const Signup = () => {
                 )}
               </div>
               <div className={styles.address}>
-                <Label htmlFor={"address"} className={styles.label}>
-                  Address:
-                </Label>
                 <Input
                   aria-label={"user address"}
                   type={"text"}
@@ -264,6 +255,7 @@ const Signup = () => {
                     addressInputHasError ? styles.invalidInput : styles.input
                   }
                   value={addressInputValue}
+                  placeholder={"Address"}
                   onChange={addressChangeHandler}
                   onBlur={addressBlurHandler}
                 ></Input>

@@ -25,25 +25,23 @@ const Login = () => {
             <form className={styles.wrapper}>
               <h2>Sign In</h2>
               <div className={styles.email}>
-                <Label htmlFor={"email"} className={styles.label}>
-                  Email:
-                </Label>
                 <Input
                   aria-label={"email for login"}
                   type={"email"}
                   className={styles.input}
+                  placeholder={"Email"}
+
                   // value={email}
                   // onChange={(e) => setEmail(e.target.value)}
                 ></Input>
               </div>
               <div className={styles.password}>
-                <Label htmlFor={"password"} className={styles.label}>
-                  Password:
-                </Label>
                 <Input
                   aria-label={"password for login"}
                   type={"password"}
                   className={styles.input}
+                  placeholder={"Password"}
+
                   // value={password}
                   // onChange={(e) => setPassword(e.target.value)}
                 ></Input>
