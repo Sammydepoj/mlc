@@ -4,7 +4,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App";
 import Login from "./components/Login/Login";
 import Signup from "./components/Signup/Signup";
-// import Dashboard from "./pages/Dashboard/dashboard";
+import Landlord from "./pages/Landlord/Landlord";
 
 import "./index.css";
 const router = createBrowserRouter([
@@ -20,10 +20,10 @@ const router = createBrowserRouter([
     path: "/signup",
     element: <Signup />,
   },
-  // {
-  //   path: "/dashboard",
-  //   element: <Dashboard />,
-  // },
+  {
+    path: "/landlord",
+    element: <Landlord />,
+  },
 ]);
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
