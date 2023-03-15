@@ -31,7 +31,7 @@ const Leaflet = () => {
 
   return (
     <MapContainer
-      style={{ height: "300px", width: "90%" }}
+      style={{ height: "300px", width: "100%" }}
       // center={location}
       center={{ lat: 51.505, lng: -0.09 }}
       zoom={13}

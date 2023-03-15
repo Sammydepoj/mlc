@@ -79,7 +79,7 @@ const NavLogo = () => {
             <Link to="/">Home</Link>
           </li>
           <li className={styles.li}>
-            <a href="#">Landlord</a>
+            <Link to="/landlord">Landlord</Link>
           </li>
           <li className={styles.li}>
             <a href="#">Tenants</a>
@@ -87,7 +87,7 @@ const NavLogo = () => {
           <li className={styles.li}>
             <a href="#">Contact Us</a>
           </li>
-          <div className={styles.menuCta}>
+          {/* <div className={styles.menuCta}> */}
             {/* <Button
               className={styles.btn}
               // onClick={loginClickHandler}
@@ -117,7 +117,7 @@ const NavLogo = () => {
                 value={"Sign Up"}
               ></Button>
             </Link>
-          </div>
+          {/* </div> */}
         </ul>
         <button
           className={styles.harmburger}

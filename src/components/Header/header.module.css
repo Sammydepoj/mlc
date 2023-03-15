@@ -5,8 +5,8 @@
   background-position: center;
   background-attachment: fixed;
   margin: 0;
-  /* padding: 0rem 5rem 10rem; */
-  padding: 0rem 1rem 5rem;
+  background-color: rgba(0, 0, 0, 0.3);
+  background-blend-mode: overlay;
   height: max-content;
   height: 100vh;
 }
@@ -15,7 +15,7 @@
   justify-content: space-between;
   align-items: center;
   gap: 5rem;
-  margin-top: 2rem;
+  margin: 2rem 5rem 0rem;
   position: relative;
   transition: top 2s ease-in-out;
   animation-name: animateleft;
@@ -40,15 +40,15 @@
   font-family: "Inter";
   font-style: normal;
   font-weight: 700;
-  font-size: 52px;
-  line-height: 100px;
+  font-size: 50px;
+  line-height: 70px;
   letter-spacing: 1px;
   text-transform: capitalize;
   color: #ffffff;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5);
 }
 .heroImg {
-  width: 50%;
+  width: 35%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -63,35 +63,34 @@
   background: #ffffff;
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 10px;
-  padding: 1rem;
+  padding: 0.5rem;
   display: flex;
   /* justify-content: stretch; */
   margin-top: 1rem;
   gap: 1rem;
+  width: 100%;
 }
 .filterHero select {
   background: #f9f9f9;
   border: 1px solid #e6e6e6;
   border-radius: 5px 0px 0px 5px;
-  padding: 0.2rem 3rem;
+  padding: 0.2rem 3rem 0rem 0rem;
   outline: none;
   width: 50%;
 }
 .searchBox {
   display: flex;
   gap: 0rem;
-  width: 50%;
-  /* justify-self: stretch; */
+  width: 100%;
 }
 .searchBox select {
   width: 100%;
 }
-@media screen and (max-width: 1113px) {
-  .header {
-    padding: 0rem 1rem 10rem;
-  }
+
+@media screen and (max-width: 1058px) {
   .hero {
     gap: 2rem;
+    margin: 2rem 1rem;
   }
 }
 

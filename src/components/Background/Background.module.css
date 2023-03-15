@@ -4,7 +4,7 @@
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
+  background-color: rgba(0, 0, 0, 0.3);
+  background-blend-mode: overlay;
   margin: 0;
-  padding: 0rem 1rem 2rem;
-  /* height: 100vh; */
 }

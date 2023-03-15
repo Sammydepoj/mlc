@@ -1,0 +1,44 @@
+.hero {
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+.hero h1 {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 52px;
+  line-height: 50px;
+  letter-spacing: 0.2px;
+  color: #ffffff;
+  /* text-decoration: underline; */
+}
+.hero h1 span {
+  color: #f4511e;
+}
+.hero p {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 24px;
+  letter-spacing: 0.2px;
+  color: #ffffff;
+}
+.formheading {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 32px;
+  text-transform: capitalize;
+  font-feature-settings: "salt" on, "liga" off;
+  color: #ffffff;
+  text-align: center;
+}
+.contactWrapper{
+    padding: 2rem auto;
+}
