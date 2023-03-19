@@ -6,6 +6,7 @@ import Login from "./components/Login/Login";
 import Signup from "./components/Signup/Signup";
 import Landlord from "./pages/Landlord/Landlord";
 import SignupTest from "./components/Signup/signupTest";
+import Dashboard from './pages/Dashboard/Dashboard'
 
 import "./index.css";
 const router = createBrowserRouter([
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
   {
     path: "/signup-test",
     element: <SignupTest />,
+  },
+  {
+    path: "/dashboard",
+    element: <Dashboard />,
   },
 ]);
 ReactDOM.createRoot(document.getElementById("root")).render(

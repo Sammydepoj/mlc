@@ -1,36 +1,53 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "../Signup/signup.module.css";
 import Button from "../Button/Button";
 import Input from "../Contact/components/Input/Input";
 import NavLogo from "../NavbarAndLogo/NavLogo";
 import Background from "../Background/Background";
 
-import { Link } from "react-router-dom";
-import { auth } from "../../firebase/firebase";
+
+import { Link, useNavigate } from "react-router-dom";
+import {
+  auth,
+  signInWithGoogle,
+  logInWithEmailAndPassword,
+} from "../../firebase/firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
+
+
 import { signInWithEmailAndPassword } from "firebase/auth";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  // const navigate = useNavigate();
+   const [user, loading, error] = useAuthState(auth);
+  const navigate = useNavigate();
 
-  const formSubmitHandler = (e) => {
-    e.preventDefault();
+   useEffect(() => {
+     if (loading) {
+       // maybe trigger a loading screen
+       return;
+     }
+     if (user) navigate("/dashboard");
+   }, [user, loading]);
 
-    signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        // Signed in
-        const user = userCredential.user;
-        navigate("/dashboard");
-        console.log(user);
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        alert(errorCode, errorMessage);
-        console.log(errorCode, errorMessage);
-      });
-  };
+  // const formSubmitHandler = (e) => {
+  //   e.preventDefault();
+
+  //   signInWithEmailAndPassword(auth, email, password)
+  //     .then((userCredential) => {
+  //       // Signed in
+  //       const user = userCredential.user;
+  //       navigate("/dashboard");
+  //       console.log(user);
+  //     })
+  //     .catch((error) => {
+  //       const errorCode = error.code;
+  //       const errorMessage = error.message;
+  //       alert(errorCode, errorMessage);
+  //       console.log(errorCode, errorMessage);
+  //     });
+  // };
 
   return (
     <Background
@@ -38,7 +55,7 @@ const Login = () => {
         <>
           <NavLogo />
           <div className={styles.loginWrapper}>
-            <form className={styles.wrapper} onSubmit={formSubmitHandler}>
+            <form className={styles.wrapper} >
               <h2>LOGIN</h2>
               <Input
                 aria-label={"email for login"}
@@ -72,12 +89,12 @@ const Login = () => {
               <Button
                 type={"submit"}
                 value={"Login"}
-                // onClick={() => logInWithEmailAndPassword(email, password)}
+                onClick={() => logInWithEmailAndPassword(email, password)}
               ></Button>
               <Button
-                type={"submit"}
+                // type={"submit"}
                 value={"Login with Google"}
-                // onClick={signInWithGoogle}
+                onClick={signInWithGoogle}
               ></Button>
               <p className={styles.already}>
                 Don’t have an account ? <Link to="/signup">Register</Link>

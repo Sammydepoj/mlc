@@ -10,6 +10,7 @@ import NavLogo from "../NavbarAndLogo/NavLogo";
 import Background from "../Background/Background";
 
 import { Link } from "react-router-dom";
+import { signInWithGoogle } from "../../firebase/firebase";
 
 // import { useAuthState } from "react-firebase-hooks/auth";
 // import { Link, useNavigate } from "react-router-dom";
@@ -252,21 +253,19 @@ const Signup = () => {
               {addressInputHasError && !formIsValid && (
                 <p className={styles.errorText}>Address must not be empty !</p>
               )}
-                <Button
-                  type={"submit"}
-                  disabled={!formIsValid}
-                  value={
-                    isLoading ? "Loading..." : `Create Account${httpError}`
-                  }
-                  className={styles.createAccount}
-                  // value={"Sign Up"}
-                  // onClick={register}
-                ></Button>
-                <Button
-                  type={"submit"}
-                  value={"Sign in with Google"}
-                  // onClick={signInWithGoogle}
-                ></Button>
+              <Button
+                type={"submit"}
+                disabled={!formIsValid}
+                value={isLoading ? "Loading..." : `Create Account${httpError}`}
+                className={styles.createAccount}
+                // value={"Sign Up"}
+                // onClick={register}
+              ></Button>
+              <Button
+                type={"submit"}
+                value={"Sign in with Google"}
+                onClick={signInWithGoogle}
+              ></Button>
               <p className={styles.already}>
                 Already have an account ? <Link to="/login">Login</Link>
               </p>
