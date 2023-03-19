@@ -5,7 +5,6 @@ import Input from "../Contact/components/Input/Input";
 import NavLogo from "../NavbarAndLogo/NavLogo";
 import Background from "../Background/Background";
 
-
 import { Link, useNavigate } from "react-router-dom";
 import {
   auth,
@@ -14,22 +13,21 @@ import {
 } from "../../firebase/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 
-
 import { signInWithEmailAndPassword } from "firebase/auth";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-   const [user, loading, error] = useAuthState(auth);
+  const [user, loading, error] = useAuthState(auth);
   const navigate = useNavigate();
 
-   useEffect(() => {
-     if (loading) {
-       // maybe trigger a loading screen
-       return;
-     }
-     if (user) navigate("/dashboard");
-   }, [user, loading]);
+  useEffect(() => {
+    if (loading) {
+      // maybe trigger a loading screen
+      return;
+    }
+    if (user) navigate("/dashboard");
+  }, [user, loading]);
 
   // const formSubmitHandler = (e) => {
   //   e.preventDefault();
@@ -55,7 +53,12 @@ const Login = () => {
         <>
           <NavLogo />
           <div className={styles.loginWrapper}>
-            <form className={styles.wrapper} >
+            <form
+              className={styles.wrapper}
+              onsubmit={(e) => {
+                e.preventDefault();
+              }}
+            >
               <h2>LOGIN</h2>
               <Input
                 aria-label={"email for login"}
