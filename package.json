@@ -10,11 +10,13 @@
   },
   "dependencies": {
     "firebase": "^9.17.2",
+    "formik": "^2.2.9",
     "framer-motion": "^10.2.4",
     "leaflet": "^1.9.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-firebase-hooks": "^5.1.1",
+    "react-hot-toast": "^2.4.0",
     "react-intersection-observer": "^9.4.3",
     "react-leaflet": "^4.2.0",
     "react-router-dom": "^6.8.2"
