@@ -55,7 +55,7 @@ const Login = () => {
           <div className={styles.loginWrapper}>
             <form
               className={styles.wrapper}
-              onsubmit={(e) => {
+              onSubmit={(e) => {
                 e.preventDefault();
               }}
             >

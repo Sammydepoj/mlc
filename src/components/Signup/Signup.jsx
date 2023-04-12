@@ -12,14 +12,6 @@ import Background from "../Background/Background";
 import { Link } from "react-router-dom";
 import { signInWithGoogle } from "../../firebase/firebase";
 
-// import { useAuthState } from "react-firebase-hooks/auth";
-// import { Link, useNavigate } from "react-router-dom";
-// import {
-//   auth,
-//   registerWithEmailAndPassword,
-//   signInWithGoogle,
-// } from "../../firebase/firebase";
-
 const Signup = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [httpError, sethttpError] = useState("");
@@ -88,7 +80,6 @@ const Signup = () => {
       ) {
         return;
       }
-
       setIsLoading(true);
 
       const saveUserData = await fetch(
@@ -164,21 +155,6 @@ const Signup = () => {
       return <Success children={httpError} />;
     }
   };
-
-  // const [email, setEmail] = useState("");
-  // const [password, setPassword] = useState("");
-  // const [name, setName] = useState("");
-  // const [user, loading, error] = useAuthState(auth);
-  // const history = useNavigate();
-
-  // const register = () => {
-  //   if (!name) alert("Please enter name");
-  //   registerWithEmailAndPassword(name, email, password);
-  // };
-  // useEffect(() => {
-  //   if (loading) return;
-  //   if (user) history.replace("/dashboard");
-  // }, [user, loading]);
 
   return (
     <Background
