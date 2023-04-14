@@ -1,0 +1,48 @@
+.dashboardHeader {
+  background: #8b5f52;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.icons {
+  display: flex;
+  gap: 2rem;
+}
+.dashboardHeaderIcon {
+  color: #292d32;
+  font-size: 1rem;
+}
+.userSummary {
+  display: flex;
+  gap: 0.5rem;
+}
+.userSummary div h4 {
+  font-family: "Inter";
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 28px;
+  color: #ffffff;
+}
+.userSummary div p {
+  font-family: "Inter";
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  color: #bdbdbd;
+}
+.userIconWrapper {
+  border-right: 2px solid #fff;
+  padding-right: 0.5rem;
+  position: relative;
+}
+.indicator {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: red;
+  border: 2px solid #fff;
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+}

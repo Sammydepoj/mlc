@@ -1,0 +1,77 @@
+.dashboard {
+  display: grid;
+  grid-template-rows: max-content 1fr max-content;
+}
+.dashboardContainer {
+  display: grid;
+  grid-template-columns: 15rem 1fr;
+}
+.sideBar {
+  border-right: 1px solid rgba(139, 95, 82, 0.63);
+  padding: 1.5rem;
+  display: grid;
+  gap: 3rem;
+}
+.sideBarMenu {
+  display: flex;
+  gap: 0.7rem;
+  align-items: center;
+}
+.sideBarMenu h4 {
+  font-family: "Inter";
+  font-style: normal;
+  /* font-weight: 700; */
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 28px;
+  /* color: #8b5f52; */
+  color: #4f4f4f;
+  white-space: nowrap;
+}
+.sideBarIcon {
+  /* color: #8b5f52; */
+  color: #4f4f4f;
+  font-size: 20px;
+  font-weight: bolder;
+}
+.dashboardBody {
+  padding: 1.5rem 2.5rem;
+  display: grid;
+  gap: 3rem;
+}
+.dashboardContentWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.greetings,
+.reviewsHeading {
+  font-family: "Inter";
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 32px;
+  color: #8b5f52;
+}
+.joinedDate {
+  font-family: "Inter";
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  color: #322724;
+}
+.reviewsHeading span {
+  color: #bdbdbd;
+}
+.reviewCardsContainer {
+  display: flex;
+  gap: 2rem;
+  /* overflow-x: visible; */
+}
+.reviewCards {
+  padding: 3rem;
+  width: 296px;
+  height: 160px;
+  background: #e0e0e0;
+  border-radius: 8px;
+  margin: 1rem auto;
+}
