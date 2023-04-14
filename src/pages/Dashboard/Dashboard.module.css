@@ -38,6 +38,7 @@
   padding: 1.5rem 2.5rem;
   display: grid;
   gap: 3rem;
+
 }
 .dashboardContentWrapper {
   display: flex;
@@ -66,11 +67,13 @@
   display: flex;
   gap: 2rem;
   /* overflow-x: visible; */
+  /* overflow-x: scroll; */
+
 }
 .reviewCards {
   padding: 3rem;
-  width: 296px;
-  height: 160px;
+  /* width: 296px;
+  height: 160px; */
   background: #e0e0e0;
   border-radius: 8px;
   margin: 1rem auto;
