@@ -107,15 +107,16 @@ const Dashboard = () => {
               <div className={styles.reviewCards}>s</div>
             </div>
           </div>
+          <button className="dashboard__btn" onClick={logout}>
+            Logout
+          </button>
         </div>
 
         {/* <h1>Welcome to the Dashboard</h1>
         Logged in as
         <div>{name}</div>
         <div>{user?.email}</div>
-        <button className="dashboard__btn" onClick={logout}>
-          Logout
-        </button> */}
+        */}
       </div>
 
       <Footer />
