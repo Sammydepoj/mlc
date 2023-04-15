@@ -6,10 +6,12 @@ import { query, collection, getDocs, where } from "firebase/firestore";
 
 import styles from "./Dashboard.module.css";
 
+// import {sideBarContent} from "./sideBarContent.js";
+
 import DashboardHeader from "./Component/DashboardHeader/DashboardHeader";
 import Footer from "../../components/Footer/Footer";
-
-import userImage from "./assets/userImage.svg";
+import Home from "../Dashboard/Component/Home/Home";
+import Listings from "./Component/Listings/Listings";
 
 import { RiHome4Line } from "react-icons/ri";
 import { HiOutlineEnvelope } from "react-icons/hi2";
@@ -21,6 +23,8 @@ const Dashboard = () => {
   const [user, loading, error] = useAuthState(auth);
   const [name, setName] = useState("");
   const navigate = useNavigate();
+
+  const [dashboardBodyContent, setDashboardBodyContent] = useState(<Home />);
 
   const fetchUserName = async () => {
     try {
@@ -45,6 +49,7 @@ const Dashboard = () => {
       id: "menu1",
       icon: <RiHome4Line />,
       text: "Home",
+      component: <Home />,
     },
     {
       id: "menu2",
@@ -60,6 +65,7 @@ const Dashboard = () => {
       id: "menu4",
       icon: <BsFilter />,
       text: "My Listings",
+      component: <Listings />,
     },
     {
       id: "menu5",
@@ -67,12 +73,6 @@ const Dashboard = () => {
       text: "My Experience",
     },
   ];
-
-  function splitWords(words) {
-    let n = words.split(" ");
-    return n[n.length - 1];
-  }
-
   return (
     <div className={styles.dashboard}>
       <DashboardHeader userName={name} email={user?.email} />
@@ -81,44 +81,20 @@ const Dashboard = () => {
         <div className={styles.sideBar}>
           {sideBarContent.map((menu) => {
             return (
-              <div className={styles.sideBarMenu} key={menu.id}>
+              <div
+                className={styles.sideBarMenu}
+                key={menu.id}
+                onClick={() => {
+                  setDashboardBodyContent(menu.component);
+                }}
+              >
                 {menu.icon} <h4>{menu.text}</h4>
               </div>
             );
           })}
         </div>
-        <div className={styles.dashboardBody}>
-          <div className={styles.dashboardContentWrapper}>
-            <img src={userImage} alt="user of the application" />
-            <div>
-              <p className={styles.greetings}>
-                Welcome Landlord {splitWords(name)}{" "}
-              </p>
-              <p className={styles.joinedDate}>Joined 2022</p>
-            </div>
-          </div>
-          <div className={styles.reviewsContainer}>
-            <h3 className={styles.reviewsHeading}>
-              Reviews <span>(3)</span>
-            </h3>
-            <div className={styles.reviewCardsContainer}>
-              <div className={styles.reviewCards}>s</div>
-              <div className={styles.reviewCards}>s</div>
-              <div className={styles.reviewCards}>s</div>
-            </div>
-          </div>
-          <button className="dashboard__btn" onClick={logout}>
-            Logout
-          </button>
-        </div>
-
-        {/* <h1>Welcome to the Dashboard</h1>
-        Logged in as
-        <div>{name}</div>
-        <div>{user?.email}</div>
-        */}
+        {dashboardBodyContent}
       </div>
-
       <Footer />
     </div>
   );
