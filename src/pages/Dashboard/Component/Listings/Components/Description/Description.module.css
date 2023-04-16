@@ -1,0 +1,54 @@
+.description {
+  display: grid;
+  gap: 1rem;
+  padding: 1.5rem;
+}
+
+.descriptionHeading {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 28px;
+  color: #8b5f52;
+}
+
+.description .inputLabelWrapper {
+  display: grid;
+  gap: 0.5rem;
+}
+.inputLabelWrapper {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 22px;
+  color: #4f4f4f;
+}
+.inputLabelWrapper input {
+  padding: 1rem;
+  border: 1px solid #bdbdbd;
+  border-radius: 4px;
+}
+.inputLabelWrapper textarea {
+  resize: none;
+  border: 1px solid #bdbdbd;
+}
+input,
+textarea {
+  outline: none;
+}
+.btnsWrapper {
+  display: flex;
+  gap: 2rem;
+  justify-content: flex-end;
+}
+.btnsWrapper button {
+  background: #8b5f52;
+  color: #fff;
+}
+.btnsWrapper button:first-child {
+  border: 1px solid #8b5f52;
+  background-color: inherit;
+  color: #8b5f52;
+}

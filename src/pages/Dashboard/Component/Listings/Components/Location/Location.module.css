@@ -1,0 +1,99 @@
+.location{
+    display: grid;
+    gap: 1rem;
+}
+.location div:first-child{
+    display: flex;
+}
+
+.descriptionHeading {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 28px;
+  color: #8b5f52;
+}
+
+.filterHero {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  padding: 0.5rem;
+  display: flex;
+  margin-top: 1rem;
+  gap: 1rem;
+  width: 100%;
+}
+.filterHero select {
+  background: #f9f9f9;
+  border: 1px solid #e6e6e6;
+  border-radius: 5px 0px 0px 5px;
+  padding: 0.2rem 3rem 0rem 0rem;
+  outline: none;
+  width: 50%;
+}
+.searchBox {
+  display: flex;
+  gap: 0rem;
+  width: 100%;
+}
+.searchBox select {
+  width: 100%;
+}
+
+@media screen and (max-width: 1058px) {
+  .hero {
+    gap: 2rem;
+    margin: 2rem 1rem;
+  }
+}
+
+@media screen and (max-width: 950px) {
+  .header {
+    height: max-content;
+  }
+  .hero {
+    flex-direction: column;
+  }
+  .heroText {
+    width: 100%;
+    text-align: center;
+    font-size: 45px;
+  }
+  .heroImg {
+    width: 70%;
+  }
+}
+@media screen and (max-width: 690px) {
+  .heroH1 {
+    font-size: 40px;
+  }
+  .heroImg {
+    width: 100%;
+  }
+  .filterHero {
+    padding: 0.5rem;
+    justify-content: center;
+    width: 100%;
+  }
+}
+@media screen and (max-width: 510px) {
+  .searchBox select {
+    padding: 0.5rem;
+  }
+}
+@media screen and (max-width: 440px) {
+  .filterHero {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .filterHero select {
+    width: 100%;
+    padding: 1.5rem;
+  }
+  .filterHero .searchBox {
+    width: 100%;
+  }
+}

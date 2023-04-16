@@ -1,0 +1,42 @@
+.listings {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  padding: 2rem 1rem;
+}
+.listYourSpace {
+  display: grid;
+  place-content: center;
+  background: #bdbdbd;
+  border-radius: 8px;
+  padding: 2rem;
+}
+.listYourSpace div h2 {
+  font-family: "Inter";
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 50px;
+  letter-spacing: 0.2px;
+  color: #ffffff;
+  position: relative;
+}
+.listYourSpace div h2::after {
+  content: "";
+  width: 35%;
+  height: 3px;
+  background-color: #f4511e;
+  position: absolute;
+  bottom: 0;
+  left: 50px;
+}
+.listYourSpace div h2 span {
+  color: #f4511e;
+}
+.listYourSpace div p {
+  font-family: "Inter";
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: 0.2px;
+  color: #ffffff;
+}
