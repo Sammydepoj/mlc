@@ -79,12 +79,7 @@ const Login = () => {
               ></Input>
               <div className={styles.ctaRememberMe}>
                 <span className="">
-                  <input
-                    type="checkbox"
-                    name="remeber me"
-                    id="remember"
-                    required
-                  />
+                  <input type="checkbox" name="remeber me" id="remember" />
                   <label htmlFor="remember">Remember Me</label>
                 </span>
                 <Link>Forgot Password ?</Link>
