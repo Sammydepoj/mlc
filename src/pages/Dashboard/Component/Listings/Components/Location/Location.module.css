@@ -1,11 +1,7 @@
-.location{
-    display: grid;
-    gap: 1rem;
+.location {
+  display: grid;
+  gap: 1rem;
 }
-.location div:first-child{
-    display: flex;
-}
-
 .descriptionHeading {
   font-family: "Inter";
   font-style: normal;
@@ -14,15 +10,44 @@
   line-height: 28px;
   color: #8b5f52;
 }
-
+.stateAddressInputWrapper {
+  display: flex;
+  gap: 1.5rem;
+}
+.stateAddressInputWrapper div {
+  display: flex;
+  flex-direction: column;
+}
+.stateAddressInputWrapper div label {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 22px;
+  color: #1d1d1d;
+}
+.stateAddressInputWrapper div select,
+input {
+  padding: 1rem;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #828282;
+  border: 1px solid #bdbdbd;
+  border-radius: 4px;
+  outline: none;
+}
 .filterHero {
   background: #ffffff;
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 10px;
-  padding: 0.5rem;
+  padding: 1rem;
   display: flex;
   margin-top: 1rem;
   gap: 1rem;
+  align-items: center;
   width: 100%;
 }
 .filterHero select {
@@ -32,6 +57,12 @@
   padding: 0.2rem 3rem 0rem 0rem;
   outline: none;
   width: 50%;
+  padding: 1rem;
+  font-family: "Poppins";
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 28px;
+  color: #252b42;
 }
 .searchBox {
   display: flex;
@@ -40,6 +71,49 @@
 }
 .searchBox select {
   width: 100%;
+}
+.searchIcon {
+  font-size: 2rem;
+  font-weight: bolder;
+  background: #23a6f0;
+  border: 1px solid #e6e6e6;
+  border-radius: 0px 5px 5px 0px;
+  color: #fff;
+  cursor: pointer;
+}
+.filterHero + p {
+  font-family: "Lexend";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #828282;
+  margin-top: 0.4rem;
+}
+
+.btnsWrapper {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: flex-end;
+}
+.btnsWrapper button:first-child {
+  border: 1px solid #8b5f52;
+  background-color: inherit;
+  color: #8b5f52;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+}
+.btnsWrapper button {
+  background: #8b5f52;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #ffffff;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 1058px) {

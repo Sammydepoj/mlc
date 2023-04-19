@@ -7,25 +7,27 @@ import Location from "./Components/Location/Location";
 
 const Listings = () => {
   const showNextSection = () => {
-    setShowSection(<Location />);
+    setShowSection(components[2]);
   };
 
   const showPrevSection = () => {
-    setShowSection(<ListYourSpace onClick={sectionToggleHandler} />);
+    setShowSection(components[0]);
   };
 
   const sectionToggleHandler = () => {
-    setShowSection(
-      <Description
-        prevSectionHandler={showPrevSection}
-        nextSectionHandler={showNextSection}
-      />
-    );
+    setShowSection(components[1]);
   };
 
-  const [showSection, setShowSection] = useState(
-    <ListYourSpace onClick={sectionToggleHandler} />
-  );
+  const components = [
+    <ListYourSpace onClick={sectionToggleHandler} />,
+    <Description
+      prevSectionHandler={showPrevSection}
+      nextSectionHandler={showNextSection}
+    />,
+    <Location />,
+  ];
+
+  const [showSection, setShowSection] = useState(components[0]);
 
   return (
     <div className={styles.listings}>

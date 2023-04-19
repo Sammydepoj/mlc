@@ -7,11 +7,18 @@ import { BiSearch } from "react-icons/bi";
 
 import Button from "../Button/Button";
 
-const Location = () => {
+const Location = ({ nextSectionHandler, prevSectionHandler }) => {
+  const backButtonHandler = () => {
+    prevSectionHandler();
+  };
+  const continueButtonHandler = () => {
+    nextSectionHandler();
+  };
+
   return (
     <div className={styles.location}>
-      <p className={styles.descriptionHeading}>Description</p>
-      <div>
+      <p className={styles.descriptionHeading}>Location</p>
+      <div className={styles.stateAddressInputWrapper}>
         <div>
           <label htmlFor="state">State</label>
           <select name="state" id="state" placeholder="atlanta">
@@ -21,7 +28,12 @@ const Location = () => {
         </div>
         <div>
           <label htmlFor="address">Address</label>
-          <input type="text" name="address" id="address" />
+          <input
+            type="text"
+            name="address"
+            id="address"
+            placeholder="------------------"
+          />
         </div>
       </div>
       <div>
@@ -43,13 +55,13 @@ const Location = () => {
               <option value="Lekki">Lekki</option>
             </select>
           </div>
-          <BiSearch />
+          <BiSearch className={styles.searchIcon} />
         </div>
         <p>Move the pointer to set the right map position.</p>
       </div>
       <div className={styles.btnsWrapper}>
-        <Button value={"Back"}></Button>
-        <Button value={"Continue"}></Button>
+        <Button value={"Back"} onClick={backButtonHandler}></Button>
+        <Button value={"Continue"} onClick={continueButtonHandler}></Button>
       </div>
     </div>
   );
