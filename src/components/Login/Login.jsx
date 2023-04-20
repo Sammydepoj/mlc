@@ -15,6 +15,10 @@ import { useAuthState } from "react-firebase-hooks/auth";
 
 import { signInWithEmailAndPassword } from "firebase/auth";
 
+import { FcGoogle } from "react-icons/fc";
+import { GrFacebookOption } from "react-icons/gr";
+import { BsApple } from "react-icons/bs";
+
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -29,24 +33,6 @@ const Login = () => {
     if (user) navigate("/dashboard");
   }, [user, loading]);
 
-  // const formSubmitHandler = (e) => {
-  //   e.preventDefault();
-
-  //   signInWithEmailAndPassword(auth, email, password)
-  //     .then((userCredential) => {
-  //       // Signed in
-  //       const user = userCredential.user;
-  //       navigate("/dashboard");
-  //       console.log(user);
-  //     })
-  //     .catch((error) => {
-  //       const errorCode = error.code;
-  //       const errorMessage = error.message;
-  //       alert(errorCode, errorMessage);
-  //       console.log(errorCode, errorMessage);
-  //     });
-  // };
-
   return (
     <Background
       children={
@@ -59,40 +45,66 @@ const Login = () => {
                 e.preventDefault();
               }}
             >
-              <h2>LOGIN</h2>
-              <Input
-                aria-label={"email for login"}
-                type={"email"}
-                className={styles.input}
-                placeholder={"Email"}
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              ></Input>
+              <h2>Welcome Back!</h2>
+              <div className={styles.socialLoginBtnContainer}>
+                <Button
+                  value={"Continue with Google"}
+                  onClick={signInWithGoogle}
+                  className={styles.googleLogin}
+                >
+                  <FcGoogle className={styles.icons} />
+                </Button>
 
-              <Input
-                aria-label={"password for login"}
-                type={"password"}
-                className={styles.input}
-                placeholder={"Password"}
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              ></Input>
+                <Button
+                  value={"Continue with Facebook"}
+                  onClick={signInWithGoogle}
+                  className={styles.facebookLogin}
+                >
+                  <GrFacebookOption className={styles.icons} />
+                </Button>
+
+                <Button
+                  value={"Continue with Apple"}
+                  onClick={signInWithGoogle}
+                  className={styles.appleLogin}
+                >
+                  <BsApple className={styles.icons} />
+                </Button>
+              </div>
+
+              <div className={styles.ctaHeading}>
+                <hr />
+                <div>
+                  <p className={styles.ctaDetails}>Or</p>
+                </div>
+              </div>
+              <div className={styles.inputsWrapper}>
+                <Input
+                  aria-label={"email for login"}
+                  type={"email"}
+                  className={styles.input}
+                  placeholder={"Email"}
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                ></Input>
+
+                <Input
+                  aria-label={"password for login"}
+                  type={"password"}
+                  className={styles.input}
+                  placeholder={"Password"}
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                ></Input>
+              </div>
               <div className={styles.ctaRememberMe}>
-                <span className="">
-                  <input type="checkbox" name="remeber me" id="remember" />
-                  <label htmlFor="remember">Remember Me</label>
-                </span>
                 <Link>Forgot Password ?</Link>
               </div>
+
               <Button
                 type={"submit"}
                 value={"Login"}
                 onClick={() => logInWithEmailAndPassword(email, password)}
-              ></Button>
-              <Button
-                // type={"submit"}
-                value={"Login with Google"}
-                onClick={signInWithGoogle}
               ></Button>
               <p className={styles.already}>
                 Don’t have an account ? <Link to="/signup">Register</Link>

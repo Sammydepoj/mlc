@@ -1,15 +1,7 @@
 import React from "react";
-import styles from "./button.module.css";
+import styles from "./Button.module.css";
 
-const Button = ({
-  type,
-  name,
-  value,
-  disabled,
-  onClick,
-  className,
-  children,
-}) => {
+const Button = ({ type, name, value, disabled, onClick, className }) => {
   return (
     <button
       type={type}
@@ -20,7 +12,6 @@ const Button = ({
       value={value}
     >
       {value}
-      {children}
     </button>
   );
 };

@@ -41,7 +41,8 @@
   /* justify-content: space-between; */
   align-items: flex-end;
 }
-.li, .ul a button {
+.li,
+.ul a button {
   margin: 0rem 1rem;
 }
 .li a {
@@ -52,7 +53,8 @@
   line-height: 70.19%;
   color: #ffffff;
 }
-.li a:focus,.li a:active {
+.li a:focus,
+.li a:active {
   border-bottom: 1px solid #ffffff;
 }
 
@@ -67,22 +69,61 @@
   cursor: pointer;
 }
 .btn {
-  white-space: nowrap;
-  background-color: none;
-  margin: 0rem 2rem;
-  border: 2px solid #f4511e;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 17px;
 }
-.link{
+.btn1 {
+  background: #8b5f52;
+  color: #fff;
+  border: none;
+}
+.btn2 {
+  color: #8b5f52;
+  border: 1px solid #8b5f52;
+  background-color: inherit;
+}
+.getStartedBtn {
+  background: #f4511e;
+  border-radius: 12px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 19px;
+  color: #ffffff;
+  white-space: nowrap;
+  border: none;
+}
+.menuCta {
+  display: none;
+  position: absolute;
+  top: 100%;
+  flex-direction: column;
+  gap: 1rem;
+  right: 10px;
+  padding: 1rem 2rem;
+  background: #efd5d5;
+  box-shadow: 0px 12px 24px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
+  z-index: 3000;
+  animation-name: animateleft;
+  animation-duration: 1s;
+}
+.flex {
+  display: flex;
+}
+.link {
   color: #ffffff;
 }
 @keyframes animateleft {
   from {
-    top: -50%;
     opacity: 0;
     transform: scale(0%);
   }
   to {
-    top: 0%;
     opacity: 1;
     transform: scale(100%);
   }
@@ -99,7 +140,7 @@
 }
 @media screen and (max-width: 903px) {
   .navlogo {
-    gap: 1.5rem;
+    gap: 0rem;
   }
   .li {
     margin: 0rem 0.2rem;
@@ -112,9 +153,6 @@
   }
   .hidden {
     display: none;
-  }
-  .visible {
-    display: block;
   }
   .ul {
     display: none;
@@ -141,17 +179,21 @@
   }
   .harmburger {
     display: block;
+    border: none;
   }
 }
 @media screen and (max-width: 500px) {
+  .navlogo {
+    padding: 0rem;
+  }
   .ul {
     width: 75%;
   }
-  .loginWrapper {
-    width: 90%;
+  .getStartedBtn {
+    font-size: 12px;
   }
-  .input {
-    font-size: 10px;
-    padding: 0.7rem 2rem;
+  .navlogo div img {
+    width: 4.5rem;
+    height: 4.5rem;
   }
 }

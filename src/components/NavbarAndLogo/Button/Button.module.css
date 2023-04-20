@@ -1,0 +1,10 @@
+.button {
+  border-radius: 12px;
+  padding: 0.5rem;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 17px;
+  cursor: pointer;
+}

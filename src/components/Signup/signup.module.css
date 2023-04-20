@@ -5,9 +5,9 @@
   transition: top 1s ease-in-out;
   animation-name: animateleft;
   animation-duration: 1s;
-  max-width: 500px;
+  max-width: 400px;
   margin: 2rem auto 5rem;
-  padding: 2rem;
+  padding: 0.5rem 2rem;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
 }
 .wrapper {
@@ -18,42 +18,99 @@
   align-items: center;
   gap: 1.5rem;
 }
-/*  */
+
 .loginWrapper form h2 {
   font-family: "Inter";
   font-style: normal;
-  font-weight: 800;
-  font-size: 36px;
-  line-height: 44px;
-  text-align: center;
-  letter-spacing: 0.1px;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 32px;
   color: #f4511e;
 }
-
-.input {
-  font-family: "Inter";
-  font-style: normal;
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 44px;
-  border: none;
-  letter-spacing: 0.1px;
-  color: #ffffff;
-  padding: 0.7rem 3rem 0.7rem 1rem;
-  outline: none;
-  background: rgba(217, 217, 217, 0.75);
-  border-radius: 12px;
+.socialLoginBtnContainer {
+  display: grid;
+  gap: 0.5rem;
   width: 100%;
 }
-.input::placeholder {
-  color: #fff;
+.ctaDetails {
+  font-family: "Lexend";
+  font-style: normal;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+  color: #f1efef;
+}
+.ctaHeading {
+  width: 100%;
+  position: relative;
+}
+.ctaHeading hr {
+  width: 100%;
+}
+.ctaHeading div {
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  text-align: center;
+  background: rgba(0, 0, 0, 1);
+  padding: 0.2rem 1.5rem;
+}
+.socialLogins {
+  display: flex;
+  gap: 2rem;
+}
+.socialLogins div {
+  background: #ffffff;
+  border: 1.5px solid #1d1d1d;
+  border-radius: 8px;
+  padding: 0.5rem;
+  cursor: pointer;
+}
+.icons {
+  font-size: 1.5rem;
+}
+.googleLogin,
+.facebookLogin,
+.appleLogin {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  white-space: nowrap;
+}
+.facebookLogin {
+  background-color: #0077b6;
+}
+.appleLogin {
+  background-color: #463f3f;
+}
+.inputsWrapper {
+  display: grid;
+  gap: 1rem;
+  width: 100%;
+  background: #ffffff;
+}
+.input {
+  font-family: "Inter";
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  border: none;
+  color: #828282;
+  padding: 0.7rem 3rem 0.7rem 1rem;
+  outline: none;
+  background: #fff;
+  border: 1px solid #bdbdbd;
+  border-radius: 8px;
+  width: 100%;
 }
 .invalidInput {
-  border: 1px solid #f4511e;
+  border: 1px solid red;
   border-radius: 5px;
   font-family: "Inter";
-  font-style: normal;
-  font-weight: 700;
+  font-weight: 400;
   font-size: 16px;
   line-height: 44px;
   letter-spacing: 0.1px;
@@ -70,21 +127,14 @@
 .errorText {
   color: #f4511e;
   margin-top: -1rem;
+  font-weight: 700;
 }
 
 .wrapper button {
   width: 100%;
-  border-radius: 12px;
-  padding: 0.7rem 3rem 0.7rem 1rem;
   font-family: "Inter";
-  font-style: normal;
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 44px;
-  text-align: center;
-  letter-spacing: 0.1px;
-  color: #ffffff;
-  white-space: nowrap;
+  font-weight: 400;
+  line-height: 24px;
 }
 .already {
   font-family: "Inter";
@@ -93,7 +143,6 @@
   font-size: 12px;
   line-height: 32px;
   text-align: center;
-  letter-spacing: 0.1px;
   color: #ffffff;
   margin-top: -1.5rem;
 }
@@ -102,28 +151,19 @@
 }
 .ctaRememberMe {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
   width: 100%;
   margin-top: -1rem;
   margin-bottom: 10rem;
 }
-.ctaRememberMe span label {
-  margin-left: 0.5rem;
-}
-.ctaRememberMe span label,
-a {
+.ctaRememberMe a {
   font-family: "Inter";
-  font-style: normal;
   font-weight: 500;
   font-size: 12px;
   line-height: 30px;
   text-align: center;
-  letter-spacing: 0.1px;
   color: #ffffff;
-}
-.createAccount{
-  margin-top: 10rem;
 }
 
 @keyframes animateleft {

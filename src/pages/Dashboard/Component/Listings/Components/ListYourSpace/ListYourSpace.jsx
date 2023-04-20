@@ -9,7 +9,7 @@ const ListYourSpace = ({ onClick }) => {
     onClick();
   };
   return (
-    <form onSubmit={formSubmitHandler}>
+    <form onSubmit={formSubmitHandler} className={styles.dashboardForm}>
       <label htmlFor="apartmentType">Apartment Type</label>
       <select
         name="apartmentType"

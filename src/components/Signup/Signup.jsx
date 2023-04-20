@@ -12,6 +12,10 @@ import Background from "../Background/Background";
 import { Link } from "react-router-dom";
 import { signInWithGoogle } from "../../firebase/firebase";
 
+import { FcGoogle } from "react-icons/fc";
+import { GrFacebookOption } from "react-icons/gr";
+import { BsApple } from "react-icons/bs";
+
 const Signup = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [httpError, sethttpError] = useState("");
@@ -163,85 +167,114 @@ const Signup = () => {
           <NavLogo />
           <div className={styles.loginWrapper}>
             <form onSubmit={signUpSubmitHandler} className={styles.wrapper}>
-              <h2>Register</h2>
-              {/* <form className={styles.wrapper}> */}
-              <Input
-                aria-label={"username"}
-                type={"text"}
-                className={
-                  userNameInputHasError ? styles.invalidInput : styles.input
-                }
-                placeholder={"Username"}
-                value={userNameInputValue}
-                onChange={userNameChangeHandler}
-                // value={name}
-                // onChange={(e) => setName(e.target.value)}
-                onBlur={userNameBlurHandler}
-              ></Input>
-              {userNameInputHasError && !formIsValid && (
-                <p className={styles.errorText}>Username must not be empty!</p>
-              )}
-              <Input
-                aria-label={"email for login"}
-                type={"email"}
-                className={
-                  emailInputHasError ? styles.invalidInput : styles.input
-                }
-                placeholder={"Email"}
-                value={emailInputvalue}
-                onChange={emailChangeHandler}
-                // value={email}
-                // onChange={(e) => setEmail(e.target.value)}
-                onBlur={emailBlurHandler}
-              ></Input>
-              {emailInputHasError && !formIsValid && (
-                <p className={styles.errorText}>Please enter a valid email !</p>
-              )}
-              <Input
-                aria-label={"password for login"}
-                type={"password"}
-                className={
-                  passwordInputHasError ? styles.invalidInput : styles.input
-                }
-                placeholder={"Password"}
-                value={passwordInputValue}
-                onChange={passwordChangeHandler}
-                onBlur={passwordBlurHandler}
-                // value={password}
-                // onChange={(e) => setPassword(e.target.value)}
-              ></Input>
-              {passwordInputHasError && !formIsValid && (
-                <p className={styles.errorText}>
-                  Password must be greater than 6 characters
-                </p>
-              )}
-              <Input
-                aria-label={"user address"}
-                type={"text"}
-                className={
-                  addressInputHasError ? styles.invalidInput : styles.input
-                }
-                value={addressInputValue}
-                placeholder={"Address"}
-                onChange={addressChangeHandler}
-                onBlur={addressBlurHandler}
-              ></Input>
-              {addressInputHasError && !formIsValid && (
-                <p className={styles.errorText}>Address must not be empty !</p>
-              )}
+              <h2>Register Now</h2>
+              <p className={styles.ctaDetails}>
+                Create an account to have complete access and start leasing out
+                your place at ease with no hassles.
+              </p>
+              <div className={styles.ctaHeading}>
+                <hr />
+                <div>
+                  <p className={styles.ctaDetails}>Sign up with</p>
+                </div>
+              </div>
+              <div className={styles.socialLogins}>
+                <div className={styles.appleSignup}>
+                  <BsApple className={styles.icons} />
+                </div>
+                <div className={styles.googleSignup} onClick={signInWithGoogle}>
+                  <FcGoogle className={styles.icons} />
+                </div>
+                <div className={styles.facebookSignup}>
+                  <GrFacebookOption className={styles.icons} />
+                </div>
+              </div>
+              <p className={styles.ctaDetails}>Or</p>
+              <div className={styles.inputsWrapper}>
+                <Input
+                  aria-label={"username"}
+                  type={"text"}
+                  className={
+                    userNameInputHasError ? styles.invalidInput : styles.input
+                  }
+                  placeholder={"Username"}
+                  value={userNameInputValue}
+                  onChange={userNameChangeHandler}
+                  // value={name}
+                  // onChange={(e) => setName(e.target.value)}
+                  onBlur={userNameBlurHandler}
+                ></Input>
+                {userNameInputHasError && !formIsValid && (
+                  <p className={styles.errorText}>
+                    Username must not be empty!
+                  </p>
+                )}
+                <Input
+                  aria-label={"email for login"}
+                  type={"email"}
+                  className={
+                    emailInputHasError ? styles.invalidInput : styles.input
+                  }
+                  placeholder={"Email"}
+                  value={emailInputvalue}
+                  onChange={emailChangeHandler}
+                  // value={email}
+                  // onChange={(e) => setEmail(e.target.value)}
+                  onBlur={emailBlurHandler}
+                ></Input>
+                {emailInputHasError && !formIsValid && (
+                  <p className={styles.errorText}>
+                    Please enter a valid email !
+                  </p>
+                )}
+                <Input
+                  aria-label={"password for login"}
+                  type={"password"}
+                  className={
+                    passwordInputHasError ? styles.invalidInput : styles.input
+                  }
+                  placeholder={"Password"}
+                  value={passwordInputValue}
+                  onChange={passwordChangeHandler}
+                  onBlur={passwordBlurHandler}
+                  // value={password}
+                  // onChange={(e) => setPassword(e.target.value)}
+                ></Input>
+                {passwordInputHasError && !formIsValid && (
+                  <p className={styles.errorText}>
+                    Password must be greater than 6 characters
+                  </p>
+                )}
+                <Input
+                  aria-label={"user address"}
+                  type={"text"}
+                  className={
+                    addressInputHasError ? styles.invalidInput : styles.input
+                  }
+                  value={addressInputValue}
+                  placeholder={"Address"}
+                  onChange={addressChangeHandler}
+                  onBlur={addressBlurHandler}
+                ></Input>
+                {addressInputHasError && !formIsValid && (
+                  <p className={styles.errorText}>
+                    Address must not be empty !
+                  </p>
+                )}
+              </div>
               <Button
                 type={"submit"}
                 disabled={!formIsValid}
-                value={isLoading ? "Loading..." : `Create Account${httpError}`}
+                value={isLoading ? "Loading..." : `Register${httpError}`}
                 className={styles.createAccount}
                 // value={"Sign Up"}
                 // onClick={register}
               ></Button>
-              <Button
+              {/* <Button
                 type={"submit"}
                 value={"Sign in with Google"}
                 onClick={signInWithGoogle}
-              ></Button>
+              ></Button> */}
               <p className={styles.already}>
                 Already have an account ? <Link to="/login">Login</Link>
               </p>

@@ -15,7 +15,7 @@ const Header = () => {
           </h1>
         </div>
         <div className={styles.heroImg}>
-          <p>Click on the map to view your current Location</p>
+          <p>click on the map to view your current location</p>
           <Leaflet />
           <div className={styles.filterHero}>
             <select name="All Type" id="Alltype">
