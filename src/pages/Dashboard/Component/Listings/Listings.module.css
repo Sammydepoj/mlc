@@ -10,6 +10,9 @@
   background: #bdbdbd;
   border-radius: 8px;
   padding: 2rem;
+  background-image: url("./assets/homeImage.png");
+  background-size: cover;
+  background-position: center;
 }
 .listYourSpace div h2 {
   font-family: "Inter";
@@ -39,4 +42,12 @@
   line-height: 24px;
   letter-spacing: 0.2px;
   color: #ffffff;
+}
+@media only screen and (max-width:690px){
+  .listings {
+  grid-template-columns: 1fr;
+}
+.listYourSpace {
+  height: 70vh;
+}
 }

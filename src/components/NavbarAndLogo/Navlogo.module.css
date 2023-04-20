@@ -151,9 +151,6 @@
   .navlogo {
     justify-content: space-between;
   }
-  .hidden {
-    display: none;
-  }
   .ul {
     display: none;
     flex-direction: column;
