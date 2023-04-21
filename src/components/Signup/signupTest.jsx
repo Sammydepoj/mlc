@@ -16,9 +16,9 @@ import {
 import { useAuthState } from "react-firebase-hooks/auth";
 
 const Signup = () => {
+  const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [userName, setUserName] = useState("");
   const [user, loading, error] = useAuthState(auth);
   const navigate = useNavigate();
 
@@ -27,6 +27,7 @@ const Signup = () => {
     if (!userName) alert("Please enter a username");
     registerWithEmailAndPassword(userName, email, password);
   };
+  
   useEffect(() => {
     if (loading) return;
     if (user) navigate("/dashboard");

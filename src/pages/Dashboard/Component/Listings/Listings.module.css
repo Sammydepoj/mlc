@@ -43,11 +43,11 @@
   letter-spacing: 0.2px;
   color: #ffffff;
 }
-@media only screen and (max-width:690px){
+@media only screen and (max-width: 690px) {
   .listings {
-  grid-template-columns: 1fr;
-}
-.listYourSpace {
-  height: 70vh;
-}
+    grid-template-columns: 1fr;
+  }
+  .listYourSpace {
+    height: 70vh;
+  }
 }

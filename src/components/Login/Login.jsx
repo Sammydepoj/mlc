@@ -13,7 +13,6 @@ import {
 } from "../../firebase/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 
-import { signInWithEmailAndPassword } from "firebase/auth";
 
 import { FcGoogle } from "react-icons/fc";
 import { GrFacebookOption } from "react-icons/gr";

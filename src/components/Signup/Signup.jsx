@@ -9,25 +9,44 @@ import Failure from "../Contact/components/Failure/Failure";
 import NavLogo from "../NavbarAndLogo/NavLogo";
 import Background from "../Background/Background";
 
-import { Link } from "react-router-dom";
-import { signInWithGoogle } from "../../firebase/firebase";
+import { Link, useNavigate } from "react-router-dom";
 
 import { FcGoogle } from "react-icons/fc";
 import { GrFacebookOption } from "react-icons/gr";
 import { BsApple } from "react-icons/bs";
+
+import {
+  signInWithGoogle,
+  registerWithEmailAndPassword,
+  auth,
+} from "../../firebase/firebase";
+
+import { useAuthState } from "react-firebase-hooks/auth";
 
 const Signup = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [httpError, sethttpError] = useState("");
   const [dataSentConfirmation, setDataSetConfirmation] = useState("");
 
+  const [user, loading, error] = useAuthState(auth);
+  const navigate = useNavigate();
+
   const {
-    value: userNameInputValue,
-    isValid: enteredUserNameIsValid,
-    hasError: userNameInputHasError,
-    valueChangeHandler: userNameChangeHandler,
-    inputBlurHandler: userNameBlurHandler,
-    reset: resetUserNameInput,
+    value: firstNameInputValue,
+    isValid: enteredfirstNameIsValid,
+    hasError: firstNameInputHasError,
+    valueChangeHandler: firstNameChangeHandler,
+    inputBlurHandler: firstNameBlurHandler,
+    reset: resetfirstNameInput,
+  } = useInput((value) => value.trim() !== "");
+
+  const {
+    value: lastNameInputValue,
+    isValid: enteredlastNameIsValid,
+    hasError: lastNameInputHasError,
+    valueChangeHandler: lastNameChangeHandler,
+    inputBlurHandler: lastNameBlurHandler,
+    reset: resetlastNameInput,
   } = useInput((value) => value.trim() !== "");
 
   const {
@@ -40,15 +59,6 @@ const Signup = () => {
   } = useInput((value) => value.includes("@"));
 
   const {
-    value: addressInputValue,
-    isValid: enteredAddressIsValid,
-    hasError: addressInputHasError,
-    valueChangeHandler: addressChangeHandler,
-    inputBlurHandler: addressBlurHandler,
-    reset: resetAddressInput,
-  } = useInput((value) => value.trim() !== "");
-
-  const {
     value: passwordInputValue,
     isValid: enteredPasswordIsValid,
     hasError: passwordInputHasError,
@@ -57,12 +67,27 @@ const Signup = () => {
     reset: resetPasswordInput,
   } = useInput((value) => value.length >= 6 && value.trim() !== "");
 
+  const {
+    value: confirmPasswordInputValue,
+    isValid: enteredconfirmPasswordIsValid,
+    hasError: confirmPasswordInputHasError,
+    valueChangeHandler: confirmPasswordChangeHandler,
+    inputBlurHandler: confirmPasswordBlurHandler,
+    reset: resetConfirmPasswordInput,
+  } = useInput(
+    (value) =>
+      value.trim() !== "" &&
+      value.length >= 6 &&
+      value.trim() === passwordInputValue
+  );
+
   let formIsValid = false;
 
   if (
-    userNameInputValue &&
+    firstNameInputValue &&
+    lastNameInputValue &&
     emailInputvalue &&
-    addressInputValue &&
+    confirmPasswordInputValue &&
     passwordInputValue
   ) {
     formIsValid = true;
@@ -77,13 +102,22 @@ const Signup = () => {
       }
 
       if (
-        !userNameInputValue &&
+        !firstNameInputValue &&
+        !lastNameInputValue &&
         !emailInputvalue &&
-        !addressInputValue &&
+        !confirmPasswordInputValue &&
         !passwordInputValue
       ) {
         return;
       }
+      const userNameInputValue = firstNameInputValue + " " + lastNameInputValue;
+
+      registerWithEmailAndPassword(
+        userNameInputValue,
+        emailInputvalue,
+        passwordInputValue
+      );
+
       setIsLoading(true);
 
       const saveUserData = await fetch(
@@ -132,9 +166,10 @@ const Signup = () => {
         throw new Error();
       }
 
-      resetUserNameInput();
+      resetfirstNameInput();
+      resetlastNameInput();
       resetEmailInput();
-      resetAddressInput();
+      resetConfirmPasswordInput();
       resetPasswordInput();
     } catch (error) {
       console.log(error);
@@ -148,6 +183,12 @@ const Signup = () => {
       }, 5000);
     }
   };
+
+  useEffect(() => {
+    if (loading) return;
+    if (user) navigate("/dashboard");
+  }, [user, loading]);
+
   const isDataSent = (confirmedData) => {
     if (confirmedData === null) {
       return;
@@ -192,23 +233,41 @@ const Signup = () => {
               <p className={styles.ctaDetails}>Or</p>
               <div className={styles.inputsWrapper}>
                 <Input
-                  aria-label={"username"}
+                  aria-label={"first name"}
                   type={"text"}
                   className={
-                    userNameInputHasError ? styles.invalidInput : styles.input
+                    firstNameInputHasError ? styles.invalidInput : styles.input
                   }
-                  placeholder={"Username"}
-                  value={userNameInputValue}
-                  onChange={userNameChangeHandler}
-                  // value={name}
-                  // onChange={(e) => setName(e.target.value)}
-                  onBlur={userNameBlurHandler}
+                  placeholder={"First Name"}
+                  value={firstNameInputValue}
+                  onChange={firstNameChangeHandler}
+                  onBlur={firstNameBlurHandler}
                 ></Input>
-                {userNameInputHasError && !formIsValid && (
-                  <p className={styles.errorText}>
-                    Username must not be empty!
-                  </p>
-                )}
+                {firstNameInputHasError &&
+                  !formIsValid &&
+                  !enteredfirstNameIsValid && (
+                    <p className={styles.errorText}>
+                      Firstname must not be empty!
+                    </p>
+                  )}
+                <Input
+                  aria-label={"last name"}
+                  type={"text"}
+                  className={
+                    lastNameInputHasError ? styles.invalidInput : styles.input
+                  }
+                  placeholder={"Last Name"}
+                  value={lastNameInputValue}
+                  onChange={lastNameChangeHandler}
+                  onBlur={lastNameBlurHandler}
+                ></Input>
+                {lastNameInputHasError &&
+                  !formIsValid &&
+                  !enteredlastNameIsValid && (
+                    <p className={styles.errorText}>
+                      Last name must not be empty!
+                    </p>
+                  )}
                 <Input
                   aria-label={"email for login"}
                   type={"email"}
@@ -218,11 +277,9 @@ const Signup = () => {
                   placeholder={"Email"}
                   value={emailInputvalue}
                   onChange={emailChangeHandler}
-                  // value={email}
-                  // onChange={(e) => setEmail(e.target.value)}
                   onBlur={emailBlurHandler}
                 ></Input>
-                {emailInputHasError && !formIsValid && (
+                {emailInputHasError && !formIsValid && !enteredEmailIsValid && (
                   <p className={styles.errorText}>
                     Please enter a valid email !
                   </p>
@@ -240,41 +297,42 @@ const Signup = () => {
                   // value={password}
                   // onChange={(e) => setPassword(e.target.value)}
                 ></Input>
-                {passwordInputHasError && !formIsValid && (
-                  <p className={styles.errorText}>
-                    Password must be greater than 6 characters
-                  </p>
-                )}
+                {passwordInputHasError &&
+                  !formIsValid &&
+                  !enteredPasswordIsValid && (
+                    <p className={styles.errorText}>
+                      Password must be greater than 6 characters
+                    </p>
+                  )}
                 <Input
-                  aria-label={"user address"}
-                  type={"text"}
+                  aria-label={"confirm password"}
+                  type={"password"}
                   className={
-                    addressInputHasError ? styles.invalidInput : styles.input
+                    confirmPasswordInputHasError
+                      ? styles.invalidInput
+                      : styles.input
                   }
-                  value={addressInputValue}
-                  placeholder={"Address"}
-                  onChange={addressChangeHandler}
-                  onBlur={addressBlurHandler}
+                  value={confirmPasswordInputValue}
+                  placeholder={"Confirm Password"}
+                  onChange={confirmPasswordChangeHandler}
+                  onBlur={confirmPasswordBlurHandler}
                 ></Input>
-                {addressInputHasError && !formIsValid && (
-                  <p className={styles.errorText}>
-                    Address must not be empty !
-                  </p>
-                )}
+                {confirmPasswordInputHasError &&
+                  !formIsValid &&
+                  !enteredconfirmPasswordIsValid && (
+                    <p className={styles.errorText}>
+                      Confirm Password must not be empty & must be the same with
+                      password
+                    </p>
+                  )}
               </div>
               <Button
                 type={"submit"}
                 disabled={!formIsValid}
                 value={isLoading ? "Loading..." : `Register${httpError}`}
                 className={styles.createAccount}
-                // value={"Sign Up"}
-                // onClick={register}
               ></Button>
-              {/* <Button
-                type={"submit"}
-                value={"Sign in with Google"}
-                onClick={signInWithGoogle}
-              ></Button> */}
+
               <p className={styles.already}>
                 Already have an account ? <Link to="/login">Login</Link>
               </p>
