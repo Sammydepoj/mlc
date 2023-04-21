@@ -4,30 +4,35 @@ import styles from "./Listings.module.css";
 import ListYourSpace from "./Components/ListYourSpace/ListYourSpace";
 import Description from "./Components/Description/Description";
 import Location from "./Components/Location/Location";
+import Amenities from "./Components/Amenities/Amenities";
+
+import Button from "./Components/Button/Button";
 
 const Listings = () => {
-  const showNextSection = () => {
-    setShowSection(components[2]);
+  const [currentStep, setCurrentStep] = useState(1);
+  const [formData, setFormData] = useState({
+    apartmentType: "",
+    residentCount: "",
+    location: "",
+    state: "",
+    address: "",
+    listingName: "",
+    summary: "",
+    amenities: { couch: "", shower: "", ac: "" },
+  });
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    currentStep === 4 ? console.log(formData) : "";
   };
 
-  const showPrevSection = () => {
-    setShowSection(components[0]);
+  const nextStep = () => {
+    setCurrentStep(currentStep + 1);
   };
 
-  const sectionToggleHandler = () => {
-    setShowSection(components[1]);
+  const previousStep = () => {
+    setCurrentStep(currentStep - 1);
   };
-
-  const components = [
-    <ListYourSpace onClick={sectionToggleHandler} />,
-    <Description
-      prevSectionHandler={showPrevSection}
-      nextSectionHandler={showNextSection}
-    />,
-    <Location />,
-  ];
-
-  const [showSection, setShowSection] = useState(components[0]);
 
   return (
     <div className={styles.listings}>
@@ -39,7 +44,57 @@ const Listings = () => {
           <p>Be rest assured we help you make money renting out your space</p>
         </div>
       </div>
-      {showSection}
+
+      <form onSubmit={handleSubmit}>
+        {currentStep === 1 && (
+          <ListYourSpace
+            formData={formData}
+            setFormData={setFormData}
+            nextStep={nextStep}
+          />
+        )}
+        {currentStep === 2 && (
+          <Description
+            formData={formData}
+            setFormData={setFormData}
+            nextStep={nextStep}
+            previousStep={previousStep}
+          />
+        )}
+        {currentStep === 3 && (
+          <Location
+            formData={formData}
+            setFormData={setFormData}
+            nextStep={nextStep}
+            previousStep={previousStep}
+          />
+        )}
+        {currentStep == 4 && (
+          <Amenities
+            formData={formData}
+            setFormData={setFormData}
+            nextStep={nextStep}
+          />
+        )}
+        <div className={styles.btnsWrapper}>
+          {currentStep > 1 && (
+            <Button
+              type="button"
+              onClick={previousStep}
+              value={"Back"}
+            ></Button>
+          )}
+          {currentStep < 4 ? (
+            <Button
+              type="button"
+              onClick={nextStep}
+              value={"Continue"}
+            ></Button>
+          ) : (
+            <Button type={"submit"} value={"Submit"}></Button>
+          )}
+        </div>
+      </form>
     </div>
   );
 };

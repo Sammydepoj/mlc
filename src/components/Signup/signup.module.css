@@ -80,6 +80,12 @@
   align-items: center;
   white-space: nowrap;
 }
+.googleLogin:hover,
+.facebookLogin:hover,
+.appleLogin:hover {
+  background-color: inherit;
+
+}
 .facebookLogin {
   background-color: #0077b6;
 }
@@ -107,13 +113,11 @@
   width: 100%;
 }
 .invalidInput {
-  border: 1px solid red;
+  border: 1px solid #f4511e;
   border-radius: 5px;
   font-family: "Inter";
   font-weight: 400;
   font-size: 16px;
-  line-height: 44px;
-  letter-spacing: 0.1px;
   padding: 0.7rem 3rem 0.7rem 1rem;
   outline: none;
   width: 100%;

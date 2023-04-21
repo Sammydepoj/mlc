@@ -1,20 +1,23 @@
 import React from "react";
 import styles from "./ListYourSpace.module.css";
 
-import Button from "../Button/Button";
-
-const ListYourSpace = ({ onClick }) => {
-  const formSubmitHandler = (e) => {
-    e.preventDefault();
-    onClick();
+const ListYourSpace = ({ formData, setFormData }) => {
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [name]: value,
+    }));
   };
   return (
-    <form onSubmit={formSubmitHandler} className={styles.dashboardForm}>
+    <div className={styles.dashboardForm}>
       <label htmlFor="apartmentType">Apartment Type</label>
       <select
         name="apartmentType"
         id="apartmentType"
         placeholder="1 Room Apartment"
+        value={formData.apartmentType}
+        onChange={handleChange}
       >
         <option value="1_room_apartment">1 Room Apartment</option>
         <option value="2_room_apartment">2 Room Apartment</option>
@@ -23,19 +26,28 @@ const ListYourSpace = ({ onClick }) => {
         <option value="5_room_apartment">5 Room Apartment</option>
       </select>
       <label htmlFor="residentCount">Resident Count </label>
-      <select name="residentCount" id="residentCount" placeholder="2">
+      <select
+        name="residentCount"
+        id="residentCount"
+        placeholder="2"
+        value={formData.residentCount}
+        onChange={handleChange}
+      >
         <option value="1">1 </option>
         <option value="2">2 </option>
       </select>
       <label htmlFor="location">Location </label>
-      <select name="location" id="location" placeholder="Challorte Ville">
+      <select
+        name="location"
+        id="location"
+        placeholder="Challorte Ville"
+        value={formData.location}
+        onChange={handleChange}
+      >
         <option value="1">1 </option>
         <option value="2">2 </option>
       </select>
-      <div className={styles.btnContainer}>
-        <Button value={"Continue"}></Button>
-      </div>
-    </form>
+    </div>
   );
 };
 

@@ -78,7 +78,7 @@ const Signup = () => {
     (value) =>
       value.trim() !== "" &&
       value.length >= 6 &&
-      value.trim() === passwordInputValue
+      value.trim().match(passwordInputValue)
   );
 
   let formIsValid = false;
@@ -321,7 +321,7 @@ const Signup = () => {
                   !formIsValid &&
                   !enteredconfirmPasswordIsValid && (
                     <p className={styles.errorText}>
-                      Confirm Password must not be empty & must be the same with
+                      Confirm Password must not be empty & must match password
                       password
                     </p>
                   )}

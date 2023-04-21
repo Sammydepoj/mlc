@@ -38,17 +38,3 @@ input,
 textarea {
   outline: none;
 }
-.btnsWrapper {
-  display: flex;
-  gap: 2rem;
-  justify-content: flex-end;
-}
-.btnsWrapper button {
-  background: #8b5f52;
-  color: #fff;
-}
-.btnsWrapper button:first-child {
-  border: 1px solid #8b5f52;
-  background-color: inherit;
-  color: #8b5f52;
-}

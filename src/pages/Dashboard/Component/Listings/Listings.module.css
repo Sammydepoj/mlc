@@ -43,6 +43,21 @@
   letter-spacing: 0.2px;
   color: #ffffff;
 }
+
+.btnsWrapper {
+  display: flex;
+  gap: 2rem;
+  justify-content: flex-end;
+}
+.btnsWrapper button {
+  background: #8b5f52;
+  color: #fff;
+}
+.btnsWrapper button:first-child {
+  border: 1px solid #8b5f52;
+  background-color: inherit;
+  color: #8b5f52;
+}
 @media only screen and (max-width: 690px) {
   .listings {
     grid-template-columns: 1fr;

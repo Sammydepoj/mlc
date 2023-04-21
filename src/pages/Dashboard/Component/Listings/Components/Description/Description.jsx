@@ -1,16 +1,15 @@
 import React from "react";
 
 import styles from "./Description.module.css";
-import Button from "../Button/Button";
 
-const Description = ({ nextSectionHandler, prevSectionHandler }) => {
-  const backButtonHandler = () => {
-    prevSectionHandler();
-  };
-  const continueButtonHandler = () => {
-    nextSectionHandler();
-  };
-
+const Description = ({ formData, setFormData }) => {
+    const handleChange = (event) => {
+      const { name, value } = event.target;
+      setFormData((prevFormData) => ({
+        ...prevFormData,
+        [name]: value,
+      }));
+    };
   return (
     <div className={styles.description}>
       <p className={styles.descriptionHeading}>Description</p>
@@ -21,6 +20,8 @@ const Description = ({ nextSectionHandler, prevSectionHandler }) => {
           name="listingName"
           id="listingName"
           placeholder="2 bed room apartments in CharlotteVille"
+          value={formData.listingName}
+          onChange={handleChange}
         />
       </div>
       <div className={styles.inputLabelWrapper}>
@@ -32,11 +33,9 @@ const Description = ({ nextSectionHandler, prevSectionHandler }) => {
           rows="10"
           placeholder="The apartment can accommodate at most 6 
 people, It has 2 Bedrooms........"
+          value={formData.summary}
+          onChange={handleChange}
         ></textarea>
-      </div>
-      <div className={styles.btnsWrapper}>
-        <Button value={"Back"} onClick={backButtonHandler}></Button>
-        <Button value={"Continue"} onClick={continueButtonHandler}></Button>
       </div>
     </div>
   );

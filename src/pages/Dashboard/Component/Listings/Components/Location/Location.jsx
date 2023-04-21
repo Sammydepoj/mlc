@@ -5,23 +5,27 @@ import Leaflet from "../../../../../../components/Header/Map/Leaflet";
 
 import { BiSearch } from "react-icons/bi";
 
-import Button from "../Button/Button";
-
-const Location = ({ nextSectionHandler, prevSectionHandler }) => {
-  const backButtonHandler = () => {
-    prevSectionHandler();
+const Location = ({ formData, setFormData }) => {
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [name]: value,
+    }));
   };
-  const continueButtonHandler = () => {
-    nextSectionHandler();
-  };
-
   return (
     <div className={styles.location}>
       <p className={styles.descriptionHeading}>Location</p>
       <div className={styles.stateAddressInputWrapper}>
         <div>
           <label htmlFor="state">State</label>
-          <select name="state" id="state" placeholder="atlanta">
+          <select
+            name="state"
+            id="state"
+            placeholder="atlanta"
+            value={formData.state}
+            onChange={handleChange}
+          >
             <option value="london">London</option>
             <option value="atlanta">Atlanta</option>
           </select>
@@ -33,6 +37,8 @@ const Location = ({ nextSectionHandler, prevSectionHandler }) => {
             name="address"
             id="address"
             placeholder="------------------"
+            value={formData.address}
+            onChange={handleChange}
           />
         </div>
       </div>
@@ -58,10 +64,6 @@ const Location = ({ nextSectionHandler, prevSectionHandler }) => {
           <BiSearch className={styles.searchIcon} />
         </div>
         <p>Move the pointer to set the right map position.</p>
-      </div>
-      <div className={styles.btnsWrapper}>
-        <Button value={"Back"} onClick={backButtonHandler}></Button>
-        <Button value={"Continue"} onClick={continueButtonHandler}></Button>
       </div>
     </div>
   );
