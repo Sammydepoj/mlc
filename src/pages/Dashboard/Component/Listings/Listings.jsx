@@ -7,6 +7,7 @@ import Location from "./Components/Location/Location";
 import Amenities from "./Components/Amenities/Amenities";
 
 import Button from "./Components/Button/Button";
+import Photos from "./Components/Photos/Photos";
 
 const Listings = () => {
   const [currentStep, setCurrentStep] = useState(1);
@@ -76,6 +77,13 @@ const Listings = () => {
             nextStep={nextStep}
           />
         )}
+        {currentStep == 5 && (
+          <Photos
+            formData={formData}
+            setFormData={setFormData}
+            nextStep={nextStep}
+          />
+        )}
         <div className={styles.btnsWrapper}>
           {currentStep > 1 && (
             <Button
@@ -84,7 +92,7 @@ const Listings = () => {
               value={"Back"}
             ></Button>
           )}
-          {currentStep < 4 ? (
+          {currentStep < 5 ? (
             <Button
               type="button"
               onClick={nextStep}
