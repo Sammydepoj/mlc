@@ -1,0 +1,10 @@
+.pricing h5 {
+  font-family: "Inter";
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 28px;
+  color: #8b5f52;
+}
+.pricing .pricingContainer {
+  border: 1px solid red;
+}

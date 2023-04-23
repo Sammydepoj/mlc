@@ -1,9 +1,15 @@
+.h5 {
+  font-family: "Inter";
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 28px;
+  color: #8b5f52;
+  margin-bottom: 1rem;
+}
 .amenities {
   display: flex;
   flex-wrap: wrap;
   gap: 1.3rem;
-  /* justify-content: space-between; */
-  /* align-items: center; */
 }
 .amenities label {
   font-family: "Inter";

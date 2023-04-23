@@ -10,6 +10,8 @@ const Amenities = ({ formData, setFormData }) => {
     }));
   };
   return (
+    <>
+    <h5 className={styles.h5}>Amenities</h5>
     <div className={styles.amenities}>
       <label htmlFor="ac">
         <input
@@ -194,6 +196,7 @@ const Amenities = ({ formData, setFormData }) => {
        Kitchen
       </label>
     </div>
+    </>
   );
 };
 

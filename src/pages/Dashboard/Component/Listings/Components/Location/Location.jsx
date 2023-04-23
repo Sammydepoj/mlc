@@ -15,7 +15,7 @@ const Location = ({ formData, setFormData }) => {
   };
   return (
     <div className={styles.location}>
-      <p className={styles.descriptionHeading}>Location</p>
+      <h5 className={styles.descriptionHeading}>Location</h5>
       <div className={styles.stateAddressInputWrapper}>
         <div>
           <label htmlFor="state">State</label>
@@ -25,6 +25,7 @@ const Location = ({ formData, setFormData }) => {
             placeholder="atlanta"
             value={formData.state}
             onChange={handleChange}
+            className={styles.locationInput}
           >
             <option value="london">London</option>
             <option value="atlanta">Atlanta</option>
@@ -39,6 +40,7 @@ const Location = ({ formData, setFormData }) => {
             placeholder="------------------"
             value={formData.address}
             onChange={handleChange}
+            className={styles.locationInput}
           />
         </div>
       </div>
