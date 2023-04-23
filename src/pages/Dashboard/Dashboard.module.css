@@ -51,8 +51,8 @@
   }
   .sideBarContentContainer {
     display: none;
-    position: absolute;
-    top: 40px;
+    position: fixed;
+    top: 140px;
     left: 10px;
     background-color: #fff;
     z-index: 1;

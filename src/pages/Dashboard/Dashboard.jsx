@@ -116,6 +116,7 @@ const Dashboard = () => {
                   key={menu.id}
                   onClick={() => {
                     setDashboardBodyContent(menu.component);
+                    setIsSideBarExpanded(false);
                   }}
                 >
                   {menu.icon} <h4>{menu.text}</h4>
