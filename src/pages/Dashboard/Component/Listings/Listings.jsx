@@ -35,6 +35,7 @@ const Listings = () => {
   const previousStep = () => {
     setCurrentStep(currentStep - 1);
   };
+    const progress = (currentStep / 6) * 100;
 
   return (
     <div className={styles.listings}>
@@ -48,6 +49,16 @@ const Listings = () => {
       </div>
 
       <form onSubmit={handleSubmit}>
+        <div style={{ width: "100%", border: "1px solid black" }}>
+          <div
+            style={{
+              width: `${progress}%`,
+              backgroundColor: "#8b5f52",
+              height: "10px",
+            }}
+          ></div>
+        </div>
+
         {currentStep === 1 && (
           <ListYourSpace
             formData={formData}
