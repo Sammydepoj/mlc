@@ -2,7 +2,7 @@ import React from "react";
 
 import styles from "./Description.module.css";
 
-const Description = ({ formData, setFormData }) => {
+const Description = ({ formData, setFormData, errors }) => {
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormData((prevFormData) => ({
@@ -24,6 +24,9 @@ const Description = ({ formData, setFormData }) => {
           onChange={handleChange}
         />
       </div>
+        {errors.listingName && (
+          <span className={styles.error}>{errors.listingName}</span>
+        )}
       <div className={styles.inputLabelWrapper}>
         <label htmlFor="summary">Summary</label>
         <textarea
@@ -37,6 +40,9 @@ people, It has 2 Bedrooms........"
           onChange={handleChange}
         ></textarea>
       </div>
+        {errors.summary && (
+          <span className={styles.error}>{errors.summary}</span>
+        )}
     </div>
   );
 };

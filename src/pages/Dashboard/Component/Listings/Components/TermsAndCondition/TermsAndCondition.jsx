@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./TermsAndCondition.module.css";
 
-const TermsAndCondition = ({ formData, setFormData }) => {
+const TermsAndCondition = ({ formData, setFormData, errors }) => {
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormData((prevFormData) => ({
@@ -36,6 +36,7 @@ const TermsAndCondition = ({ formData, setFormData }) => {
           conditions
         </label>
         <b>Read more</b>
+        {errors.agree && <span className={styles.error}>{errors.agree}</span>}
       </div>
     </div>
   );

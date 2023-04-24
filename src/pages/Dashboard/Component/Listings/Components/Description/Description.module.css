@@ -42,3 +42,7 @@ input,
 textarea {
   outline: none;
 }
+.error{
+  margin-top: -1rem;
+  color: red;
+}

@@ -12,7 +12,6 @@ import TermsAndCondition from "./Components/TermsAndCondition/TermsAndCondition"
 import Button from "./Components/Button/Button";
 
 const Listings = () => {
-  const [currentStep, setCurrentStep] = useState(1);
   const [formData, setFormData] = useState({
     apartmentType: "",
     residentCount: "",
@@ -35,7 +34,7 @@ const Listings = () => {
       smokeDetector: "",
       fireExtinguisher: "",
       readingRoom: "",
-      kitchen:"",
+      kitchen: "",
     },
     photo: "",
     video: "",
@@ -43,19 +42,88 @@ const Listings = () => {
     cleaningPrice: "",
     agree: "",
   });
+  const [currentStep, setCurrentStep] = useState(1);
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    currentStep === 7 ? console.log(formData) : "";
+  const [errors, setErrors] = useState({});
+
+  const validateForm = () => {
+    let isValid = true;
+
+    const newErrors = {};
+    if (currentStep === 1) {
+      if (formData.apartmentType.trim() === "") {
+        newErrors.apartmentType = "Please select an apartment type";
+        isValid = false;
+      }
+
+      if (formData.residentCount.trim() === "") {
+        newErrors.residentCount = "Please select a resident count";
+        isValid = false;
+      }
+
+      if (formData.location.trim() === "") {
+        newErrors.location = "Please enter a location";
+        isValid = false;
+      }
+    } else if (currentStep === 2) {
+      if (formData.listingName.trim() === "") {
+        newErrors.listingName = "Please enter a listing name";
+        isValid = false;
+      }
+
+      if (formData.summary.trim() === "") {
+        newErrors.summary = "Please enter a summary";
+        isValid = false;
+      }
+    } else if (currentStep === 3) {
+      if (formData.state.trim() === "") {
+        newErrors.state = "Please select a state";
+        isValid = false;
+      }
+
+      if (formData.address.trim() === "") {
+        newErrors.address = "Please enter an address";
+        isValid = false;
+      }
+    } else if (currentStep === 6) {
+      if (formData.cleaningPrice.trim() === "") {
+        newErrors.cleaningPrice = "Please enter a cleaning Price";
+        isValid = false;
+      }
+
+      if (formData.homePrice.trim() === "") {
+        newErrors.homePrice = "Please enter a home price";
+        isValid = false;
+      }
+    } else if (currentStep === 7) {
+      if (!formData.agree) {
+        newErrors.agree = "Please agree to the terms and conditions";
+        isValid = false;
+      }
+    }
+
+    setErrors(newErrors);
+    return isValid;
   };
 
   const nextStep = () => {
-    setCurrentStep(currentStep + 1);
+    const isValid = validateForm();
+    if (isValid) {
+      const newStep = currentStep + 1;
+      setCurrentStep(newStep);
+    }
   };
 
   const previousStep = () => {
-    setCurrentStep(currentStep - 1);
+    const newStep = currentStep - 1;
+    setCurrentStep(newStep);
   };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log(formData);
+  };
+
   const progress = (currentStep / 7) * 100;
 
   return (
@@ -85,6 +153,7 @@ const Listings = () => {
             formData={formData}
             setFormData={setFormData}
             nextStep={nextStep}
+            errors={errors}
           />
         )}
         {currentStep === 2 && (
@@ -93,6 +162,7 @@ const Listings = () => {
             setFormData={setFormData}
             nextStep={nextStep}
             previousStep={previousStep}
+            errors={errors}
           />
         )}
         {currentStep === 3 && (
@@ -101,6 +171,7 @@ const Listings = () => {
             setFormData={setFormData}
             nextStep={nextStep}
             previousStep={previousStep}
+            errors={errors}
           />
         )}
         {currentStep == 4 && (
@@ -108,6 +179,7 @@ const Listings = () => {
             formData={formData}
             setFormData={setFormData}
             nextStep={nextStep}
+            errors={errors}
           />
         )}
         {currentStep == 5 && (
@@ -115,6 +187,7 @@ const Listings = () => {
             formData={formData}
             setFormData={setFormData}
             nextStep={nextStep}
+            errors={errors}
           />
         )}
         {currentStep == 6 && (
@@ -122,6 +195,7 @@ const Listings = () => {
             formData={formData}
             setFormData={setFormData}
             nextStep={nextStep}
+            errors={errors}
           />
         )}
         {currentStep == 7 && (
@@ -129,6 +203,7 @@ const Listings = () => {
             formData={formData}
             setFormData={setFormData}
             nextStep={nextStep}
+            errors={errors}
           />
         )}
         <div className={styles.btnsWrapper}>
@@ -155,3 +230,25 @@ const Listings = () => {
 };
 
 export default Listings;
+
+// else if(currentStep ===4){
+
+// }
+
+// if (!formData.photo) {
+//   newErrors.photo = "Please enter a photo";
+// }
+
+// if (!formData.homePrice) {
+//   newErrors.homePrice = "Please enter a price";
+// }
+// if (!formData.video) {
+//   newErrors.video = "Please enter a video";
+// }
+// if (!formData.cleaningPrice) {
+//   newErrors.cleaningPrice = "Please enter a cleaning price";
+// }
+
+// if (!formData.agree) {
+//   newErrors.agree = "Please agree to the terms and condition";
+// }

@@ -5,7 +5,7 @@ import Leaflet from "../../../../../../components/Header/Map/Leaflet";
 
 import { BiSearch } from "react-icons/bi";
 
-const Location = ({ formData, setFormData }) => {
+const Location = ({ formData, setFormData, errors }) => {
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormData((prevFormData) => ({
@@ -27,9 +27,11 @@ const Location = ({ formData, setFormData }) => {
             onChange={handleChange}
             className={styles.locationInput}
           >
+            <option value="">------</option>
             <option value="london">London</option>
             <option value="atlanta">Atlanta</option>
           </select>
+          {errors.state && <span className={styles.error}>{errors.state}</span>}
         </div>
         <div>
           <label htmlFor="address">Address</label>
@@ -42,6 +44,9 @@ const Location = ({ formData, setFormData }) => {
             onChange={handleChange}
             className={styles.locationInput}
           />
+          {errors.address && (
+            <span className={styles.error}>{errors.address}</span>
+          )}
         </div>
       </div>
       <div>

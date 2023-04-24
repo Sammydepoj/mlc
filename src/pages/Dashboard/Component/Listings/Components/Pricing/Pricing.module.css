@@ -105,3 +105,6 @@ input {
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
 }
+.error {
+  color: red;
+}

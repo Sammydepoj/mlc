@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./Pricing.module.css";
-const Pricing = ({ formData, setFormData }) => {
+const Pricing = ({ formData, setFormData, errors }) => {
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormData((prevFormData) => ({
@@ -22,6 +22,9 @@ const Pricing = ({ formData, setFormData }) => {
           value={formData.homePrice}
           onChange={handleChange}
         />
+        {errors.homePrice && (
+          <span className={styles.error}>{errors.homePrice}</span>
+        )}
       </div>
 
       <h5>Additional pricing options</h5>
@@ -51,6 +54,9 @@ const Pricing = ({ formData, setFormData }) => {
           value={formData.cleaningPrice}
           onChange={handleChange}
         />
+        {errors.cleaningPrice && (
+          <span className={styles.error}>{errors.cleaningPrice}</span>
+        )}
       </div>
       <div>
         <label htmlFor="securityFee">

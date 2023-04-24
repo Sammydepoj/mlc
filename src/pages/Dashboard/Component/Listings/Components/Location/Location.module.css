@@ -24,7 +24,7 @@
   line-height: 22px;
   color: #1d1d1d;
 }
-.locationInput{
+.locationInput {
   padding: 1rem;
   font-family: "Inter";
   font-weight: 400;
@@ -84,6 +84,9 @@
   line-height: 20px;
   color: #828282;
   margin-top: 0.4rem;
+}
+.error {
+  color: red;
 }
 @media screen and (max-width: 1058px) {
   .hero {
