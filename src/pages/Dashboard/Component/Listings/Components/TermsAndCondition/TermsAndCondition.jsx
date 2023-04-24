@@ -3,10 +3,10 @@ import styles from "./TermsAndCondition.module.css";
 
 const TermsAndCondition = ({ formData, setFormData, errors }) => {
   const handleChange = (event) => {
-    const { name, value } = event.target;
+    const { name, checked } = event.target;
     setFormData((prevFormData) => ({
       ...prevFormData,
-      [name]: value,
+      [name]: checked,
     }));
   };
   return (
@@ -29,6 +29,7 @@ const TermsAndCondition = ({ formData, setFormData, errors }) => {
             id="agree"
             aria-label="agree"
             className={styles.checkbox}
+            checked={formData.agree}
             value={formData.agree}
             onChange={handleChange}
           />

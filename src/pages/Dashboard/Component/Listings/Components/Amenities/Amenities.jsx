@@ -3,10 +3,10 @@ import styles from "./Amenities.module.css";
 
 const Amenities = ({ formData, setFormData }) => {
   const handleChange = (event) => {
-    const { name, value } = event.target.checked;
+    const { name, checked } = event.target;
     setFormData((prevFormData) => ({
       ...prevFormData,
-      [name]: value,
+      [name]: checked,
     }));
   };
   return (
@@ -21,7 +21,8 @@ const Amenities = ({ formData, setFormData }) => {
             id="ac"
             aria-label="air conditioning"
             className={styles.checkbox}
-            value={formData.amenities.ac}
+            value={formData.ac}
+            checked={formData.ac}
             onChange={handleChange}
           />
           <span className={styles.checkmark}></span>A C
@@ -34,7 +35,8 @@ const Amenities = ({ formData, setFormData }) => {
             id="couch"
             aria-label="couch"
             className={styles.checkbox}
-            value={formData.amenities.couch}
+            checked={formData.couch}
+            value={formData.couch}
             onChange={handleChange}
           />
           <span className={styles.checkmark}></span>
@@ -48,7 +50,8 @@ const Amenities = ({ formData, setFormData }) => {
             id="shower"
             aria-label="shower"
             className={styles.checkbox}
-            value={formData.amenities.shower}
+            checked={formData.shower}
+            value={formData.shower}
             onChange={handleChange}
           />
           <span className={styles.checkmark}></span>
@@ -62,7 +65,8 @@ const Amenities = ({ formData, setFormData }) => {
             id="heater"
             aria-label="heater"
             className={styles.checkbox}
-            value={formData.amenities.heater}
+            checked={formData.heater}
+            value={formData.heater}
             onChange={handleChange}
           />
           <span className={styles.checkmark}></span>
@@ -76,7 +80,8 @@ const Amenities = ({ formData, setFormData }) => {
             id="bathTub"
             aria-label="bathTub"
             className={styles.checkbox}
-            value={formData.amenities.bathTub}
+            checked={formData.bathTub}
+            value={formData.bathTub}
             onChange={handleChange}
           />
           <span className={styles.checkmark}></span>
@@ -90,7 +95,8 @@ const Amenities = ({ formData, setFormData }) => {
             id="washingMachine"
             aria-label="washingMachine"
             className={styles.checkbox}
-            value={formData.amenities.washingMachine}
+            checked={formData.washingMachine}
+            value={formData.washingMachine}
             onChange={handleChange}
           />
           <span className={styles.checkmark}></span>
@@ -104,7 +110,8 @@ const Amenities = ({ formData, setFormData }) => {
             id="tv"
             aria-label="tv"
             className={styles.checkbox}
-            value={formData.amenities.tv}
+            checked={formData.tv}
+            value={formData.tv}
             onChange={handleChange}
           />
           <span className={styles.checkmark}></span>T V
@@ -117,7 +124,8 @@ const Amenities = ({ formData, setFormData }) => {
             id="wardrobe"
             aria-label="wardrobe"
             className={styles.checkbox}
-            value={formData.amenities.wardrobe}
+            checked={formData.wardrobe}
+            value={formData.wardrobe}
             onChange={handleChange}
           />
           <span className={styles.checkmark}></span>
@@ -131,7 +139,8 @@ const Amenities = ({ formData, setFormData }) => {
             id="cleaner"
             aria-label="cleaner"
             className={styles.checkbox}
-            value={formData.amenities.cleaner}
+            checked={formData.cleaner}
+            value={formData.cleaner}
             onChange={handleChange}
           />
           <span className={styles.checkmark}></span>
@@ -145,7 +154,8 @@ const Amenities = ({ formData, setFormData }) => {
             id="gym"
             aria-label="gym"
             className={styles.checkbox}
-            value={formData.amenities.gym}
+            checked={formData.gym}
+            value={formData.gym}
             onChange={handleChange}
           />
           <span className={styles.checkmark}></span>
@@ -159,7 +169,8 @@ const Amenities = ({ formData, setFormData }) => {
             id="smokeDetector"
             aria-label="smokeDetector"
             className={styles.checkbox}
-            value={formData.amenities.smokeDetector}
+            checked={formData.smokeDetector}
+            value={formData.smokeDetector}
             onChange={handleChange}
           />
           <span className={styles.checkmark}></span>
@@ -173,7 +184,8 @@ const Amenities = ({ formData, setFormData }) => {
             id="fireExtinguisher"
             aria-label="fireExtinguisher"
             className={styles.checkbox}
-            value={formData.amenities.fireExtinguisher}
+            checked={formData.fireExtinguisher}
+            value={formData.fireExtinguisher}
             onChange={handleChange}
           />
           <span className={styles.checkmark}></span>
@@ -187,7 +199,8 @@ const Amenities = ({ formData, setFormData }) => {
             id="readingRoom"
             aria-label="readingRoom"
             className={styles.checkbox}
-            value={formData.amenities.readingRoom}
+            checked={formData.readingRoom}
+            value={formData.readingRoom}
             onChange={handleChange}
           />
           <span className={styles.checkmark}></span>
@@ -201,7 +214,8 @@ const Amenities = ({ formData, setFormData }) => {
             id="kitchen"
             aria-label="kitchen"
             className={styles.checkbox}
-            value={formData.amenities.kitchen}
+            checked={formData.kitchen}
+            value={formData.kitchen}
             onChange={handleChange}
           />
           <span className={styles.checkmark}></span>

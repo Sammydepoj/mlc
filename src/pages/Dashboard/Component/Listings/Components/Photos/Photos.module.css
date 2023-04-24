@@ -36,3 +36,6 @@
   color: #828282;
   margin: 0rem 0rem 0rem 0rem;
 }
+.error {
+  color: red;
+}
