@@ -5,10 +5,11 @@ import ListYourSpace from "./Components/ListYourSpace/ListYourSpace";
 import Description from "./Components/Description/Description";
 import Location from "./Components/Location/Location";
 import Amenities from "./Components/Amenities/Amenities";
-
-import Button from "./Components/Button/Button";
 import Photos from "./Components/Photos/Photos";
 import Pricing from "./Components/Pricing/Pricing";
+import TermsAndCondition from "./Components/TermsAndCondition/TermsAndCondition";
+
+import Button from "./Components/Button/Button";
 
 const Listings = () => {
   const [currentStep, setCurrentStep] = useState(1);
@@ -20,12 +21,32 @@ const Listings = () => {
     address: "",
     listingName: "",
     summary: "",
-    amenities: { couch: "", shower: "", ac: "" },
+    amenities: {
+      ac: "",
+      couch: "",
+      shower: "",
+      heater: "",
+      bathTub: "",
+      washingMachine: "",
+      tv: "",
+      wardrobe: "",
+      cleaner: "",
+      gym: "",
+      smokeDetector: "",
+      fireExtinguisher: "",
+      readingRoom: "",
+      kitchen:"",
+    },
+    photo: "",
+    video: "",
+    homePrice: "",
+    cleaningPrice: "",
+    agree: "",
   });
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    currentStep === 4 ? console.log(formData) : "";
+    currentStep === 7 ? console.log(formData) : "";
   };
 
   const nextStep = () => {
@@ -35,7 +56,7 @@ const Listings = () => {
   const previousStep = () => {
     setCurrentStep(currentStep - 1);
   };
-    const progress = (currentStep / 6) * 100;
+  const progress = (currentStep / 7) * 100;
 
   return (
     <div className={styles.listings}>
@@ -103,6 +124,13 @@ const Listings = () => {
             nextStep={nextStep}
           />
         )}
+        {currentStep == 7 && (
+          <TermsAndCondition
+            formData={formData}
+            setFormData={setFormData}
+            nextStep={nextStep}
+          />
+        )}
         <div className={styles.btnsWrapper}>
           {currentStep > 1 && (
             <Button
@@ -111,7 +139,7 @@ const Listings = () => {
               value={"Back"}
             ></Button>
           )}
-          {currentStep < 6 ? (
+          {currentStep < 7 ? (
             <Button
               type="button"
               onClick={nextStep}

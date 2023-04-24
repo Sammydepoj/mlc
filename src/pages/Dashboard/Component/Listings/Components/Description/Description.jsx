@@ -3,13 +3,13 @@ import React from "react";
 import styles from "./Description.module.css";
 
 const Description = ({ formData, setFormData }) => {
-    const handleChange = (event) => {
-      const { name, value } = event.target;
-      setFormData((prevFormData) => ({
-        ...prevFormData,
-        [name]: value,
-      }));
-    };
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [name]: value,
+    }));
+  };
   return (
     <div className={styles.description}>
       <p className={styles.descriptionHeading}>Description</p>

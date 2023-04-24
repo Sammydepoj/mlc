@@ -1,9 +1,5 @@
 .photos .fileInputWrapper {
-  display: grid;
-  grid-template-columns: max-content max-content;
-  place-items: center;
-  gap: 0.5rem;
-  padding: 2rem 0rem;
+  padding: 0rem;
 }
 .photos h5 {
   font-family: "Inter";
@@ -11,11 +7,21 @@
   font-size: 20px;
   line-height: 28px;
   color: #8b5f52;
-  margin: 0rem;
+  margin: 2rem 0rem 0rem;
+}
+.photos .fileInputWrapper div {
+  display: flex;
+  gap: 0.5rem;
 }
 .fileInputWrapper input {
   border: 1px solid #828282;
   padding: 0.75rem;
+  width: 100%;
+  font-family: "Inter";
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #1d1d1d;
 }
 .fileInputWrapper button {
   margin-top: 0rem;
@@ -28,5 +34,5 @@
   font-size: 14px;
   line-height: 20px;
   color: #828282;
-  margin: -0.7rem 0rem 0rem 0rem;
+  margin: 0rem 0rem 0rem 0rem;
 }
