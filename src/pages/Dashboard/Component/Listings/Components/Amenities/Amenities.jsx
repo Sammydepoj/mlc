@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./Amenities.module.css";
 
-const Amenities = ({ formData, setFormData }) => {
+const Amenities = ({ formData, setFormData, errors }) => {
   const handleChange = (event) => {
     const { name, checked } = event.target;
     setFormData((prevFormData) => ({
@@ -221,6 +221,9 @@ const Amenities = ({ formData, setFormData }) => {
           <span className={styles.checkmark}></span>
           Kitchen
         </label>
+        {errors.amenities && (
+          <span className={styles.error}>{errors.amenities}</span>
+        )}
       </div>
     </>
   );

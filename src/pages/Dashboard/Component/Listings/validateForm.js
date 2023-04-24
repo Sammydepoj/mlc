@@ -37,16 +37,27 @@ export const validateForm = (currentStep, formData, setErrors) => {
         isValid = false;
       }
       break;
-    // case 4:
-    //   if (formData.state.trim() === "") {
-    //     newErrors.state = "Please select a state";
-    //     isValid = false;
-    //   }
-    //   if (formData.address.trim() === "") {
-    //     newErrors.address = "Please enter an address";
-    //     isValid = false;
-    //   }
-    //   break;
+    case 4:
+      if (
+        formData.ac === false &&
+        formData.couch === false &&
+        formData.shower === false &&
+        formData.heater === false &&
+        formData.bathTub === false &&
+        formData.washingMachine === false &&
+        formData.tv === false &&
+        formData.wardrobe === false &&
+        formData.cleaner === false &&
+        formData.gym === false &&
+        formData.smokeDetector === false &&
+        formData.fireExtinguisher === false &&
+        formData.readingRoom === false &&
+        formData.kitchen === false
+      ) {
+        newErrors.amenities = "Please select at least one amenity";
+        isValid = false;
+      }
+      break;
     // case 5:
     //   if (!formData.video) {
     //     newErrors.video = "Please select a video";
@@ -68,8 +79,9 @@ export const validateForm = (currentStep, formData, setErrors) => {
       }
       break;
     case 7:
-      if (!formData.agree) {
-        newErrors.agree = "Please agree to the terms and conditions";
+      if (!formData.agreeTermsAndCondition) {
+        newErrors.agreeTermsAndCondition =
+          "Please agree to the terms and conditions";
         isValid = false;
       }
       break;

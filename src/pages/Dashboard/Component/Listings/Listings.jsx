@@ -41,7 +41,7 @@ const Listings = () => {
     video: "",
     homePrice: "",
     cleaningPrice: "",
-    agree: false,
+    agreeTermsAndCondition: false,
   });
   const [currentStep, setCurrentStep] = useState(1);
 

@@ -22,15 +22,15 @@ const TermsAndCondition = ({ formData, setFormData, errors }) => {
         mollit anim id est laborum
       </p>
       <div>
-        <label htmlFor="agree">
+        <label htmlFor="agreeTermsAndCondition">
           <input
             type="checkbox"
-            name="agree"
-            id="agree"
-            aria-label="agree"
+            name="agreeTermsAndCondition"
+            id="agreeTermsAndCondition"
+            aria-label="agreeTermsAndCondition"
             className={styles.checkbox}
-            checked={formData.agree}
-            value={formData.agree}
+            checked={formData.agreeTermsAndCondition}
+            value={formData.agreeTermsAndCondition}
             onChange={handleChange}
           />
           <span className={styles.checkmark}></span>I agree to the terms and
