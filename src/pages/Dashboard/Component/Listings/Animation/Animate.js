@@ -1,0 +1,9 @@
+export const boxVariant = {
+  visible: {
+    opacity: 1,
+    position: "relative",
+    right: "0px",
+    transition: { duration: 0.5 },
+  },
+  hidden: { opacity: 0, position: "relative", right: `${-500}px` },
+};

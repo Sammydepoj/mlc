@@ -1,16 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./ListYourSpace.module.css";
-
-// import useInput from "../../../../../../hooks/useInput";
-
-//  const {
-//    value: lastNameInputValue,
-//    isValid: enteredlastNameIsValid,
-//    hasError: lastNameInputHasError,
-//    valueChangeHandler: lastNameChangeHandler,
-//    inputBlurHandler: lastNameBlurHandler,
-//    reset: resetlastNameInput,
-//  } = useInput((value) => value.trim() !== "");
+import { motion, useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import {boxVariant } from "../../Animation/Animate";
 
 const ListYourSpace = ({ formData, setFormData, errors }) => {
   const handleChange = (event) => {
@@ -20,8 +12,26 @@ const ListYourSpace = ({ formData, setFormData, errors }) => {
       [name]: value,
     }));
   };
+
+  const control = useAnimation();
+  const [ref, inView] = useInView();
+
+  useEffect(() => {
+    if (inView) {
+      control.start("visible");
+    } else {
+      control.start("hidden");
+    }
+  }, [control, inView]);
+
   return (
-    <div className={styles.dashboardForm}>
+    <motion.div
+      className={styles.dashboardForm}
+      ref={ref}
+      variants={boxVariant}
+      initial="visible"
+      animate={control}
+    >
       <label htmlFor="apartmentType">Apartment Type</label>
       <select
         name="apartmentType"
@@ -70,7 +80,7 @@ const ListYourSpace = ({ formData, setFormData, errors }) => {
       {errors.location && (
         <span className={styles.error}>{errors.location}</span>
       )}
-    </div>
+    </motion.div>
   );
 };
 

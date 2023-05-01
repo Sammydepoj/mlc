@@ -1,5 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./Amenities.module.css";
+
+import { motion, useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import { boxVariant } from "../../Animation/Animate";
 
 const Amenities = ({ formData, setFormData, errors }) => {
   const handleChange = (event) => {
@@ -9,8 +13,24 @@ const Amenities = ({ formData, setFormData, errors }) => {
       [name]: checked,
     }));
   };
+       const control = useAnimation();
+       const [ref, inView] = useInView();
+
+       useEffect(() => {
+         if (inView) {
+           control.start("visible");
+         } else {
+           control.start("hidden");
+         }
+       }, [control, inView]);
+
   return (
-    <>
+    <motion.div
+      ref={ref}
+      variants={boxVariant}
+      initial="visible"
+      animate={control}
+    >
       <h5 className={styles.h5}>Amenities</h5>
 
       <div className={styles.amenities}>
@@ -19,7 +39,7 @@ const Amenities = ({ formData, setFormData, errors }) => {
             type="checkbox"
             name="ac"
             id="ac"
-            aria-label="air conditioning"
+            aria-label="air condition"
             className={styles.checkbox}
             value={formData.ac}
             checked={formData.ac}
@@ -225,7 +245,7 @@ const Amenities = ({ formData, setFormData, errors }) => {
           <span className={styles.error}>{errors.amenities}</span>
         )}
       </div>
-    </>
+    </motion.div>
   );
 };
 

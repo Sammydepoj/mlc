@@ -1,5 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./Pricing.module.css";
+
+import { motion, useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import { boxVariant } from "../../Animation/Animate";
+
 const Pricing = ({ formData, setFormData, errors }) => {
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -8,8 +13,25 @@ const Pricing = ({ formData, setFormData, errors }) => {
       [name]: value,
     }));
   };
+   const control = useAnimation();
+   const [ref, inView] = useInView();
+
+   useEffect(() => {
+     if (inView) {
+       control.start("visible");
+     } else {
+       control.start("hidden");
+     }
+   }, [control, inView]);
+
   return (
-    <div className={styles.pricing}>
+    <motion.div
+      ref={ref}
+      variants={boxVariant}
+      initial="visible"
+      animate={control}
+      className={styles.pricing}
+    >
       <h5>Pricing</h5>
       <div className={styles.pricingContainer}>
         <span className={styles.price}>Price</span>
@@ -72,7 +94,7 @@ const Pricing = ({ formData, setFormData, errors }) => {
           <span className={styles.checkmark}></span>Security Fee
         </label>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

@@ -1,6 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./Photos.module.css";
 import Button from "../Button/Button";
+
+import { motion, useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import { boxVariant } from "../../Animation/Animate";
 
 const Photos = ({ formData, setFormData, errors }) => {
   const handleChange = (event) => {
@@ -10,9 +14,25 @@ const Photos = ({ formData, setFormData, errors }) => {
       [name]: value,
     }));
   };
+ const control = useAnimation();
+ const [ref, inView] = useInView();
+
+ useEffect(() => {
+   if (inView) {
+     control.start("visible");
+   } else {
+     control.start("hidden");
+   }
+ }, [control, inView]);
 
   return (
-    <div className={styles.photos}>
+    <motion.div
+      ref={ref}
+      variants={boxVariant}
+      initial="visible"
+      animate={control}
+      className={styles.photos}
+    >
       <h5>Photos</h5>
       <div className={styles.fileInputWrapper}>
         <div>
@@ -45,7 +65,7 @@ const Photos = ({ formData, setFormData, errors }) => {
         {errors.video && <span className={styles.error}>{errors.video}</span>}
         <p>Width 640px and height 320px</p>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

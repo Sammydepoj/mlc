@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./Listings.module.css";
 
 import ListYourSpace from "./Components/ListYourSpace/ListYourSpace";
@@ -10,8 +10,15 @@ import Pricing from "./Components/Pricing/Pricing";
 import TermsAndCondition from "./Components/TermsAndCondition/TermsAndCondition";
 
 import Button from "./Components/Button/Button";
+import { motion, useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
 import { validateForm } from "./validateForm";
+
+const boxVariant = {
+  visible: { opacity: 1, scale: 1, transition: { duration: 0.5 } },
+  hidden: { opacity: 0, scale: 0 },
+};
 
 const Listings = () => {
   const [formData, setFormData] = useState({
@@ -62,21 +69,39 @@ const Listings = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(formData);
+    const isValid = validateForm(currentStep, formData, setErrors);
+    isValid && console.log(formData);
   };
 
   const progress = (currentStep / 7) * 100;
 
+  const control = useAnimation();
+  const [ref, inView] = useInView();
+
+  useEffect(() => {
+    if (inView) {
+      control.start("visible");
+    } else {
+      control.start("hidden");
+    }
+  }, [control, inView]);
+
   return (
     <div className={styles.listings}>
-      <div className={styles.listYourSpace}>
+      <motion.div
+        ref={ref}
+        variants={boxVariant}
+        initial="visible"
+        animate={control}
+        className={styles.listYourSpace}
+      >
         <div>
           <h2>
             List Your <span>Space</span>
           </h2>
           <p>Be rest assured we help you make money renting out your space</p>
         </div>
-      </div>
+      </motion.div>
 
       <form onSubmit={handleSubmit}>
         <div style={{ width: "100%", border: "1px solid black" }}>

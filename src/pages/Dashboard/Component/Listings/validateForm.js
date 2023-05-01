@@ -79,7 +79,7 @@ export const validateForm = (currentStep, formData, setErrors) => {
       }
       break;
     case 7:
-      if (!formData.agreeTermsAndCondition) {
+      if (formData.agreeTermsAndCondition === false) {
         newErrors.agreeTermsAndCondition =
           "Please agree to the terms and conditions";
         isValid = false;

@@ -1,6 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import styles from "./Description.module.css";
+
+import { motion, useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import { boxVariant } from "../../Animation/Animate";
 
 const Description = ({ formData, setFormData, errors }) => {
   const handleChange = (event) => {
@@ -10,8 +14,25 @@ const Description = ({ formData, setFormData, errors }) => {
       [name]: value,
     }));
   };
+     const control = useAnimation();
+     const [ref, inView] = useInView();
+
+     useEffect(() => {
+       if (inView) {
+         control.start("visible");
+       } else {
+         control.start("hidden");
+       }
+     }, [control, inView]);
+
   return (
-    <div className={styles.description}>
+    <motion.div
+      ref={ref}
+      variants={boxVariant}
+      initial="visible"
+      animate={control}
+      className={styles.description}
+    >
       <p className={styles.descriptionHeading}>Description</p>
       <div className={styles.inputLabelWrapper}>
         <label htmlFor="listingName">Listing Name</label>
@@ -24,9 +45,9 @@ const Description = ({ formData, setFormData, errors }) => {
           onChange={handleChange}
         />
       </div>
-        {errors.listingName && (
-          <span className={styles.error}>{errors.listingName}</span>
-        )}
+      {errors.listingName && (
+        <span className={styles.error}>{errors.listingName}</span>
+      )}
       <div className={styles.inputLabelWrapper}>
         <label htmlFor="summary">Summary</label>
         <textarea
@@ -40,10 +61,8 @@ people, It has 2 Bedrooms........"
           onChange={handleChange}
         ></textarea>
       </div>
-        {errors.summary && (
-          <span className={styles.error}>{errors.summary}</span>
-        )}
-    </div>
+      {errors.summary && <span className={styles.error}>{errors.summary}</span>}
+    </motion.div>
   );
 };
 

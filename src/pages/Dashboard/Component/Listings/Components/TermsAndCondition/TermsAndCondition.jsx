@@ -1,5 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./TermsAndCondition.module.css";
+
+import { motion, useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import { boxVariant } from "../../Animation/Animate";
 
 const TermsAndCondition = ({ formData, setFormData, errors }) => {
   const handleChange = (event) => {
@@ -9,8 +13,25 @@ const TermsAndCondition = ({ formData, setFormData, errors }) => {
       [name]: checked,
     }));
   };
+  const control = useAnimation();
+  const [ref, inView] = useInView();
+
+  useEffect(() => {
+    if (inView) {
+      control.start("visible");
+    } else {
+      control.start("hidden");
+    }
+  }, [control, inView]);
+
   return (
-    <div className={styles.termsAndCondition}>
+    <motion.div
+      ref={ref}
+      variants={boxVariant}
+      initial="visible"
+      animate={control}
+      className={styles.termsAndCondition}
+    >
       <h5>Terms and conditions</h5>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod
@@ -29,17 +50,19 @@ const TermsAndCondition = ({ formData, setFormData, errors }) => {
             id="agreeTermsAndCondition"
             aria-label="agreeTermsAndCondition"
             className={styles.checkbox}
-            checked={formData.agreeTermsAndCondition}
             value={formData.agreeTermsAndCondition}
+            checked={formData.agreeTermsAndCondition}
             onChange={handleChange}
           />
           <span className={styles.checkmark}></span>I agree to the terms and
           conditions
         </label>
         <b>Read more</b>
-        {errors.agree && <span className={styles.error}>{errors.agree}</span>}
       </div>
-    </div>
+      {errors.agreeTermsAndCondition && (
+        <span className={styles.error}>{errors.agreeTermsAndCondition}</span>
+      )}
+    </motion.div>
   );
 };
 

@@ -44,6 +44,10 @@
   color: #ffffff;
 }
 
+.listings form {
+  position: relative;
+}
+
 .btnsWrapper {
   display: flex;
   gap: 2rem;

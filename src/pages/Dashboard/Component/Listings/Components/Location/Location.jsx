@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import styles from "./Location.module.css";
 import Leaflet from "../../../../../../components/Header/Map/Leaflet";
 
 import { BiSearch } from "react-icons/bi";
+
+import { motion, useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import { boxVariant } from "../../Animation/Animate";
 
 const Location = ({ formData, setFormData, errors }) => {
   const handleChange = (event) => {
@@ -13,8 +17,26 @@ const Location = ({ formData, setFormData, errors }) => {
       [name]: value,
     }));
   };
+
+  const control = useAnimation();
+  const [ref, inView] = useInView();
+
+  useEffect(() => {
+    if (inView) {
+      control.start("visible");
+    } else {
+      control.start("hidden");
+    }
+  }, [control, inView]);
+
   return (
-    <div className={styles.location}>
+    <motion.div
+      ref={ref}
+      variants={boxVariant}
+      initial="visible"
+      animate={control}
+      className={styles.location}
+    >
       <h5 className={styles.descriptionHeading}>Location</h5>
       <div className={styles.stateAddressInputWrapper}>
         <div>
@@ -72,7 +94,7 @@ const Location = ({ formData, setFormData, errors }) => {
         </div>
         <p>Move the pointer to set the right map position.</p>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
