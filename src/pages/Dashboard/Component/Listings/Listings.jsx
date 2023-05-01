@@ -70,7 +70,10 @@ const Listings = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     const isValid = validateForm(currentStep, formData, setErrors);
-    isValid && console.log(formData);
+    isValid &&
+      alert(
+        `Your Property ${formData.listingName} located at ${formData.location} has been uploaded succesfully! `
+      );
   };
 
   const progress = (currentStep / 7) * 100;

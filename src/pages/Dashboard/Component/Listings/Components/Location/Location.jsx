@@ -50,8 +50,8 @@ const Location = ({ formData, setFormData, errors }) => {
             className={styles.locationInput}
           >
             <option value="">------</option>
-            <option value="london">London</option>
-            <option value="atlanta">Atlanta</option>
+            <option value="lagos">Lagos</option>
+            <option value="abuja">Abuja</option>
           </select>
           {errors.state && <span className={styles.error}>{errors.state}</span>}
         </div>

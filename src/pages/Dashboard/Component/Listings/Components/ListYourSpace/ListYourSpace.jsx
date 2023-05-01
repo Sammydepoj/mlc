@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import styles from "./ListYourSpace.module.css";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import {boxVariant } from "../../Animation/Animate";
+import { boxVariant } from "../../Animation/Animate";
 
 const ListYourSpace = ({ formData, setFormData, errors }) => {
   const handleChange = (event) => {
@@ -74,8 +74,10 @@ const ListYourSpace = ({ formData, setFormData, errors }) => {
         onChange={handleChange}
       >
         <option value="">------ </option>
-        <option value="1">1 </option>
-        <option value="2">2 </option>
+        <option value="Yaba">Yaba </option>
+        <option value="Lekki">Lekki </option>
+        <option value="Makoko">Makoko </option>
+        <option value="Surulere">Surulere </option>
       </select>
       {errors.location && (
         <span className={styles.error}>{errors.location}</span>
