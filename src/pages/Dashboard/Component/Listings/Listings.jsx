@@ -60,11 +60,13 @@ const Listings = () => {
       const newStep = currentStep + 1;
       setCurrentStep(newStep);
     }
+    window.scrollTo(0, 0);
   };
 
   const previousStep = () => {
     const newStep = currentStep - 1;
     setCurrentStep(newStep);
+    window.scrollTo(0, 0);
   };
 
   const handleSubmit = (event) => {
