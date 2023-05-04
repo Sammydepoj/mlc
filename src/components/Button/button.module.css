@@ -26,6 +26,7 @@
 .button:disabled:hover,
 .button:disabled:active {
   cursor: not-allowed;
+  background-color: #f3653a;
 }
 @media screen and (max-width: 690px) {
   .button {
@@ -37,7 +38,7 @@
     padding: 0.4rem;
     font-size: 14px;
     line-height: 20px;
-      font-weight: 500;
-  font-size: 13px;
+    font-weight: 500;
+    font-size: 13px;
   }
 }
