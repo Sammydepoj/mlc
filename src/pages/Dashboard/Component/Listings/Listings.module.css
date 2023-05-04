@@ -47,7 +47,27 @@
 .listings form {
   position: relative;
 }
-
+.progressContainer {
+  width: 100%;
+  border: 1px solid black;
+}
+.progress {
+  background-color: #8b5f52;
+  height: 10px;
+  position: relative;
+}
+.currentStepProgress {
+  position: absolute;
+  top: -15px;
+  background-color: #8b5f52;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  box-shadow: 0px 0px 5px #999;
+}
 .btnsWrapper {
   display: flex;
   gap: 2rem;

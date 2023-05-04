@@ -43,7 +43,6 @@ const Listings = () => {
     fireExtinguisher: false,
     readingRoom: false,
     kitchen: false,
-    // amenities: {},
     photo: "",
     video: "",
     homePrice: "",
@@ -69,13 +68,57 @@ const Listings = () => {
     window.scrollTo(0, 0);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
+
     const isValid = validateForm(currentStep, formData, setErrors);
-    isValid &&
-      alert(
-        `Your Property ${formData.listingName} located at ${formData.location} has been uploaded succesfully! `
+
+    if (isValid) {
+      const saveHomeData = await fetch(
+        "https://minimumleavingcost-default-rtdb.firebaseio.com/homes.json",
+        {
+          method: "POST",
+          body: JSON.stringify({
+            apartmentType: formData.apartmentType,
+            residentCount: formData.residentCount,
+            location: formData.location,
+            state: formData.state,
+            address: formData.address,
+            listingName: formData.listingName,
+            summary: formData.summary,
+            ac: formData.ac,
+            couch: formData.couch,
+            shower: formData.shower,
+            heater: formData.heater,
+            bathTub: formData.bathTub,
+            washingMachine: formData.washingMachine,
+            tv: formData.tv,
+            wardrobe: formData.wardrobe,
+            cleaner: formData.cleaner,
+            gym: formData.gym,
+            smokeDetector: formData.smokeDetector,
+            fireExtinguisher: formData.fireExtinguisher,
+            readingRoom: formData.readingRoom,
+            kitchen: formData.kitchen,
+            photo: formData.photo,
+            video: formData.video,
+            homePrice: formData.homePrice,
+            cleaningPrice: formData.cleaningPrice,
+            agreeTermsAndCondition: formData.agreeTermsAndCondition,
+          }),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
       );
+      const data = await saveHomeData.json();
+      console.log(data);
+    }
+    // isValid &&
+
+    //   alert(
+    //     `Your Property ${formData.listingName} located at ${formData.location} has been uploaded succesfully! `
+    //   );
   };
 
   const progress = (currentStep / 7) * 100;
@@ -109,14 +152,15 @@ const Listings = () => {
       </motion.div>
 
       <form onSubmit={handleSubmit}>
-        <div style={{ width: "100%", border: "1px solid black" }}>
-          <div
-            style={{
-              width: `${progress}%`,
-              backgroundColor: "#8b5f52",
-              height: "10px",
-            }}
-          ></div>
+        <div className={styles.progressContainer}>
+          <div style={{ width: `${progress}%` }} className={styles.progress}>
+            <div
+              style={{ left: `calc(${progress}% - 30px)` }}
+              className={styles.currentStepProgress}
+            >
+              {`Step ${currentStep}`}
+            </div>
+          </div>
         </div>
 
         {currentStep === 1 && (
