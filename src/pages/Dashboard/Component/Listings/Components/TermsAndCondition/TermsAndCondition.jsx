@@ -12,6 +12,7 @@ const TermsAndCondition = ({ formData, setFormData, errors }) => {
       ...prevFormData,
       [name]: checked,
     }));
+    console.log([name], checked);
   };
   const control = useAnimation();
   const [ref, inView] = useInView();

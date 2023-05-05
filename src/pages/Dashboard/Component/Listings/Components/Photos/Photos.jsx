@@ -14,16 +14,16 @@ const Photos = ({ formData, setFormData, errors }) => {
       [name]: value,
     }));
   };
- const control = useAnimation();
- const [ref, inView] = useInView();
+  const control = useAnimation();
+  const [ref, inView] = useInView();
 
- useEffect(() => {
-   if (inView) {
-     control.start("visible");
-   } else {
-     control.start("hidden");
-   }
- }, [control, inView]);
+  useEffect(() => {
+    if (inView) {
+      control.start("visible");
+    } else {
+      control.start("hidden");
+    }
+  }, [control, inView]);
 
   return (
     <motion.div
@@ -44,7 +44,7 @@ const Photos = ({ formData, setFormData, errors }) => {
             // value={formData.photo}
             onChange={handleChange}
           />
-          <Button value={"Upload"}></Button>
+          <Button value={"Upload"} type={"button"}></Button>
         </div>
         {errors.photo && <span className={styles.error}>{errors.photo}</span>}
         <p>Width 640px and height 320px</p>
@@ -60,7 +60,7 @@ const Photos = ({ formData, setFormData, errors }) => {
             // value={formData.video}
             onChange={handleChange}
           />
-          <Button value={"Upload"}></Button>
+          <Button value={"Upload"} type={"button"}></Button>
         </div>
         {errors.video && <span className={styles.error}>{errors.video}</span>}
         <p>Width 640px and height 320px</p>

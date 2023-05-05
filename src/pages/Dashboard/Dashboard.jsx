@@ -84,7 +84,6 @@ const Dashboard = () => {
           className={styles.harmburger}
           onClick={() => {
             setIsSideBarExpanded(!isSideBarExpanded);
-            // console.log("clicked");
           }}
         >
           <svg
