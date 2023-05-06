@@ -66,13 +66,13 @@ const Dashboard = () => {
     {
       id: "menu4",
       icon: <BsFilter />,
-      text: "My Listings",
+      text: "Add Property",
       component: <Listings />,
     },
     {
       id: "menu5",
       icon: <RiBubbleChartLine />,
-      text: "My Experience",
+      text: "View My Properties",
     },
   ];
   return (

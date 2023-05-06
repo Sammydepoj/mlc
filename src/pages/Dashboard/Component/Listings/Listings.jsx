@@ -151,6 +151,7 @@ const Listings = () => {
             agreeTermsAndCondition: false,
           });
           setCurrentStep(1);
+          window.location.href = "/dashboard";
         }
 
         if (!saveHomeData.ok) {
