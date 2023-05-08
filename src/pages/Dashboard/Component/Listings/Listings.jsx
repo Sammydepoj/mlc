@@ -161,6 +161,7 @@ const Listings = () => {
     } catch (error) {
       alert(error);
     }
+    // console.log(formData);
   };
 
   const components = [
