@@ -60,13 +60,13 @@ const NavLogo = () => {
         <Link to="/login">
           <Button
             className={`${styles.btn} ${styles.btn1}`}
-            value={"Become a Landlord"}
+            value={"Log In"}
           ></Button>
         </Link>
         <Link to="/signup">
           <Button
             className={`${styles.btn} ${styles.btn2}`}
-            value={"Become a Tenant"}
+            value={"Sign Up"}
           ></Button>
         </Link>
       </div>

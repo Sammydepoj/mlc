@@ -145,7 +145,7 @@ const Contact = () => {
       setIsLoading(true);
 
       const saveData = await fetch(
-        "https://minimumleavingcost-default-rtdb.firebaseio.com/homes.json",
+        "https://minimumleavingcost-default-rtdb.firebaseio.com/homesold.json",
         {
           method: "POST",
           body: JSON.stringify({
@@ -158,9 +158,9 @@ const Contact = () => {
             price: priceInputValue,
             description: descriptionInputValue,
           }),
-          // headers: {
-          //   "Content-Type": "application/json",
-          // },
+          headers: {
+            "Content-Type": "application/json",
+          },
         }
       );
       setIsLoading(false);

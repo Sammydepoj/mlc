@@ -9,8 +9,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@cloudinary/base": "^1.0.0-beta.4",
+    "@cloudinary/react": "^1.11.2",
+    "@cloudinary/url-gen": "^1.10.0",
+    "cloudinary-react": "^1.8.1",
     "firebase": "^9.17.2",
-    "formik": "^2.2.9",
     "framer-motion": "^10.2.4",
     "leaflet": "^1.9.3",
     "react": "^18.2.0",

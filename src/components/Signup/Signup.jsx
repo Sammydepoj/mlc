@@ -57,6 +57,14 @@ const Signup = () => {
     inputBlurHandler: emailBlurHandler,
     reset: resetEmailInput,
   } = useInput((value) => value.includes("@"));
+  const {
+    value: roleInputvalue,
+    isValid: enteredRoleIsValid,
+    hasError: roleInputHasError,
+    valueChangeHandler: roleChangeHandler,
+    inputBlurHandler: roleBlurHandler,
+    reset: resetRoleInput,
+  } = useInput((value) => value.trim() !== "");
 
   const {
     value: passwordInputValue,
@@ -85,10 +93,17 @@ const Signup = () => {
 
   if (
     firstNameInputValue &&
+    !firstNameInputHasError &&
     lastNameInputValue &&
+    !lastNameInputHasError &&
     emailInputvalue &&
+    !emailInputHasError &&
     confirmPasswordInputValue &&
-    passwordInputValue
+    !confirmPasswordInputHasError &&
+    passwordInputValue &&
+    !passwordInputHasError &&
+    roleInputvalue &&
+    !roleInputHasError
   ) {
     formIsValid = true;
   }
@@ -106,7 +121,8 @@ const Signup = () => {
         !lastNameInputValue &&
         !emailInputvalue &&
         !confirmPasswordInputValue &&
-        !passwordInputValue
+        !passwordInputValue &&
+        !roleInputvalue
       ) {
         return;
       }
@@ -115,7 +131,8 @@ const Signup = () => {
       registerWithEmailAndPassword(
         userNameInputValue,
         emailInputvalue,
-        passwordInputValue
+        passwordInputValue,
+        roleInputvalue
       );
 
       setIsLoading(true);
@@ -126,13 +143,13 @@ const Signup = () => {
           method: "POST",
           body: JSON.stringify({
             userName: userNameInputValue,
-            address: addressInputValue,
-            password: passwordInputValue,
             email: emailInputvalue,
+            password: passwordInputValue,
+            role: roleInputvalue,
           }),
-          // headers: {
-          //   "Content-Type": "application/json",
-          // },
+          headers: {
+            "Content-Type": "application/json",
+          },
         }
       );
 
@@ -171,6 +188,7 @@ const Signup = () => {
       resetEmailInput();
       resetConfirmPasswordInput();
       resetPasswordInput();
+      resetRoleInput();
     } catch (error) {
       console.log(error);
       sethttpError("Something went wrong!");
@@ -283,6 +301,22 @@ const Signup = () => {
                   <p className={styles.errorText}>
                     Please enter a valid email !
                   </p>
+                )}
+                <select
+                  name="role"
+                  id="role"
+                  className={
+                    roleInputHasError ? styles.invalidInput : styles.input
+                  }
+                  onChange={roleChangeHandler}
+                  onBlur={roleBlurHandler}
+                >
+                  <option value="">Sign up as</option>
+                  <option value="tenant">Tenant</option>
+                  <option value="landlord">Landlord</option>
+                </select>
+                {roleInputHasError && !formIsValid && !enteredRoleIsValid && (
+                  <p className={styles.errorText}>Please select a role!</p>
                 )}
                 <Input
                   aria-label={"password for login"}
