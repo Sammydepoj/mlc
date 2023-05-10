@@ -211,7 +211,6 @@ const mlc = {
 };
 
 const List = () => {
-
   const [currentPage, setCurrentPage] = useState(1);
   const [currentItems, setCurrentItems] = useState(mlc.homes.slice(0, 6));
 
