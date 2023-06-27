@@ -42,11 +42,12 @@ const Listings = () => {
     fireExtinguisher: false,
     readingRoom: false,
     kitchen: false,
-    photo: "",
+    photo: [],
     video: "",
     homePrice: "",
     cleaningPrice: "",
     agreeTermsAndCondition: false,
+    userId: "",
   });
   const [currentStep, setCurrentStep] = useState(1);
 
@@ -73,6 +74,7 @@ const Listings = () => {
       const isValid = validateForm(currentStep, formData, setErrors);
       if (!isValid) return;
       if (isValid) {
+        const userId = localStorage.getItem("userId");
         const saveHomeData = await fetch(
           "https://minimumleavingcost-default-rtdb.firebaseio.com/homes.json",
           {
@@ -106,6 +108,7 @@ const Listings = () => {
               homePrice: formData.homePrice,
               cleaningPrice: formData.cleaningPrice,
               agreeTermsAndCondition: formData.agreeTermsAndCondition,
+              userId: userId,
             }),
             headers: {
               "Content-Type": "application/json",
@@ -149,6 +152,7 @@ const Listings = () => {
             homePrice: "",
             cleaningPrice: "",
             agreeTermsAndCondition: false,
+            userId: "",
           });
           setCurrentStep(1);
           window.location.href = "/dashboard";

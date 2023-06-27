@@ -49,6 +49,7 @@ const signInWithGoogle = async () => {
         name: user.displayName,
         authProvider: "google",
         email: user.email,
+        role: "landlord",
       });
     }
   } catch (err) {
@@ -101,6 +102,7 @@ const sendPasswordReset = async (email) => {
 
 const logout = () => {
   signOut(auth);
+  localStorage.removeItem("userId");
 };
 
 export {

@@ -8,6 +8,8 @@ import { boxVariant } from "../../Animation/Animate";
 import Button from "../Button/Button";
 const Photos = ({ formData, setFormData, errors }) => {
   const [photoFiles, setPhotoFiles] = useState([]);
+  const [photoLinks, setPhotoLinks] = useState([]);
+  const [localPhotoLinks, setLocalPhotoLinks] = useState([]);
 
   const control = useAnimation();
   const [ref, inView] = useInView();
@@ -23,6 +25,12 @@ const Photos = ({ formData, setFormData, errors }) => {
   const handleFileChange = (event) => {
     const uploadedPhotos = Array.from(event.target.files);
     setPhotoFiles(uploadedPhotos);
+    const links = photoFiles.map((file) => {
+      return file.name;
+    });
+    setLocalPhotoLinks((prevLinks) => [...prevLinks, links.toString()]);
+    console.log(links);
+    console.log(localPhotoLinks);
   };
   const handleUploadClick = async () => {
     if (!photoFiles.length) return;
@@ -42,14 +50,20 @@ const Photos = ({ formData, setFormData, errors }) => {
           body: formData,
         }
       );
+
+      console.log(formData);
       console.log(response);
       const data = await response.json();
       console.log(data);
+
+      setPhotoLinks((prevLinks) => [...prevLinks, data.secure_url]);
       // Store the Cloudinary URL in the parent component's state
       setFormData((prevData) => ({
         ...prevData,
-        photo: data.secure_url,
+        // photo: data.secure_url,
+        photo: photoLinks,
       }));
+      console.log(photoLinks);
     } catch (error) {
       console.error(error);
     }
@@ -82,25 +96,58 @@ const Photos = ({ formData, setFormData, errors }) => {
         </div>
         {errors.photo && <span className={styles.error}>{errors.photo}</span>}
         <p>Width 640px and height 320px</p>
-        {/* {formData.photo && (
-          <img
-            src={formData.photo}
-            alt="Uploaded photo"
-            style={{ maxWidth: "100%", height: "auto" }}
-          />
-        )} */}
-        {photoFiles.length > 0 && (
+
+        {/* {formData.photo.length > 0 && (
           <div>
-            {photoFiles.map((file) => (
+            {formData.photo.map((file) => (
+              <div
+                style={{
+                  display: "flex",
+                  flexWrap: "wrap",
+                  gap: "0.5rem",
+                  width: "100%",
+                }}
+              >
+                <img
+                  key={file}
+                  src={file}
+                  alt="Uploaded photo"
+                  style={{
+                    width: "100%",
+                    height: "auto",
+                    aspectRatio: "3/2",
+                    objectFit: "contain",
+                  }}
+                />
+              </div>
+            ))}
+          </div>
+        )} */}
+
+        {/* {localPhotoLinks.length > 0 && (
+          <div
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              gap: "0.5rem",
+              width: "100%",
+            }}
+          >
+            {localPhotoLinks.map((file) => (
               <img
                 key={file.name}
                 src={URL.createObjectURL(file)}
                 alt="Uploaded photo"
-                style={{ maxWidth: "100%", height: "auto" }}
+                style={{
+                  width: "100%",
+                  height: "auto",
+                  aspectRatio: "3/2",
+                  objectFit: "contain",
+                }}
               />
             ))}
           </div>
-        )}
+        )} */}
       </div>
       <h5>Videos</h5>
       <div className={styles.fileInputWrapper}>

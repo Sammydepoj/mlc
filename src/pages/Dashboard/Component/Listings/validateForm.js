@@ -58,16 +58,17 @@ export const validateForm = (currentStep, formData, setErrors) => {
         isValid = false;
       }
       break;
-    // case 5:
-    //   if (!formData.video) {
-    //     newErrors.video = "Please select a video";
-    //     isValid = false;
-    //   }
-    //   if (!formData.photo) {
-    //     newErrors.photo = "Please select a photo";
-    //     isValid = false;
-    //   }
-    //   break;
+    case 5:
+      //   if (!formData.video) {
+      //     newErrors.video = "Please select a video";
+      //     isValid = false;
+      //   }
+      if (!formData.photo || formData.photo.length === 0) {
+        newErrors.photo =
+          "Please select a photo and make sure you click the upload button (You can as well add multiple images, just be sure to click upload after each file selection!)";
+        isValid = false;
+      }
+      break;
     case 6:
       if (formData.cleaningPrice.trim() === "") {
         newErrors.cleaningPrice = "Please enter a cleaning Price";

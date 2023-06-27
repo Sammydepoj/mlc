@@ -33,7 +33,9 @@ const Dashboard = () => {
       const q = query(collection(db, "users"), where("uid", "==", user?.uid));
       const doc = await getDocs(q);
       const data = doc.docs[0].data();
-      setName(data.name);
+      setName(data?.name);
+      localStorage.setItem("userId", data.uid);
+      // console.log(data);
     } catch (err) {
       console.error(err);
       alert("An error occured while fetching user data");
