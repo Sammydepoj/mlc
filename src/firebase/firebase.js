@@ -8,6 +8,9 @@ import {
   addDoc,
 } from "firebase/firestore";
 
+import { getStorage } from "firebase/storage";
+import { getDatabase } from "firebase/database";
+
 import {
   GoogleAuthProvider,
   getAuth,
@@ -104,6 +107,7 @@ const logout = () => {
   signOut(auth);
   localStorage.removeItem("userId");
 };
+export const storage = getStorage(app);
 
 export {
   auth,
