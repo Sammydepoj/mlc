@@ -107,7 +107,9 @@ const logout = () => {
   signOut(auth);
   localStorage.removeItem("userId");
 };
+// export const storages = getStorage(app);
 export const storage = getStorage(app);
+export const database = getDatabase(app);
 
 export {
   auth,
