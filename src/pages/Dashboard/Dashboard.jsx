@@ -3,8 +3,6 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
 import { auth, db, logout } from "../../firebase/firebase";
 import { query, collection, getDocs, where } from "firebase/firestore";
-import PhotoTest from "./Component/Listings/Components/Photos/PhotoTest";
-
 import styles from "./Dashboard.module.css";
 
 // import {sideBarContent} from "./sideBarContent.js";
@@ -129,7 +127,6 @@ const Dashboard = () => {
         </div>
         {dashboardBodyContent}
       </div>
-      <PhotoTest />
       <Footer />
     </div>
   );

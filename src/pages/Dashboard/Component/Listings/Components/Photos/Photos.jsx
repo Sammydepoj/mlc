@@ -1,6 +1,13 @@
 import { useEffect, useState } from "react";
 import styles from "./Photos.module.css";
 
+import { storage } from "../../../../../../firebase/firebase";
+import {
+  ref as reference,
+  uploadBytesResumable,
+  getDownloadURL,
+} from "firebase/storage";
+
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { boxVariant } from "../../Animation/Animate";
@@ -8,8 +15,7 @@ import { boxVariant } from "../../Animation/Animate";
 import Button from "../Button/Button";
 const Photos = ({ formData, setFormData, errors }) => {
   const [photoFiles, setPhotoFiles] = useState([]);
-  const [photoLinks, setPhotoLinks] = useState([]);
-  const [localPhotoLinks, setLocalPhotoLinks] = useState([]);
+  const [percent, setPercent] = useState(0);
 
   const control = useAnimation();
   const [ref, inView] = useInView();
@@ -23,51 +29,91 @@ const Photos = ({ formData, setFormData, errors }) => {
   }, [control, inView]);
 
   const handleFileChange = (event) => {
-    const uploadedPhotos = Array.from(event.target.files);
-    setPhotoFiles(uploadedPhotos);
-    const links = photoFiles.map((file) => {
-      return file.name;
-    });
-    setLocalPhotoLinks((prevLinks) => [...prevLinks, links.toString()]);
-    console.log(links);
-    console.log(localPhotoLinks);
+    setPhotoFiles(event.target.files);
   };
   const handleUploadClick = async () => {
-    if (!photoFiles.length) return;
-    // Prepare the form data for the upload request
-    const formData = new FormData();
-    photoFiles.forEach((file) => {
-      formData.append("file", file);
-    });
-    formData.append("upload_preset", "de25si43");
+    if (!photoFiles.length) {
+      alert("Please select at least one image!");
+      return;
+    }
 
     try {
-      // Send the upload request to Cloudinary
-      const response = await fetch(
-        "https://api.cloudinary.com/v1_1/dgswpoatb/image/upload",
-        {
-          method: "POST",
-          body: formData,
-        }
-      );
+      const uploadedPhotoUrls = [];
 
-      console.log(formData);
-      console.log(response);
-      const data = await response.json();
-      console.log(data);
+      for (const file of photoFiles) {
+        const storageRef = reference(storage, `/images/${file.name}`);
+        const uploadTask = uploadBytesResumable(storageRef, file);
 
-      setPhotoLinks((prevLinks) => [...prevLinks, data.secure_url]);
-      // Store the Cloudinary URL in the parent component's state
-      setFormData((prevData) => ({
-        ...prevData,
-        // photo: data.secure_url,
-        photo: photoLinks,
-      }));
-      console.log(photoLinks);
+        uploadTask.on(
+          "state_changed",
+          (snapshot) => {
+            const percent = Math.round(
+              (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+            );
+
+            // Update progress if needed
+            setPercent(percent);
+          },
+          (err) => console.log(err),
+          () => {
+            // Get the download URL for each uploaded file
+            getDownloadURL(uploadTask.snapshot.ref).then((url) => {
+              uploadedPhotoUrls.push(url);
+
+              // console.log(uploadedPhotoUrls);
+
+              // Check if all files have been uploaded and update the form data
+              if (uploadedPhotoUrls.length === photoFiles.length) {
+                setFormData((prevData) => ({
+                  ...prevData,
+                  photo: uploadedPhotoUrls,
+                }));
+              }
+            });
+          }
+        );
+      }
     } catch (error) {
       console.error(error);
     }
   };
+
+  // const handleUploadClick = async () => {
+  //   if (!photoFiles.length) return;
+  //   // Prepare the form data for the upload request
+  //   const formData = new FormData();
+  //   photoFiles.forEach((file) => {
+  //     formData.append("file", file);
+  //   });
+  //   formData.append("upload_preset", "de25si43");
+
+  //   try {
+  //     // Send the upload request to Cloudinary
+  //     const response = await fetch(
+  //       "https://api.cloudinary.com/v1_1/dgswpoatb/image/upload",
+  //       {
+  //         method: "POST",
+  //         body: formData,
+  //       }
+  //     );
+
+  //     console.log(formData);
+  //     console.log(response);
+  //     const data = await response.json();
+  //     console.log(data);
+
+  //     setPhotoLinks((prevLinks) => [...prevLinks, data.secure_url]);
+  //     // Store the Cloudinary URL in the parent component's state
+  //     setFormData((prevData) => ({
+  //       ...prevData,
+  //       // photo: data.secure_url,
+  //       photo: photoLinks,
+  //     }));
+  //     console.log(photoLinks);
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
 
   return (
     <div
@@ -86,6 +132,7 @@ const Photos = ({ formData, setFormData, errors }) => {
             id="photo"
             onChange={handleFileChange}
             aria-label="photo"
+            accept="/image/*"
             multiple
           />
           <Button
@@ -94,13 +141,15 @@ const Photos = ({ formData, setFormData, errors }) => {
             onClick={handleUploadClick}
           ></Button>
         </div>
+        <p>{percent}% done</p>
         {errors.photo && <span className={styles.error}>{errors.photo}</span>}
         <p>Width 640px and height 320px</p>
 
-        {/* {formData.photo.length > 0 && (
+        {formData.photo.length > 0 && (
           <div>
-            {formData.photo.map((file) => (
+            {formData.photo.map((file, index) => (
               <div
+                key={index}
                 style={{
                   display: "flex",
                   flexWrap: "wrap",
@@ -109,7 +158,6 @@ const Photos = ({ formData, setFormData, errors }) => {
                 }}
               >
                 <img
-                  key={file}
                   src={file}
                   alt="Uploaded photo"
                   style={{
@@ -122,32 +170,7 @@ const Photos = ({ formData, setFormData, errors }) => {
               </div>
             ))}
           </div>
-        )} */}
-
-        {/* {localPhotoLinks.length > 0 && (
-          <div
-            style={{
-              display: "flex",
-              flexWrap: "wrap",
-              gap: "0.5rem",
-              width: "100%",
-            }}
-          >
-            {localPhotoLinks.map((file) => (
-              <img
-                key={file.name}
-                src={URL.createObjectURL(file)}
-                alt="Uploaded photo"
-                style={{
-                  width: "100%",
-                  height: "auto",
-                  aspectRatio: "3/2",
-                  objectFit: "contain",
-                }}
-              />
-            ))}
-          </div>
-        )} */}
+        )}
       </div>
       <h5>Videos</h5>
       <div className={styles.fileInputWrapper}>

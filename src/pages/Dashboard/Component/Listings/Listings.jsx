@@ -117,6 +117,7 @@ const Listings = () => {
         );
         console.log(saveHomeData);
         const data = await saveHomeData.json();
+        console.log(data);
         if (!saveHomeData) {
           throw new Error();
         }
